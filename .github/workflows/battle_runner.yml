@@ -32,7 +32,7 @@ jobs:
           CURRENT_PLAYER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['player']")
           echo "current_player=$CURRENT_PLAYER" >> $GITHUB_OUTPUT
 
-          CURRENT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          CURRENT_PHASE=$(ruby -ryaml -e "data = YAML.load_file('$BATTLEFIELD_FILE'); puts data['current_turn'] && data['current_turn']['phase'] ? data['current_turn']['phase'] : ''")
           echo "current_phase=$CURRENT_PHASE" >> $GITHUB_OUTPUT
 
           TURN_NUMBER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['turn_number']")

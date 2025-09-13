@@ -30,7 +30,7 @@ runs:
           puts \"DEBUG: CURRENT_PHASE: #{ENV['CURRENT_PHASE']}\"
 
           all_phases = JSON.parse(ENV['ALL_PHASES_JSON'])
-          current_phase = ENV['CURRENT_PHASE'].strip
+          current_phase = ENV['CURRENT_PHASE'] ? ENV['CURRENT_PHASE'].strip : ''
 
           current_phase_index = all_phases.find_index(current_phase)
 
