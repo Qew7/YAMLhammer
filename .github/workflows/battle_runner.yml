@@ -18,6 +18,7 @@ jobs:
       turn_number: ${{ steps.set_vars.outputs.turn_number }}
       all_phases: ${{ steps.get_phases.outputs.all_phases }}
       initial_phase_name: ${{ steps.set_vars.outputs.current_phase }} # Output the initial phase from battlefield.yml
+      battlefield_dir: ${{ steps.set_vars.outputs.battlefield_dir }}
 
     steps:
       - name: Checkout repository
@@ -30,7 +31,10 @@ jobs:
           echo "battlefield_file=$BATTLEFIELD_FILE" >> $GITHUB_OUTPUT
           echo "rules_file=rules/whfb6.yml" >> $GITHUB_OUTPUT
 
-          CURRENT_PLAYER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['player']")
+          BATTLEFIELD_DIR=$(dirname "$BATTLEFIELD_FILE")
+          echo "battlefield_dir=$BATTLEFIELD_DIR" >> $GITHUB_OUTPUT
+
+          CURRENT_PLAYER=$(ruby -ryaml -e "puts YAML.load_file('"$BATTLEFIELD_FILE"')['current_turn']['player']")
           echo "current_player=$CURRENT_PLAYER" >> $GITHUB_OUTPUT
 
           CURRENT_PHASE=$(ruby -ryaml -e "data = YAML.load_file('$BATTLEFIELD_FILE'); puts data['current_turn'] && data['current_turn']['phase'] ? data['current_turn']['phase'] : ''")
@@ -66,10 +70,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: current-battlefield-state
-          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }} # Download into the directory
+          path: ./${{ needs.setup-battle.outputs.battlefield_dir }} # Download into the directory
 
       - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -106,10 +110,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: current-battlefield-state
-          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}
+          path: ./${{ needs.setup-battle.outputs.battlefield_dir }}
 
       - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -146,10 +150,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: current-battlefield-state
-          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}
+          path: ./${{ needs.setup-battle.outputs.battlefield_dir }}
 
       - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -186,10 +190,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: current-battlefield-state
-          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}
+          path: ./${{ needs.setup-battle.outputs.battlefield_dir }}
 
       - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -226,10 +230,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: current-battlefield-state
-          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}
+          path: ./${{ needs.setup-battle.outputs.battlefield_dir }}
 
       - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -264,10 +268,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: current-battlefield-state
-          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}
+          path: ./${{ needs.setup-battle.outputs.battlefield_dir }}
 
       - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
