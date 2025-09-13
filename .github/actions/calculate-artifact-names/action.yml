@@ -57,11 +57,5 @@ runs:
           puts \"download_artifact_name=#{download_artifact_name}\"
           puts \"upload_artifact_name=#{upload_artifact_name}\"
         " >> $GITHUB_OUTPUT
-      shell: bash
-
-    - name: Debug GITHUB_OUTPUT content
-      run: |
-        echo "--- GITHUB_OUTPUT content ---"
-        cat $GITHUB_OUTPUT || true
-        echo "---------------------------"
+        echo $GITHUB_OUTPUT
       shell: bash
