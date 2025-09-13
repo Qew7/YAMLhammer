@@ -1,12 +1,12 @@
 name: Run Warhammer Battle
 
+if: github.ref_name != 'master'
+
 on:
   push:
     branches: [ '**' ]
     paths:
       - 'battlefields/*.yml'
-
-if: github.ref_name != 'master'
 
 jobs:
   setup-battle:
