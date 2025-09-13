@@ -42,7 +42,7 @@ jobs:
         id: get_phases
         run: |
           ALL_PHASES=$(ruby -ryaml -rjson -e "puts YAML.load_file('${{ steps.set_vars.outputs.rules_file }}')['phases'].map { |phase| phase['name'] }.to_json")
-          echo "all_phases=$ALL_PHASES" >> $GITHUB_OUTPUT
+          echo "all_phases=$(echo "$ALL_PHASES" | tr -d '\n')" >> $GITHUB_OUTPUT
 
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
