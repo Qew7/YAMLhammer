@@ -29,6 +29,11 @@ runs:
           all_phases = JSON.parse(ENV['ALL_PHASES_JSON'])
           current_phase = ENV['CURRENT_PHASE'] ? ENV['CURRENT_PHASE'].strip : ''
 
+          # If current_phase is empty, default to the first phase in all_phases
+          if current_phase.empty? && !all_phases.empty?
+            current_phase = all_phases.first
+          end
+
           current_phase_index = all_phases.find_index(current_phase)
 
           if current_phase_index == 0
