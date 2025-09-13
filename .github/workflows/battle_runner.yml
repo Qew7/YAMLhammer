@@ -38,7 +38,7 @@ jobs:
           echo "turn_number=$TURN_NUMBER" >> $GITHUB_OUTPUT
 
       - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: battlefield
           path: ${{ steps.set_vars.outputs.battlefield_file }}
@@ -52,7 +52,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download battlefield artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: battlefield
           path: ./
@@ -66,7 +66,7 @@ jobs:
         run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: battlefield
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -80,7 +80,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download battlefield artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: battlefield
           path: ./
@@ -94,7 +94,7 @@ jobs:
         run: ruby phases/magic_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: battlefield
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -108,7 +108,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download battlefield artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: battlefield
           path: ./
@@ -122,7 +122,7 @@ jobs:
         run: ruby phases/shooting_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: battlefield
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -136,7 +136,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download battlefield artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: battlefield
           path: ./
@@ -150,7 +150,7 @@ jobs:
         run: ruby phases/combat_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: battlefield
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -164,7 +164,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download battlefield artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: battlefield
           path: ./
@@ -178,7 +178,7 @@ jobs:
         run: ruby phases/morale_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: battlefield
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -192,7 +192,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download battlefield artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: battlefield
           path: ./
