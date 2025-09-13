@@ -249,8 +249,13 @@ jobs:
 
   finish-turn-and-commit:
     runs-on: ubuntu-latest
-    needs: morale-phase
-    if: always() # Always run to finalize the turn or commit game over state
+    needs:
+      - setup-battle
+      - movement-phase
+      - magic-phase
+      - shooting-phase
+      - combat-phase
+      - morale-phase
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
