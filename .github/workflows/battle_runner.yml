@@ -17,6 +17,7 @@ jobs:
       current_phase: ${{ steps.set_vars.outputs.current_phase }}
       turn_number: ${{ steps.set_vars.outputs.turn_number }}
       all_phases: ${{ steps.get_phases.outputs.all_phases }}
+      initial_phase_name: ${{ steps.set_vars.outputs.current_phase }} # Output the initial phase from battlefield.yml
 
     steps:
       - name: Checkout repository
@@ -48,29 +49,27 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: battlefield-initial
+          name: current-battlefield-state # Use a consistent name for the artifact
           path: ${{ steps.set_vars.outputs.battlefield_file }}
 
   movement-phase:
     runs-on: ubuntu-latest
     needs: setup-battle
-    if: needs.setup-battle.outputs.current_phase == 'Movement Phase'
+    if: needs.setup-battle.outputs.initial_phase_name == 'Movement Phase'
+    outputs:
+      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Calculate artifact names
-        id: calculate_artifact_names
-        uses: ./.github/actions/calculate-artifact-names
-        with:
-          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
-          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
-
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
-          path: ./
+          name: current-battlefield-state
+          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }} # Download into the directory
+
+      - name: Move downloaded battlefield file to its original path
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -80,35 +79,37 @@ jobs:
       - name: Run Movement Phase
         run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
-      - name: Debug upload_artifact_name
-        run: echo "${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}"
+      - name: Determine next phase
+        id: determine_next_phase
+        run: |
+          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.battlefield_file }}"
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
 
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}
+          name: current-battlefield-state
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   magic-phase:
     runs-on: ubuntu-latest
     needs: movement-phase
-    if: needs.setup-battle.outputs.current_phase == 'Magic Phase'
+    if: needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
+    outputs:
+      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Calculate artifact names
-        id: calculate_artifact_names
-        uses: ./.github/actions/calculate-artifact-names
-        with:
-          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
-          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
-
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
-          path: ./
+          name: current-battlefield-state
+          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}
+
+      - name: Move downloaded battlefield file to its original path
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -118,32 +119,37 @@ jobs:
       - name: Run Magic Phase
         run: ruby phases/magic_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
+      - name: Determine next phase
+        id: determine_next_phase
+        run: |
+          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.battlefield_file }}"
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
+
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}
+          name: current-battlefield-state
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   shooting-phase:
     runs-on: ubuntu-latest
     needs: magic-phase
-    if: needs.setup-battle.outputs.current_phase == 'Shooting Phase'
+    if: needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
+    outputs:
+      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Calculate artifact names
-        id: calculate_artifact_names
-        uses: ./.github/actions/calculate-artifact-names
-        with:
-          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
-          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
-
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
-          path: ./
+          name: current-battlefield-state
+          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}
+
+      - name: Move downloaded battlefield file to its original path
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -153,32 +159,37 @@ jobs:
       - name: Run Shooting Phase
         run: ruby phases/shooting_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
+      - name: Determine next phase
+        id: determine_next_phase
+        run: |
+          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.battlefield_file }}"
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
+
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}
+          name: current-battlefield-state
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   combat-phase:
     runs-on: ubuntu-latest
     needs: shooting-phase
-    if: needs.setup-battle.outputs.current_phase == 'Combat Phase'
+    if: needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
+    outputs:
+      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Calculate artifact names
-        id: calculate_artifact_names
-        uses: ./.github/actions/calculate-artifact-names
-        with:
-          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
-          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
-
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
-          path: ./
+          name: current-battlefield-state
+          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}
+
+      - name: Move downloaded battlefield file to its original path
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -188,32 +199,37 @@ jobs:
       - name: Run Combat Phase
         run: ruby phases/combat_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
+      - name: Determine next phase
+        id: determine_next_phase
+        run: |
+          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.battlefield_file }}"
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
+
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}
+          name: current-battlefield-state
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   morale-phase:
     runs-on: ubuntu-latest
     needs: combat-phase
-    if: needs.setup-battle.outputs.current_phase == 'Morale Phase'
+    if: needs.combat-phase.outputs.next_phase_output == 'Morale Phase'
+    outputs:
+      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Calculate artifact names
-        id: calculate_artifact_names
-        uses: ./.github/actions/calculate-artifact-names
-        with:
-          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
-          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
-
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
-          path: ./
+          name: current-battlefield-state
+          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}
+
+      - name: Move downloaded battlefield file to its original path
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -223,32 +239,35 @@ jobs:
       - name: Run Morale Phase
         run: ruby phases/morale_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
+      - name: Determine next phase
+        id: determine_next_phase
+        run: |
+          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.battlefield_file }}"
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
+
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}
+          name: current-battlefield-state
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
-  end-turn:
+  finish-turn-and-commit:
     runs-on: ubuntu-latest
     needs: morale-phase
-    if: needs.setup-battle.outputs.current_phase == 'Morale Phase'
+    if: always() # Always run to finalize the turn or commit game over state
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Calculate artifact names
-        id: calculate_artifact_names
-        uses: ./.github/actions/calculate-artifact-names
-        with:
-          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
-          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
-
-      - name: Download battlefield artifact
+      - name: Download final battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
-          path: ./
+          name: current-battlefield-state
+          path: ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}
+
+      - name: Move downloaded battlefield file to its original path
+        run: mv ./${{ needs.setup-battle.outputs.battlefield_file | dirname }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -265,8 +284,11 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
+          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.battlefield_file }}"
+          CURRENT_PLAYER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['player']")
+          TURN_NUMBER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['turn_number']")
           git add ${{ needs.setup-battle.outputs.battlefield_file }}
-          git commit -m "Automated Battle Turn: Turn ${{ needs.setup-battle.outputs.current_turn }} - ${{ needs.setup-battle.outputs.current_player }}" || echo "No changes to commit"
+          git commit -m "Automated Battle Turn: Turn ${TURN_NUMBER} - ${CURRENT_PLAYER}" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
