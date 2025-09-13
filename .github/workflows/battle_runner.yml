@@ -84,7 +84,6 @@ jobs:
         run: echo "${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}"
 
       - name: Upload battlefield artifact
-        run: echo "${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}"
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
