@@ -22,9 +22,9 @@ runs:
   steps:
     - id: calculate
       run: |
-        ALL_PHASES_JSON='${{ inputs.all-phases-json }}'
+        export ALL_PHASES_JSON='${{ inputs.all-phases-json }}'
         echo "ALL_PHASES_JSON: $ALL_PHASES_JSON"
-        CURRENT_PHASE='${{ inputs.current-phase }}'
+        export CURRENT_PHASE='${{ inputs.current-phase }}'
         echo "CURRENT_PHASE: $CURRENT_PHASE"
 
         ruby -rjson -e "
