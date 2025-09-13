@@ -34,6 +34,10 @@ runs:
             current_phase = all_phases.first
           end
 
+          STDERR.puts \"DEBUG: Ruby current_phase: #{current_phase.inspect}\"
+
+          STDERR.puts \"DEBUG: Ruby all_phases: #{all_phases.inspect}\"
+
           current_phase_index = all_phases.find_index(current_phase)
 
           if current_phase_index == 0
