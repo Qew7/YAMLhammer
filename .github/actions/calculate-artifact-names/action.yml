@@ -26,17 +26,27 @@ runs:
         CURRENT_PHASE='${{ inputs.current-phase }}'
 
         ruby -rjson -e "
+          puts \"DEBUG: ALL_PHASES_JSON: #{ENV['ALL_PHASES_JSON']}\"
+          puts \"DEBUG: CURRENT_PHASE: #{ENV['CURRENT_PHASE']}\"
+
           all_phases = JSON.parse(ENV['ALL_PHASES_JSON'])
-          current_phase_index = all_phases.find_index(ENV['CURRENT_PHASE'])
+          current_phase = ENV['CURRENT_PHASE'].strip
+
+          current_phase_index = all_phases.find_index(current_phase)
+
+          puts \"DEBUG: current_phase_index: #{current_phase_index}\"
 
           if current_phase_index == 0
             download_artifact_name = 'battlefield-initial'
-          else
+          elsif !current_phase_index.nil?
             previous_phase_name = all_phases[current_phase_index - 1]
             download_artifact_name = \"battlefield-after-#{(previous_phase_name || '').downcase.gsub(' ', '-')}\"
+          else
+            # Fallback if current_phase not found, though workflow if condition should prevent this
+            download_artifact_name = 'battlefield-unknown'
           end
 
-          upload_artifact_name = \"battlefield-after-#{(ENV['CURRENT_PHASE'] || '').downcase.gsub(' ', '-')}\"
+          upload_artifact_name = \"battlefield-after-#{(current_phase || '').downcase.gsub(' ', '-')}\"
 
           puts \"download_artifact_name=#{download_artifact_name}\"
           puts \"upload_artifact_name=#{upload_artifact_name}\"
