@@ -1,42 +1,219 @@
 name: Run Warhammer Battle
 
 on:
-  workflow_dispatch:
-    inputs:
-      battlefield_file:
-        description: 'Path to the battlefield YAML file'
-        required: true
-        default: 'battlefields/2025-09-13_empire_vs_orcs.yml'
-      rules_file:
-        description: 'Path to the rules YAML file'
-        required: true
-        default: 'rules/whfb6.yml'
+  push:
+    branches: [ '**' ]
+    paths:
+      - 'battlefields/*.yml'
+  if: github.ref_name != 'master'
 
 jobs:
-  run-battle:
+  setup-battle:
     runs-on: ubuntu-latest
+    outputs:
+      battlefield_file: ${{ steps.set_vars.outputs.battlefield_file }}
+      rules_file: ${{ steps.set_vars.outputs.rules_file }}
+      current_player: ${{ steps.set_vars.outputs.current_player }}
+      current_phase: ${{ steps.set_vars.outputs.current_phase }}
+      turn_number: ${{ steps.set_vars.outputs.turn_number }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Get battlefield and rules file paths
+        id: set_vars
+        run: |
+          BATTLEFIELD_FILE=$(find battlefields -maxdepth 1 -name "*.yml" | head -n 1)
+          echo "battlefield_file=$BATTLEFIELD_FILE" >> $GITHUB_OUTPUT
+          echo "rules_file=rules/whfb6.yml" >> $GITHUB_OUTPUT
+
+          CURRENT_PLAYER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['player']")
+          echo "current_player=$CURRENT_PLAYER" >> $GITHUB_OUTPUT
+
+          CURRENT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          echo "current_phase=$CURRENT_PHASE" >> $GITHUB_OUTPUT
+
+          TURN_NUMBER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['turn_number']")
+          echo "turn_number=$TURN_NUMBER" >> $GITHUB_OUTPUT
+
+      - name: Upload battlefield artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: battlefield
+          path: ${{ steps.set_vars.outputs.battlefield_file }}
+
+  movement-phase:
+    runs-on: ubuntu-latest
+    needs: setup-battle
+    if: needs.setup-battle.outputs.current_phase == 'Movement Phase'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download battlefield artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: battlefield
+          path: ./
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.x'
 
-      - name: Install dependencies
+      - name: Run Movement Phase
+        run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
+
+      - name: Upload battlefield artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: battlefield
+          path: ${{ needs.setup-battle.outputs.battlefield_file }}
+
+  magic-phase:
+    runs-on: ubuntu-latest
+    needs: movement-phase
+    if: needs.setup-battle.outputs.current_phase == 'Magic Phase'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download battlefield artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: battlefield
+          path: ./
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.x'
+
+      - name: Run Magic Phase
+        run: ruby phases/magic_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
+
+      - name: Upload battlefield artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: battlefield
+          path: ${{ needs.setup-battle.outputs.battlefield_file }}
+
+  shooting-phase:
+    runs-on: ubuntu-latest
+    needs: magic-phase
+    if: needs.setup-battle.outputs.current_phase == 'Shooting Phase'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download battlefield artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: battlefield
+          path: ./
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.x'
+
+      - name: Run Shooting Phase
+        run: ruby phases/shooting_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
+
+      - name: Upload battlefield artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: battlefield
+          path: ${{ needs.setup-battle.outputs.battlefield_file }}
+
+  combat-phase:
+    runs-on: ubuntu-latest
+    needs: shooting-phase
+    if: needs.setup-battle.outputs.current_phase == 'Combat Phase'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download battlefield artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: battlefield
+          path: ./
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.x'
+
+      - name: Run Combat Phase
+        run: ruby phases/combat_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
+
+      - name: Upload battlefield artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: battlefield
+          path: ${{ needs.setup-battle.outputs.battlefield_file }}
+
+  morale-phase:
+    runs-on: ubuntu-latest
+    needs: combat-phase
+    if: needs.setup-battle.outputs.current_phase == 'Morale Phase'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download battlefield artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: battlefield
+          path: ./
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.x'
+
+      - name: Run Morale Phase
+        run: ruby phases/morale_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
+
+      - name: Upload battlefield artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: battlefield
+          path: ${{ needs.setup-battle.outputs.battlefield_file }}
+
+  end-turn:
+    runs-on: ubuntu-latest
+    needs: morale-phase
+    if: needs.setup-battle.outputs.current_phase == 'Morale Phase'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download battlefield artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: battlefield
+          path: ./
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.x'
+
+      - name: Install dependencies (Psych)
         run: gem install Psych
 
-      - name: Run battle simulation
-        run: ruby main.rb ${{ github.event.inputs.battlefield_file }} ${{ github.event.inputs.rules_file }}
+      - name: Update turn data and save battlefield
+        run: ruby main.rb ${{ needs.setup-battle.outputs.battlefield_file }} ${{ needs.setup-battle.outputs.rules_file }}
 
       - name: Commit changes to battlefield file
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add ${{ github.event.inputs.battlefield_file }}
-          git commit -m "Automated Battle Turn: ${{ github.event.inputs.battlefield_file }}" || echo "No changes to commit"
+          git add ${{ needs.setup-battle.outputs.battlefield_file }}
+          git commit -m "Automated Battle Turn: Turn ${{ needs.setup-battle.outputs.current_turn }} - ${{ needs.setup-battle.outputs.current_player }}" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
