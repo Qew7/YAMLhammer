@@ -53,3 +53,6 @@ special_rules:
     fearsome: "Units with Fearsome cause fear in enemies."
   magic_types:
     lore_of_fire: "Spells related to fire magic."
+
+win_conditions:
+  max_rounds: 5

@@ -22,6 +22,29 @@ class Game
     @battlefield['current_turn']['phase'] = @rules['phases'].first['name'] # Reset phase to first phase
   end
 
+  def check_win_conditions
+    max_rounds = @rules['win_conditions']['max_rounds']
+    current_round = @battlefield['current_turn']['turn_number']
+
+    if current_round > max_rounds
+      puts "Battle ended: Maximum rounds (#{max_rounds}) reached!"
+      @battlefield['current_turn']['phase'] = 'Game Over'
+      @battlefield['winner'] = 'Draw (Max Rounds)'
+      return
+    end
+
+    # Check for army annihilation
+    @battlefield['armies'].each do |army_name, units|
+      if units.all? { |unit| unit['models_count'] <= 0 }
+        puts "Battle ended: #{army_name} army annihilated!"
+        @battlefield['current_turn']['phase'] = 'Game Over'
+        winning_player_name = @battlefield['players'].find { |p| p['army'] != army_name }['name']
+        @battlefield['winner'] = winning_player_name
+        return
+      end
+    end
+  end
+
   def save_battlefield
     File.open(@battlefield_file, 'w') { |file| file.write(@battlefield.to_yaml) }
   end
@@ -37,4 +60,5 @@ rules_file = ARGV[1]
 
 game = Game.new(battlefield_file, rules_file)
 game.update_turn_data
+game.check_win_conditions
 game.save_battlefield
