@@ -32,6 +32,7 @@ runs:
           all_phases = JSON.parse(ENV['ALL_PHASES_JSON'])
           current_phase = ENV['CURRENT_PHASE'] ? ENV['CURRENT_PHASE'].strip : ''
 
+          STDERR.puts \"DEBUG: Ruby current_phase: #{current_phase.inspect}\"
           current_phase_index = all_phases.find_index(current_phase)
 
           if current_phase_index == 0
