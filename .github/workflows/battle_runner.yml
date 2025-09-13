@@ -1,0 +1,42 @@
+name: Run Warhammer Battle
+
+on:
+  workflow_dispatch:
+    inputs:
+      battlefield_file:
+        description: 'Path to the battlefield YAML file'
+        required: true
+        default: 'battlefields/2025-09-13_empire_vs_orcs.yml'
+      rules_file:
+        description: 'Path to the rules YAML file'
+        required: true
+        default: 'rules/whfb6.yml'
+
+jobs:
+  run-battle:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.x'
+
+      - name: Install dependencies
+        run: gem install Psych
+
+      - name: Run battle simulation
+        run: ruby main.rb ${{ github.event.inputs.battlefield_file }} ${{ github.event.inputs.rules_file }}
+
+      - name: Commit changes to battlefield file
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add ${{ github.event.inputs.battlefield_file }}
+          git commit -m "Automated Battle Turn: ${{ github.event.inputs.battlefield_file }}" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

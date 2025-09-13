@@ -1,0 +1,55 @@
+phases:
+  - name: Movement Phase
+    description: Units move on the battlefield.
+    actions:
+      - type: move_unit
+        description: Each unit can move up to its Movement (M) characteristic.
+      - type: charge_declaration
+        description: Declare charges against enemy units.
+  - name: Magic Phase
+    description: Wizards cast spells.
+    actions:
+      - type: cast_spell
+        description: Each wizard can attempt to cast one or more spells.
+      - type: dispel_attempt
+        description: Opponent can attempt to dispel active spells.
+  - name: Shooting Phase
+    description: Units fire ranged weapons.
+    actions:
+      - type: shoot
+        description: Each eligible model can make a shooting attack.
+        checks:
+          - type: to_hit
+            stat: BS
+            target_modifier: 0 # base modifier
+          - type: to_wound
+            stat: S
+            target_modifier: 0 # base modifier
+  - name: Combat Phase
+    description: Engaged units fight in close combat.
+    actions:
+      - type: attack
+        description: Engaged models make close combat attacks.
+        checks:
+          - type: to_hit
+            stat: WS
+            target_modifier: 0
+          - type: to_wound
+            stat: S
+            target_modifier: 0
+      - type: save
+        description: Opponent makes armour and ward saves.
+      - type: combat_resolution
+        description: Determine combat outcome based on wounds, ranks, and banners.
+  - name: Morale Phase
+    description: Units test their leadership.
+    actions:
+      - type: leadership_test
+        description: Units that suffered casualties or lost combat may need to take a leadership test.
+        stat: Ld
+
+special_rules:
+  psychology:
+    fearsome: "Units with Fearsome cause fear in enemies."
+  magic_types:
+    lore_of_fire: "Spells related to fire magic."
