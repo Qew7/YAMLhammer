@@ -72,16 +72,13 @@ jobs:
           name: current-battlefield-state
           path: ./${{ needs.setup-battle.outputs.battlefield_dir }} # Download into the directory
 
-      - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.5'
 
       - name: Run Movement Phase
-        run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: ruby phases/movement_phase.rb ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state
 
       - name: Determine next phase
         id: determine_next_phase
@@ -112,16 +109,13 @@ jobs:
           name: current-battlefield-state
           path: ./${{ needs.setup-battle.outputs.battlefield_dir }}
 
-      - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.5'
 
       - name: Run Magic Phase
-        run: ruby phases/magic_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: ruby phases/magic_phase.rb ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state
 
       - name: Determine next phase
         id: determine_next_phase
@@ -152,16 +146,13 @@ jobs:
           name: current-battlefield-state
           path: ./${{ needs.setup-battle.outputs.battlefield_dir }}
 
-      - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.5'
 
       - name: Run Shooting Phase
-        run: ruby phases/shooting_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: ruby phases/shooting_phase.rb ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state
 
       - name: Determine next phase
         id: determine_next_phase
@@ -192,16 +183,13 @@ jobs:
           name: current-battlefield-state
           path: ./${{ needs.setup-battle.outputs.battlefield_dir }}
 
-      - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.5'
 
       - name: Run Combat Phase
-        run: ruby phases/combat_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: ruby phases/combat_phase.rb ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state
 
       - name: Determine next phase
         id: determine_next_phase
@@ -232,16 +220,13 @@ jobs:
           name: current-battlefield-state
           path: ./${{ needs.setup-battle.outputs.battlefield_dir }}
 
-      - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.5'
 
       - name: Run Morale Phase
-        run: ruby phases/morale_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
+        run: ruby phases/morale_phase.rb ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state
 
       - name: Determine next phase
         id: determine_next_phase
@@ -270,9 +255,6 @@ jobs:
           name: current-battlefield-state
           path: ./${{ needs.setup-battle.outputs.battlefield_dir }}
 
-      - name: Move downloaded battlefield file to its original path
-        run: mv ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.battlefield_file }}
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -282,7 +264,7 @@ jobs:
         run: gem install Psych
 
       - name: Update turn data and save battlefield
-        run: ruby main.rb ${{ needs.setup-battle.outputs.battlefield_file }} ${{ needs.setup-battle.outputs.rules_file }}
+        run: ruby main.rb ./${{ needs.setup-battle.outputs.battlefield_dir }}/current-battlefield-state ${{ needs.setup-battle.outputs.rules_file }}
 
       - name: Commit changes to battlefield file
         run: |
