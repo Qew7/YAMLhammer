@@ -23,7 +23,9 @@ runs:
     - id: calculate
       run: |
         ALL_PHASES_JSON='${{ inputs.all-phases-json }}'
+        echo "ALL_PHASES_JSON: $ALL_PHASES_JSON"
         CURRENT_PHASE='${{ inputs.current-phase }}'
+        echo "CURRENT_PHASE: $CURRENT_PHASE"
 
         ruby -rjson -e "
           puts \"DEBUG: ALL_PHASES_JSON: #{ENV['ALL_PHASES_JSON']}\"
