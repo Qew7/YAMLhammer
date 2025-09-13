@@ -4,8 +4,8 @@ require_relative 'phase_manager'
 class CombatPhase
   include PhaseManager
 
-  def initialize(battlefield_file_path, artifact_name = nil)
-    initialize_phase_data(battlefield_file_path, artifact_name)
+  def initialize(battlefield_file_path)
+    initialize_phase_data(battlefield_file_path)
   end
 
   def execute
@@ -18,10 +18,10 @@ class CombatPhase
   end
 end
 
-if ARGV.length < 1 || ARGV.length > 2
-  puts "Usage: ruby phases/combat_phase.rb <battlefield_file_path> [artifact_name]"
+if ARGV.length != 1
+  puts "Usage: ruby phases/combat_phase.rb <battlefield_file_path>"
   exit 1
 end
 
-combat_phase = CombatPhase.new(ARGV[0], ARGV[1])
+combat_phase = CombatPhase.new(ARGV[0])
 combat_phase.execute

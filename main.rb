@@ -5,10 +5,9 @@ class Game
 
   include PhaseManager # Include PhaseManager for common methods
 
-  def initialize(battlefield_file_path, rules_file_path, artifact_name = nil)
+  def initialize(battlefield_file_path, rules_file_path)
     @original_battlefield_file_path = battlefield_file_path
     @rules_file = rules_file_path
-    @artifact_name = artifact_name
     @battlefield_file = find_battlefield_file # Use find_battlefield_file from PhaseManager
     @battlefield = YAML.load_file(@battlefield_file)
     @rules = YAML.load_file(@rules_file)
@@ -55,16 +54,15 @@ class Game
   # Removed save_battlefield as it's now in PhaseManager
 end
 
-if ARGV.length < 2 || ARGV.length > 3
-  puts "Usage: ruby main.rb <battlefield_file_path> <rules_file_path> [artifact_name]"
+if ARGV.length != 2
+  puts "Usage: ruby main.rb <battlefield_file_path> <rules_file_path>"
   exit 1
 end
 
 battlefield_file = ARGV[0]
 rules_file = ARGV[1]
-artifact_name = ARGV[2]
 
-game = Game.new(battlefield_file, rules_file, artifact_name)
+game = Game.new(battlefield_file, rules_file)
 game.update_turn_data
 game.check_win_conditions
 game.save_battlefield

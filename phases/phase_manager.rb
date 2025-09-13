@@ -3,23 +3,14 @@ require 'yaml'
 module PhaseManager
   attr_reader :battlefield, :battlefield_file
 
-  def initialize_phase_data(battlefield_file_path, artifact_name = nil)
+  def initialize_phase_data(battlefield_file_path)
     @original_battlefield_file_path = battlefield_file_path
-    @artifact_name = artifact_name
-    @battlefield_file = find_battlefield_file
+    @battlefield_file = @original_battlefield_file_path # File should now be in its original relative path
     @battlefield = YAML.load_file(@battlefield_file)
   end
 
-  def find_battlefield_file
-    if File.exist?(@original_battlefield_file_path)
-      return @original_battlefield_file_path
-    elsif @artifact_name
-      artifact_path = File.join(@artifact_name, @original_battlefield_file_path)
-      if File.exist?(artifact_path)
-        return artifact_path
-      end
-    end
-    raise "Battlefield file not found at #@original_battlefield_file_path or #@artifact_name/#@original_battlefield_file_path"
+  def find_battlefield_file # This method can be simplified further as it's now a direct assignment
+    @original_battlefield_file_path
   end
 
   def save_battlefield
