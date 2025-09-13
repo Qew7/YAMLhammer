@@ -82,6 +82,12 @@ jobs:
           name: ${{ needs.setup-battle.outputs.initial_battlefield_artifact_name }}
           path: .
 
+      - name: Debug - List files after download
+        run: |
+          echo "Current working directory: $(pwd)"
+          echo "Files after artifact download:"
+          ls -R
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
