@@ -31,8 +31,6 @@ runs:
 
           current_phase_index = all_phases.find_index(current_phase)
 
-          puts \"DEBUG: current_phase: #{current_phase}\"
-
           if current_phase_index == 0
             download_artifact_name = 'battlefield-initial'
           elsif !current_phase_index.nil?
@@ -43,7 +41,6 @@ runs:
           end
 
           upload_artifact_name = \"battlefield-after-#{(current_phase || '').downcase.gsub(' ', '-')}\"
-          puts \"DEBUG: upload_artifact_name computed: #{upload_artifact_name}\"
 
           puts \"download_artifact_name=#{download_artifact_name}\"
           puts \"upload_artifact_name=#{upload_artifact_name}\"
