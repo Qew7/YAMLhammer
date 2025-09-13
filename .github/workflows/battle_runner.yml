@@ -69,7 +69,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
           path: ./
 
       - name: Set up Ruby
@@ -81,12 +81,12 @@ jobs:
         run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
       - name: Debug upload_artifact_name
-        run: echo "${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}"
+        run: echo "${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}"
 
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   magic-phase:
@@ -107,7 +107,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
           path: ./
 
       - name: Set up Ruby
@@ -121,7 +121,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   shooting-phase:
@@ -142,7 +142,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
           path: ./
 
       - name: Set up Ruby
@@ -156,7 +156,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   combat-phase:
@@ -177,7 +177,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
           path: ./
 
       - name: Set up Ruby
@@ -191,7 +191,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   morale-phase:
@@ -212,7 +212,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
           path: ./
 
       - name: Set up Ruby
@@ -226,7 +226,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.upload-artifact-name }}
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   end-turn:
@@ -247,7 +247,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
+          name: ${{ steps.calculate_artifact_names.outputs.download-artifact-name }}
           path: ./
 
       - name: Set up Ruby
