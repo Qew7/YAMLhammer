@@ -88,13 +88,23 @@ jobs:
           ruby-version: '3.4.5'
 
       - name: Run Movement Phase
-        run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }}
+        run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }} ${{ needs.setup-battle.outputs.initial_battlefield_artifact_name }}
 
       - name: Determine next phase
         id: determine_next_phase
         run: |
           BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          ARTIFACT_NAME="${{ needs.setup-battle.outputs.initial_battlefield_artifact_name }}"
+          # Dynamically determine the correct path to the battlefield file
+          if [ -f "$BATTLEFIELD_FILE" ]; then
+            ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE"
+          elif [ -f "$ARTIFACT_NAME/$BATTLEFIELD_FILE" ]; then
+            ACTUAL_BATTLEFIELD_FILE="$ARTIFACT_NAME/$BATTLEFIELD_FILE"
+          else
+            echo "Error: Battlefield file not found."
+            exit 1
+          fi
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
           echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
 
       - name: Upload battlefield artifact
@@ -126,13 +136,23 @@ jobs:
           ruby-version: '3.4.5'
 
       - name: Run Magic Phase
-        run: ruby phases/magic_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }}
+        run: ruby phases/magic_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }} ${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}
 
       - name: Determine next phase
         id: determine_next_phase
         run: |
           BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          ARTIFACT_NAME="${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}"
+          # Dynamically determine the correct path to the battlefield file
+          if [ -f "$BATTLEFIELD_FILE" ]; then
+            ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE"
+          elif [ -f "$ARTIFACT_NAME/$BATTLEFIELD_FILE" ]; then
+            ACTUAL_BATTLEFIELD_FILE="$ARTIFACT_NAME/$BATTLEFIELD_FILE"
+          else
+            echo "Error: Battlefield file not found."
+            exit 1
+          fi
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
           echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
 
       - name: Upload battlefield artifact
@@ -164,13 +184,23 @@ jobs:
           ruby-version: '3.4.5'
 
       - name: Run Shooting Phase
-        run: ruby phases/shooting_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }}
+        run: ruby phases/shooting_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }} ${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}
 
       - name: Determine next phase
         id: determine_next_phase
         run: |
           BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          ARTIFACT_NAME="${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}"
+          # Dynamically determine the correct path to the battlefield file
+          if [ -f "$BATTLEFIELD_FILE" ]; then
+            ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE"
+          elif [ -f "$ARTIFACT_NAME/$BATTLEFIELD_FILE" ]; then
+            ACTUAL_BATTLEFIELD_FILE="$ARTIFACT_NAME/$BATTLEFIELD_FILE"
+          else
+            echo "Error: Battlefield file not found."
+            exit 1
+          fi
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
           echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
 
       - name: Upload battlefield artifact
@@ -202,13 +232,23 @@ jobs:
           ruby-version: '3.4.5'
 
       - name: Run Combat Phase
-        run: ruby phases/combat_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }}
+        run: ruby phases/combat_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }} ${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}
 
       - name: Determine next phase
         id: determine_next_phase
         run: |
           BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          ARTIFACT_NAME="${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}"
+          # Dynamically determine the correct path to the battlefield file
+          if [ -f "$BATTLEFIELD_FILE" ]; then
+            ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE"
+          elif [ -f "$ARTIFACT_NAME/$BATTLEFIELD_FILE" ]; then
+            ACTUAL_BATTLEFIELD_FILE="$ARTIFACT_NAME/$BATTLEFIELD_FILE"
+          else
+            echo "Error: Battlefield file not found."
+            exit 1
+          fi
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
           echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
 
       - name: Upload battlefield artifact
@@ -240,13 +280,23 @@ jobs:
           ruby-version: '3.4.5'
 
       - name: Run Morale Phase
-        run: ruby phases/morale_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }}
+        run: ruby phases/morale_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }} ${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}
 
       - name: Determine next phase
         id: determine_next_phase
         run: |
           BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['phase']")
+          ARTIFACT_NAME="${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}"
+          # Dynamically determine the correct path to the battlefield file
+          if [ -f "$BATTLEFIELD_FILE" ]; then
+            ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE"
+          elif [ -f "$ARTIFACT_NAME/$BATTLEFIELD_FILE" ]; then
+            ACTUAL_BATTLEFIELD_FILE="$ARTIFACT_NAME/$BATTLEFIELD_FILE"
+          else
+            echo "Error: Battlefield file not found."
+            exit 1
+          fi
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
           echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
 
       - name: Upload battlefield artifact
@@ -283,7 +333,7 @@ jobs:
         run: gem install Psych
 
       - name: Update turn data and save battlefield
-        run: ruby main.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }} ${{ needs.setup-battle.outputs.rules_file }}
+        run: ruby main.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }} ${{ needs.setup-battle.outputs.rules_file }} ${{ needs.morale-phase.outputs.next_battlefield_artifact_name }}
 
       - name: Commit changes to battlefield file
         run: |
@@ -291,7 +341,17 @@ jobs:
           git config user.email "actions@github.com"
           BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.battlefield_file }}"
           TEMP_BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          cp "$TEMP_BATTLEFIELD_FILE" "$BATTLEFIELD_FILE" # Copy temp back to original
+          ARTIFACT_NAME="${{ needs.morale-phase.outputs.next_battlefield_artifact_name }}"
+          # Dynamically determine the correct path to the battlefield file
+          if [ -f "$TEMP_BATTLEFIELD_FILE" ]; then
+            ACTUAL_TEMP_BATTLEFIELD_FILE="$TEMP_BATTLEFIELD_FILE"
+          elif [ -f "$ARTIFACT_NAME/$TEMP_BATTLEFIELD_FILE" ]; then
+            ACTUAL_TEMP_BATTLEFIELD_FILE="$ARTIFACT_NAME/$TEMP_BATTLEFIELD_FILE"
+          else
+            echo "Error: Temporary battlefield file not found."
+            exit 1
+          fi
+          cp "$ACTUAL_TEMP_BATTLEFIELD_FILE" "$BATTLEFIELD_FILE" # Copy temp back to original
           CURRENT_PLAYER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['player']")
           TURN_NUMBER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['turn_number']")
           git add ${{ needs.setup-battle.outputs.battlefield_file }}

@@ -4,33 +4,24 @@ require_relative 'phase_manager'
 class MovementPhase
   include PhaseManager
 
-  def initialize(battlefield_file)
-    @battlefield_file = battlefield_file
-    @battlefield = YAML.load_file(battlefield_file)
+  def initialize(battlefield_file_path, artifact_name = nil)
+    initialize_phase_data(battlefield_file_path, artifact_name)
   end
 
   def execute
     puts "  Executing Movement Phase"
-    @battlefield['armies'].each do |army_name, units|
-      units.each do |unit|
-        puts "      #{unit['name']} in #{army_name} moves."
-      end
-    end
+    puts "      Units are moved."
 
     set_next_phase # Call the new method from PhaseManager
 
     save_battlefield
   end
-
-  def save_battlefield
-    File.open(@battlefield_file, 'w') { |file| file.write(@battlefield.to_yaml) }
-  end
 end
 
-if ARGV.length != 1
-  puts "Usage: ruby phases/movement_phase.rb <battlefield_file>"
+if ARGV.length < 1 || ARGV.length > 2
+  puts "Usage: ruby phases/movement_phase.rb <battlefield_file_path> [artifact_name]"
   exit 1
 end
 
-movement_phase = MovementPhase.new(ARGV[0])
+movement_phase = MovementPhase.new(ARGV[0], ARGV[1])
 movement_phase.execute

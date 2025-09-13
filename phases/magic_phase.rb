@@ -4,9 +4,8 @@ require_relative 'phase_manager'
 class MagicPhase
   include PhaseManager
 
-  def initialize(battlefield_file)
-    @battlefield_file = battlefield_file
-    @battlefield = YAML.load_file(battlefield_file)
+  def initialize(battlefield_file_path, artifact_name = nil)
+    initialize_phase_data(battlefield_file_path, artifact_name)
   end
 
   def execute
@@ -17,16 +16,12 @@ class MagicPhase
 
     save_battlefield
   end
-
-  def save_battlefield
-    File.open(@battlefield_file, 'w') { |file| file.write(@battlefield.to_yaml) }
-  end
 end
 
-if ARGV.length != 1
-  puts "Usage: ruby phases/magic_phase.rb <battlefield_file>"
+if ARGV.length < 1 || ARGV.length > 2
+  puts "Usage: ruby phases/magic_phase.rb <battlefield_file_path> [artifact_name]"
   exit 1
 end
 
-magic_phase = MagicPhase.new(ARGV[0])
+magic_phase = MagicPhase.new(ARGV[0], ARGV[1])
 magic_phase.execute

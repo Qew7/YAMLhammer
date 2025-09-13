@@ -3,11 +3,18 @@ require 'yaml'
 class Game
   attr_accessor :battlefield, :rules
 
-  def initialize(battlefield_file, rules_file)
-    @battlefield = YAML.load_file(battlefield_file)
-    @rules = YAML.load_file(rules_file)
-    @battlefield_file = battlefield_file
+  include PhaseManager # Include PhaseManager for common methods
+
+  def initialize(battlefield_file_path, rules_file_path, artifact_name = nil)
+    @original_battlefield_file_path = battlefield_file_path
+    @rules_file = rules_file_path
+    @artifact_name = artifact_name
+    @battlefield_file = find_battlefield_file # Use find_battlefield_file from PhaseManager
+    @battlefield = YAML.load_file(@battlefield_file)
+    @rules = YAML.load_file(@rules_file)
   end
+
+  # Removed find_battlefield_file as it's now in PhaseManager
 
   def update_turn_data
     current_player_name = @battlefield['current_turn']['player']
@@ -45,20 +52,19 @@ class Game
     end
   end
 
-  def save_battlefield
-    File.open(@battlefield_file, 'w') { |file| file.write(@battlefield.to_yaml) }
-  end
+  # Removed save_battlefield as it's now in PhaseManager
 end
 
-if ARGV.length != 2
-  puts "Usage: ruby main.rb <battlefield_file> <rules_file>"
+if ARGV.length < 2 || ARGV.length > 3
+  puts "Usage: ruby main.rb <battlefield_file_path> <rules_file_path> [artifact_name]"
   exit 1
 end
 
 battlefield_file = ARGV[0]
 rules_file = ARGV[1]
+artifact_name = ARGV[2]
 
-game = Game.new(battlefield_file, rules_file)
+game = Game.new(battlefield_file, rules_file, artifact_name)
 game.update_turn_data
 game.check_win_conditions
 game.save_battlefield
