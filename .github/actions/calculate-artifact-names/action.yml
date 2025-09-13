@@ -23,20 +23,13 @@ runs:
     - id: calculate
       run: |
         export ALL_PHASES_JSON='${{ inputs.all-phases-json }}'
-        echo "ALL_PHASES_JSON: $ALL_PHASES_JSON"
         export CURRENT_PHASE='${{ inputs.current-phase }}'
-        echo "CURRENT_PHASE: $CURRENT_PHASE"
 
         ruby -rjson -e "
-          puts \"DEBUG: ALL_PHASES_JSON: #{ENV['ALL_PHASES_JSON']}\"
-          puts \"DEBUG: CURRENT_PHASE: #{ENV['CURRENT_PHASE']}\"
-
           all_phases = JSON.parse(ENV['ALL_PHASES_JSON'])
           current_phase = ENV['CURRENT_PHASE'] ? ENV['CURRENT_PHASE'].strip : ''
 
           current_phase_index = all_phases.find_index(current_phase)
-
-          puts \"DEBUG: current_phase_index: #{current_phase_index}\"
 
           if current_phase_index == 0
             download_artifact_name = 'battlefield-initial'
@@ -44,7 +37,6 @@ runs:
             previous_phase_name = all_phases[current_phase_index - 1]
             download_artifact_name = \"battlefield-after-#{(previous_phase_name || '').downcase.gsub(' ', '-')}\"
           else
-            # Fallback if current_phase not found, though workflow if condition should prevent this
             download_artifact_name = 'battlefield-unknown'
           end
 
