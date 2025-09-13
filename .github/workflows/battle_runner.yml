@@ -44,7 +44,6 @@ jobs:
           path: ${{ steps.set_vars.outputs.battlefield_file }}
 
   movement-phase:
-    if: github.ref_name != 'master'
     runs-on: ubuntu-latest
     needs: setup-battle
     if: needs.setup-battle.outputs.current_phase == 'Movement Phase'
@@ -73,7 +72,6 @@ jobs:
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   magic-phase:
-    if: github.ref_name != 'master'
     runs-on: ubuntu-latest
     needs: movement-phase
     if: needs.setup-battle.outputs.current_phase == 'Magic Phase'
@@ -102,7 +100,6 @@ jobs:
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   shooting-phase:
-    if: github.ref_name != 'master'
     runs-on: ubuntu-latest
     needs: magic-phase
     if: needs.setup-battle.outputs.current_phase == 'Shooting Phase'
@@ -131,7 +128,6 @@ jobs:
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   combat-phase:
-    if: github.ref_name != 'master'
     runs-on: ubuntu-latest
     needs: shooting-phase
     if: needs.setup-battle.outputs.current_phase == 'Combat Phase'
@@ -160,7 +156,6 @@ jobs:
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   morale-phase:
-    if: github.ref_name != 'master'
     runs-on: ubuntu-latest
     needs: combat-phase
     if: needs.setup-battle.outputs.current_phase == 'Morale Phase'
@@ -189,7 +184,6 @@ jobs:
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   end-turn:
-    if: github.ref_name != 'master'
     runs-on: ubuntu-latest
     needs: morale-phase
     if: needs.setup-battle.outputs.current_phase == 'Morale Phase'
