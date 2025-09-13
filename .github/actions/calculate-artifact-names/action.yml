@@ -24,7 +24,8 @@ runs:
       run: |
         export ALL_PHASES_JSON='${{ inputs.all-phases-json }}'
         export CURRENT_PHASE='${{ inputs.current-phase }}'
-
+        echo "DEBUG: ENV ALL_PHASES_JSON: $ALL_PHASES_JSON"
+        echo "DEBUG: ENV CURRENT_PHASE: $CURRENT_PHASE"
         ruby -rjson -e "
           all_phases = JSON.parse(ENV['ALL_PHASES_JSON'])
           current_phase = ENV['CURRENT_PHASE'] ? ENV['CURRENT_PHASE'].strip : ''
