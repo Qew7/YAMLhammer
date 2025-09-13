@@ -37,7 +37,7 @@ runs:
           STDERR.puts \"DEBUG: Ruby current_phase: #{current_phase.inspect}\"
 
           STDERR.puts \"DEBUG: Ruby all_phases: #{all_phases.inspect}\"
-
+  
           current_phase_index = all_phases.find_index(current_phase)
 
           if current_phase_index == 0
@@ -51,7 +51,17 @@ runs:
 
           upload_artifact_name = \"battlefield-after-#{(current_phase || '').downcase.gsub(' ', '-')}\"
 
+          STDERR.puts \"DEBUG: Ruby final download_artifact_name: #{download_artifact_name.inspect}\"
+          STDERR.puts \"DEBUG: Ruby final upload_artifact_name: #{upload_artifact_name.inspect}\"
+
           puts \"download_artifact_name=#{download_artifact_name}\"
           puts \"upload_artifact_name=#{upload_artifact_name}\"
         " >> $GITHUB_OUTPUT
+      shell: bash
+
+    - name: Debug GITHUB_OUTPUT content
+      run: |
+        echo "--- GITHUB_OUTPUT content ---"
+        cat $GITHUB_OUTPUT || true
+        echo "---------------------------"
       shell: bash

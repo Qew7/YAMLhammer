@@ -80,6 +80,10 @@ jobs:
       - name: Run Movement Phase
         run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
 
+      - name: Debug Upload Artifact Name
+        run: echo "Upload Artifact Name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}"
+        shell: bash
+
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
