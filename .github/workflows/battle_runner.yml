@@ -60,7 +60,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.x'
+          ruby-version: '3.3'
 
       - name: Run Movement Phase
         run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -88,7 +88,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.x'
+          ruby-version: '3.3'
 
       - name: Run Magic Phase
         run: ruby phases/magic_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -116,7 +116,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.x'
+          ruby-version: '3.3'
 
       - name: Run Shooting Phase
         run: ruby phases/shooting_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -144,7 +144,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.x'
+          ruby-version: '3.3'
 
       - name: Run Combat Phase
         run: ruby phases/combat_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -172,7 +172,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.x'
+          ruby-version: '3.3'
 
       - name: Run Morale Phase
         run: ruby phases/morale_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -200,7 +200,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.x'
+          ruby-version: '3.4.5'
 
       - name: Install dependencies (Psych)
         run: gem install Psych
