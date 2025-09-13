@@ -19,6 +19,7 @@ jobs:
       all_phases: ${{ steps.get_phases.outputs.all_phases }}
       initial_phase_name: ${{ steps.set_vars.outputs.current_phase }} # Output the initial phase from battlefield.yml
       battlefield_dir: ${{ steps.set_vars.outputs.battlefield_dir }}
+      initial_battlefield_artifact_name: initial-battlefield-state
 
     steps:
       - name: Checkout repository
@@ -53,7 +54,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: current-battlefield-state # Use a consistent name for the artifact
+          name: initial-battlefield-state # Use a consistent name for the artifact
           path: ${{ steps.set_vars.outputs.battlefield_file }}
 
   movement-phase:
@@ -62,6 +63,7 @@ jobs:
     if: needs.setup-battle.outputs.initial_phase_name == 'Movement Phase'
     outputs:
       next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: movement-phase-battlefield-state
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -69,7 +71,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: current-battlefield-state
+          name: ${{ needs.setup-battle.outputs.initial_battlefield_artifact_name }}
           path: .
 
       - name: Set up Ruby
@@ -90,7 +92,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: current-battlefield-state
+          name: movement-phase-battlefield-state
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   magic-phase:
@@ -99,6 +101,7 @@ jobs:
     if: needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
     outputs:
       next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: magic-phase-battlefield-state
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -106,7 +109,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: current-battlefield-state
+          name: ${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}
           path: .
 
       - name: Set up Ruby
@@ -127,7 +130,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: current-battlefield-state
+          name: magic-phase-battlefield-state
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   shooting-phase:
@@ -136,6 +139,7 @@ jobs:
     if: needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
     outputs:
       next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: shooting-phase-battlefield-state
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -143,7 +147,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: current-battlefield-state
+          name: ${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}
           path: .
 
       - name: Set up Ruby
@@ -164,7 +168,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: current-battlefield-state
+          name: shooting-phase-battlefield-state
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   combat-phase:
@@ -173,6 +177,7 @@ jobs:
     if: needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
     outputs:
       next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: combat-phase-battlefield-state
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -180,7 +185,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: current-battlefield-state
+          name: ${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}
           path: .
 
       - name: Set up Ruby
@@ -201,7 +206,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: current-battlefield-state
+          name: combat-phase-battlefield-state
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   morale-phase:
@@ -210,6 +215,7 @@ jobs:
     if: needs.combat-phase.outputs.next_phase_output == 'Morale Phase'
     outputs:
       next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: morale-phase-battlefield-state
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -217,7 +223,7 @@ jobs:
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: current-battlefield-state
+          name: ${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}
           path: .
 
       - name: Set up Ruby
@@ -238,7 +244,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: current-battlefield-state
+          name: morale-phase-battlefield-state
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   finish-turn-and-commit:
@@ -252,7 +258,7 @@ jobs:
       - name: Download final battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: current-battlefield-state
+          name: ${{ needs.morale-phase.outputs.next_battlefield_artifact_name }}
           path: .
 
       - name: Set up Ruby
