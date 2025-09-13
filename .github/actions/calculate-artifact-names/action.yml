@@ -1,0 +1,44 @@
+name: Calculate Artifact Names
+description: 'Calculates download and upload artifact names based on current phase and all available phases.'
+
+inputs:
+  all-phases-json:
+    description: 'JSON string of all phases in order.'
+    required: true
+  current-phase:
+    description: 'The name of the current phase.'
+    required: true
+
+outputs:
+  download-artifact-name:
+    description: 'The name of the artifact to download.'
+    value: ${{ steps.calculate.outputs.download_artifact_name }}
+  upload-artifact-name:
+    description: 'The name of the artifact to upload.'
+    value: ${{ steps.calculate.outputs.upload_artifact_name }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: calculate
+      run: |
+        ALL_PHASES_JSON='${{ inputs.all-phases-json }}'
+        CURRENT_PHASE='${{ inputs.current-phase }}'
+
+        ruby -rjson -e "
+          all_phases = JSON.parse(ENV['ALL_PHASES_JSON'])
+          current_phase_index = all_phases.find_index(ENV['CURRENT_PHASE'])
+
+          if current_phase_index == 0
+            download_artifact_name = 'battlefield-initial'
+          else
+            previous_phase_name = all_phases[current_phase_index - 1]
+            download_artifact_name = \"battlefield-after-#{(previous_phase_name || '').downcase.gsub(' ', '-')}\"
+          end
+
+          upload_artifact_name = \"battlefield-after-#{(ENV['CURRENT_PHASE'] || '').downcase.gsub(' ', '-')}\"
+
+          puts \"download_artifact_name=#{download_artifact_name}\"
+          puts \"upload_artifact_name=#{upload_artifact_name}\"
+        " >> $GITHUB_OUTPUT
+      shell: bash

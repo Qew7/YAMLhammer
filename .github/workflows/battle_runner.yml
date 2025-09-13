@@ -16,6 +16,7 @@ jobs:
       current_player: ${{ steps.set_vars.outputs.current_player }}
       current_phase: ${{ steps.set_vars.outputs.current_phase }}
       turn_number: ${{ steps.set_vars.outputs.turn_number }}
+      all_phases: ${{ steps.get_phases.outputs.all_phases }}
 
     steps:
       - name: Checkout repository
@@ -37,10 +38,16 @@ jobs:
           TURN_NUMBER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['turn_number']")
           echo "turn_number=$TURN_NUMBER" >> $GITHUB_OUTPUT
 
+      - name: Get all phases from rules file
+        id: get_phases
+        run: |
+          ALL_PHASES=$(ruby -ryaml -rjson -e "puts YAML.load_file('${{ steps.set_vars.outputs.rules_file }}')['phases'].map { |phase| phase['name'] }.to_json")
+          echo "all_phases=$ALL_PHASES" >> $GITHUB_OUTPUT
+
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: battlefield
+          name: battlefield-initial
           path: ${{ steps.set_vars.outputs.battlefield_file }}
 
   movement-phase:
@@ -51,16 +58,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Calculate artifact names
+        id: calculate_artifact_names
+        uses: ./.github/actions/calculate-artifact-names
+        with:
+          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
+          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
+
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
           path: ./
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '3.4.5'
 
       - name: Run Movement Phase
         run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -68,7 +82,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   magic-phase:
@@ -79,16 +93,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Calculate artifact names
+        id: calculate_artifact_names
+        uses: ./.github/actions/calculate-artifact-names
+        with:
+          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
+          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
+
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
           path: ./
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '3.4.5'
 
       - name: Run Magic Phase
         run: ruby phases/magic_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -96,7 +117,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   shooting-phase:
@@ -107,16 +128,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Calculate artifact names
+        id: calculate_artifact_names
+        uses: ./.github/actions/calculate-artifact-names
+        with:
+          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
+          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
+
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
           path: ./
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '3.4.5'
 
       - name: Run Shooting Phase
         run: ruby phases/shooting_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -124,7 +152,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   combat-phase:
@@ -135,16 +163,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Calculate artifact names
+        id: calculate_artifact_names
+        uses: ./.github/actions/calculate-artifact-names
+        with:
+          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
+          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
+
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
           path: ./
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '3.4.5'
 
       - name: Run Combat Phase
         run: ruby phases/combat_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -152,7 +187,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   morale-phase:
@@ -163,16 +198,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Calculate artifact names
+        id: calculate_artifact_names
+        uses: ./.github/actions/calculate-artifact-names
+        with:
+          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
+          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
+
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
           path: ./
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '3.4.5'
 
       - name: Run Morale Phase
         run: ruby phases/morale_phase.rb ${{ needs.setup-battle.outputs.battlefield_file }}
@@ -180,7 +222,7 @@ jobs:
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.upload_artifact_name }}
           path: ${{ needs.setup-battle.outputs.battlefield_file }}
 
   end-turn:
@@ -191,10 +233,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Calculate artifact names
+        id: calculate_artifact_names
+        uses: ./.github/actions/calculate-artifact-names
+        with:
+          all-phases-json: ${{ needs.setup-battle.outputs.all_phases }}
+          current-phase: ${{ needs.setup-battle.outputs.current_phase }}
+
       - name: Download battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: battlefield
+          name: ${{ steps.calculate_artifact_names.outputs.download_artifact_name }}
           path: ./
 
       - name: Set up Ruby
