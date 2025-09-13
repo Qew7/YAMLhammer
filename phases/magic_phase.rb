@@ -1,6 +1,9 @@
 require 'yaml'
+require_relative 'phase_manager'
 
 class MagicPhase
+  include PhaseManager
+
   def initialize(battlefield_file)
     @battlefield_file = battlefield_file
     @battlefield = YAML.load_file(battlefield_file)
@@ -9,6 +12,9 @@ class MagicPhase
   def execute
     puts "  Executing Magic Phase"
     puts "      Magic is cast and dispelled."
+
+    set_next_phase # Call the new method from PhaseManager
+
     save_battlefield
   end
 

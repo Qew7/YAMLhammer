@@ -1,6 +1,9 @@
 require 'yaml'
+require_relative 'phase_manager'
 
 class MovementPhase
+  include PhaseManager
+
   def initialize(battlefield_file)
     @battlefield_file = battlefield_file
     @battlefield = YAML.load_file(battlefield_file)
@@ -13,6 +16,9 @@ class MovementPhase
         puts "      #{unit['name']} in #{army_name} moves."
       end
     end
+
+    set_next_phase # Call the new method from PhaseManager
+
     save_battlefield
   end
 

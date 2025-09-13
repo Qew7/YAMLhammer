@@ -1,6 +1,9 @@
 require 'yaml'
+require_relative 'phase_manager'
 
 class MoralePhase
+  include PhaseManager
+
   def initialize(battlefield_file)
     @battlefield_file = battlefield_file
     @battlefield = YAML.load_file(battlefield_file)
@@ -9,6 +12,9 @@ class MoralePhase
   def execute
     puts "  Executing Morale Phase"
     puts "      Leadership tests are taken."
+
+    set_next_phase # Call the new method from PhaseManager
+
     save_battlefield
   end
 

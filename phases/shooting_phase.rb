@@ -1,6 +1,9 @@
 require 'yaml'
+require_relative 'phase_manager'
 
 class ShootingPhase
+  include PhaseManager
+
   def initialize(battlefield_file)
     @battlefield_file = battlefield_file
     @battlefield = YAML.load_file(battlefield_file)
@@ -61,6 +64,9 @@ class ShootingPhase
         end
       end
     end
+
+    set_next_phase # Call the new method from PhaseManager
+
     save_battlefield
   end
 
