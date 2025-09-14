@@ -10,7 +10,7 @@ players:
 current_turn:
   player: Grimgor Ironhide
   phase: Movement Phase
-  turn_number: 1
+  round_number: 1
 terrain:
 - name: Forest of Gloom
   type: forest

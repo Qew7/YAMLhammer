@@ -15,7 +15,7 @@ jobs:
       rules_file: ${{ steps.set_vars.outputs.rules_file }}
       current_player: ${{ steps.set_vars.outputs.current_player }}
       current_phase: ${{ steps.set_vars.outputs.current_phase }}
-      turn_number: ${{ steps.set_vars.outputs.turn_number }}
+      round_number: ${{ steps.set_vars.outputs.round_number }}
       all_phases: ${{ steps.get_phases.outputs.all_phases }}
       initial_phase_name: ${{ steps.set_vars.outputs.current_phase }} # Output the initial phase from battlefield.yml
       battlefield_dir: ${{ steps.set_vars.outputs.battlefield_dir }}
@@ -50,8 +50,8 @@ jobs:
           CURRENT_PHASE=$(ruby -ryaml -e "data = YAML.load_file('$TEMP_BATTLEFIELD_FILE'); puts data['current_turn'] && data['current_turn']['phase'] ? data['current_turn']['phase'] : ''")
           echo "current_phase=$CURRENT_PHASE" >> $GITHUB_OUTPUT
 
-          TURN_NUMBER=$(ruby -ryaml -e "puts YAML.load_file('$TEMP_BATTLEFIELD_FILE')['current_turn']['turn_number']")
-          echo "turn_number=$TURN_NUMBER" >> $GITHUB_OUTPUT
+          ROUND_NUMBER=$(ruby -ryaml -e "puts YAML.load_file('$TEMP_BATTLEFIELD_FILE')['current_turn']['round_number']")
+          echo "round_number=$ROUND_NUMBER" >> $GITHUB_OUTPUT
 
       - name: Get all phases from rules file
         id: get_phases
@@ -191,7 +191,7 @@ jobs:
           ACTUAL_TEMP_BATTLEFIELD_FILE="$TEMP_BATTLEFIELD_FILE"
           cp "$ACTUAL_TEMP_BATTLEFIELD_FILE" "$BATTLEFIELD_FILE"
           CURRENT_PLAYER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['player']")
-          TURN_NUMBER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['turn_number']")
+          ROUND_NUMBER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['round_number']")
           git add ${{ needs.setup-battle.outputs.battlefield_file }}
-          git commit -m "Automated Battle Turn: Turn ${TURN_NUMBER} - ${CURRENT_PLAYER}" || echo "No changes to commit"
+          git commit -m "Automated Battle Turn: Round ${ROUND_NUMBER} - ${CURRENT_PLAYER}" || echo "No changes to commit"
           git push

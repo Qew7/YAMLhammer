@@ -23,14 +23,14 @@ class Game
 
     @battlefield['current_turn']['player'] = players[next_player_index]
     if next_player_index == 0 # If it's back to the first player, increment turn number
-      @battlefield['current_turn']['turn_number'] += 1
+      @battlefield['current_turn']['round_number'] += 1
     end
     @battlefield['current_turn']['phase'] = @rules['phases'].first['name'] # Reset phase to first phase
   end
 
   def check_win_conditions
     max_rounds = @rules['win_conditions']['max_rounds']
-    current_round = @battlefield['current_turn']['turn_number']
+    current_round = @battlefield['current_turn']['round_number']
 
     if current_round > max_rounds
       puts "Battle ended: Maximum rounds (#{max_rounds}) reached!"
