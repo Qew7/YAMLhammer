@@ -67,5 +67,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: battlefield-state
-          path: ${{ inputs.battlefield_dir }} # Upload the entire directory
+          path: ${{ inputs.temp_battlefield_file }} # Upload the entire directory
           retention-days: 1
