@@ -75,9 +75,6 @@ jobs:
       battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
     secrets: inherit
     if: needs.setup-battle.outputs.initial_phase_name == 'Movement Phase'
-    outputs:
-      next_phase_output: ${{ jobs.movement_phase_job.outputs.next_phase_output }}
-      next_battlefield_artifact_name: ${{ jobs.movement_phase_job.outputs.next_battlefield_artifact_name }}
 
   magic-phase:
     uses: ./.github/workflows/reusable_phases/magic_phase.yml
@@ -89,9 +86,6 @@ jobs:
       previous_phase_output_name: ${{ needs.movement-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
-    outputs:
-      next_phase_output: ${{ jobs.magic_phase_job.outputs.next_phase_output }}
-      next_battlefield_artifact_name: ${{ jobs.magic_phase_job.outputs.next_battlefield_artifact_name }}
 
   shooting-phase:
     uses: ./.github/workflows/reusable_phases/shooting_phase.yml
@@ -103,9 +97,6 @@ jobs:
       previous_phase_output_name: ${{ needs.magic-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
-    outputs:
-      next_phase_output: ${{ jobs.shooting_phase_job.outputs.next_phase_output }}
-      next_battlefield_artifact_name: ${{ jobs.shooting_phase_job.outputs.next_battlefield_artifact_name }}
 
   combat-phase:
     uses: ./.github/workflows/reusable_phases/combat_phase.yml
@@ -117,9 +108,6 @@ jobs:
       previous_phase_output_name: ${{ needs.shooting-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
-    outputs:
-      next_phase_output: ${{ jobs.combat_phase_job.outputs.next_phase_output }}
-      next_battlefield_artifact_name: ${{ jobs.combat_phase_job.outputs.next_battlefield_artifact_name }}
 
   morale-phase:
     uses: ./.github/workflows/reusable_phases/morale_phase.yml
@@ -131,9 +119,6 @@ jobs:
       previous_phase_output_name: ${{ needs.combat-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.combat-phase.outputs.next_phase_output == 'Morale Phase'
-    outputs:
-      next_phase_output: ${{ jobs.morale_phase_job.outputs.next_phase_output }}
-      next_battlefield_artifact_name: ${{ jobs.morale_phase_job.outputs.next_battlefield_artifact_name }}
 
   finish-turn-and-commit:
     runs-on: ubuntu-latest
