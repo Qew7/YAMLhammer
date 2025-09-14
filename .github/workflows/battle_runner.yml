@@ -67,7 +67,7 @@ jobs:
           retention-days: 1 # Keep artifacts for a short period
 
   movement-phase:
-    uses: ./.github/workflows/reusable_phases/movement_phase.yml
+    uses: ./reusable_phases/movement_phase.yml
     needs: setup-battle
     with:
       battlefield_artifact_name: ${{ needs.setup-battle.outputs.initial_battlefield_artifact_name }}
@@ -77,7 +77,7 @@ jobs:
     if: needs.setup-battle.outputs.initial_phase_name == 'Movement Phase'
 
   magic-phase:
-    uses: ./.github/workflows/reusable_phases/magic_phase.yml
+    uses: ./reusable_phases/magic_phase.yml
     needs: movement-phase
     with:
       battlefield_artifact_name: ${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}
@@ -88,7 +88,7 @@ jobs:
     if: needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
 
   shooting-phase:
-    uses: ./.github/workflows/reusable_phases/shooting_phase.yml
+    uses: ./reusable_phases/shooting_phase.yml
     needs: magic-phase
     with:
       battlefield_artifact_name: ${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}
@@ -99,7 +99,7 @@ jobs:
     if: needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
 
   combat-phase:
-    uses: ./.github/workflows/reusable_phases/combat_phase.yml
+    uses: ./reusable_phases/combat_phase.yml
     needs: shooting-phase
     with:
       battlefield_artifact_name: ${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}
@@ -110,7 +110,7 @@ jobs:
     if: needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
 
   morale-phase:
-    uses: ./.github/workflows/reusable_phases/morale_phase.yml
+    uses: ./reusable_phases/morale_phase.yml
     needs: combat-phase
     with:
       battlefield_artifact_name: ${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}
