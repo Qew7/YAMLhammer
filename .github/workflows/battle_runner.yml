@@ -145,7 +145,7 @@ jobs:
           ruby-version: '3.4.5'
 
       - name: Install dependencies (Psych)
-        run: gem install Psych
+        run: gem install psych
 
       - name: Update turn data and save battlefield
         run: ruby main.rb ${{ needs.morale-phase.outputs.temp_battlefield_file }} ${{ needs.setup-battle.outputs.rules_file }}
