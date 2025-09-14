@@ -1,5 +1,7 @@
 require 'yaml'
 
+require_relative 'phases/phase_manager'
+
 class Game
   attr_accessor :battlefield, :rules
 
