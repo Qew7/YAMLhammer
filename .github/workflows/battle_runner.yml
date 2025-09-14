@@ -97,7 +97,6 @@ jobs:
       battlefield_dir: ${{ needs.movement-phase.outputs.battlefield_dir }}
       current_phase_name: 'Magic Phase'
       all_phases_list: ${{ needs.movement-phase.outputs.all_phases_list }}
-      phases_to_skip: ${{ needs.setup-battle.outputs.phases_to_skip }}
       skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Magic Phase') }}
     secrets: inherit
     if: success() && needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
@@ -111,7 +110,6 @@ jobs:
       battlefield_dir: ${{ needs.magic-phase.outputs.battlefield_dir }}
       current_phase_name: 'Shooting Phase'
       all_phases_list: ${{ needs.magic-phase.outputs.all_phases_list }}
-      phases_to_skip: ${{ needs.setup-battle.outputs.phases_to_skip }}
       skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Shooting Phase') }}
     secrets: inherit
     if: success() && needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
@@ -125,7 +123,6 @@ jobs:
       battlefield_dir: ${{ needs.shooting-phase.outputs.battlefield_dir }}
       current_phase_name: 'Combat Phase'
       all_phases_list: ${{ needs.shooting-phase.outputs.all_phases_list }}
-      phases_to_skip: ${{ needs.setup-battle.outputs.phases_to_skip }}
       skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Combat Phase') }}
     secrets: inherit
     if: success() && needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
