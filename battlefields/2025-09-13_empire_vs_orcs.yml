@@ -76,7 +76,7 @@ armies:
       engaged_with:
   Orcs & Goblins:
   - name: Orc Boyz
-    models_count: 25
+    models_count: 29
     position:
     - 80
     - 80
