@@ -167,5 +167,3 @@ jobs:
           git add ${{ needs.setup-battle.outputs.battlefield_file }}
           git commit -m "Automated Battle Turn: Turn ${TURN_NUMBER} - ${CURRENT_PLAYER}" || echo "No changes to commit"
           git push
-        env:
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
