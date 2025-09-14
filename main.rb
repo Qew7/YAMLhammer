@@ -6,14 +6,12 @@ class Game
   include PhaseManager # Include PhaseManager for common methods
 
   def initialize(battlefield_file_path, rules_file_path)
-    @original_battlefield_file_path = battlefield_file_path
+    initialize_phase_data(battlefield_file_path) # Use initialize_phase_data from PhaseManager
     @rules_file = rules_file_path
-    @battlefield_file = find_battlefield_file # Use find_battlefield_file from PhaseManager
-    @battlefield = YAML.load_file(@battlefield_file)
     @rules = YAML.load_file(@rules_file)
   end
 
-  # Removed find_battlefield_file as it's now in PhaseManager
+  # The find_actual_battlefield_file and save_battlefield methods are now in PhaseManager
 
   def update_turn_data
     current_player_name = @battlefield['current_turn']['player']
@@ -50,8 +48,6 @@ class Game
       end
     end
   end
-
-  # Removed save_battlefield as it's now in PhaseManager
 end
 
 if ARGV.length != 2

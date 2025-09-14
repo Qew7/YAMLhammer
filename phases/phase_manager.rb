@@ -5,12 +5,21 @@ module PhaseManager
 
   def initialize_phase_data(battlefield_file_path)
     @original_battlefield_file_path = battlefield_file_path
-    @battlefield_file = @original_battlefield_file_path # File should now be in its original relative path
+    @battlefield_file = find_actual_battlefield_file(@original_battlefield_file_path)
     @battlefield = YAML.load_file(@battlefield_file)
   end
 
-  def find_battlefield_file # This method can be simplified further as it's now a direct assignment
-    @original_battlefield_file_path
+  def find_actual_battlefield_file(original_path)
+    if File.exist?(original_path)
+      return original_path
+    end
+
+    basename = File.basename(original_path)
+    if File.exist?(basename)
+      return basename
+    end
+
+    raise "Battlefield file not found at #@original_battlefield_file_path or #{basename}"
   end
 
   def save_battlefield
