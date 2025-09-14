@@ -8,9 +8,9 @@ players:
 - name: Grimgor Ironhide
   army: Orcs & Goblins
 current_turn:
-  player: Grimgor Ironhide
+  player: Karl Franz
   phase: Movement Phase
-  round_number: 4
+  round_number: 5
 terrain:
 - name: Forest of Gloom
   type: forest
