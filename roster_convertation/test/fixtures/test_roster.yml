@@ -1,0 +1,2458 @@
+---
+id: mfk5e1igymguzrbyh6r
+name: test
+battleScribeVersion: '2.03'
+generatedBy: https://newrecruit.eu
+gameSystemId: 6d8e-38d9-3c69-febf
+gameSystemName: Warhammer Fantasy Battle 6th edition
+gameSystemRevision: '9'
+xmlns: http://www.battlescribe.net/schema/rosterSchema
+costs:
+  cost:
+  - name: pts
+    typeId: ecfa-8486-4f6c-c249
+    value: '1999'
+  - name: Dispel Dice
+    typeId: 6001-b2bf-4529-c07d
+    value: '3'
+  - name: Casting Dice
+    typeId: fcec-2340-6368-a2ba
+    value: '3'
+costLimits:
+  costLimit:
+  - name: pts
+    typeId: ecfa-8486-4f6c-c249
+    value: '2000'
+  - name: Casting Dice
+    typeId: fcec-2340-6368-a2ba
+    value: '3'
+  - name: Dispel Dice
+    typeId: 6001-b2bf-4529-c07d
+    value: '3'
+forces:
+  force:
+    id: mfk5e1ih12oc1d2iizk
+    name: Standard
+    entryId: 7d9d-6c8d-4ea0-b7ad
+    catalogueId: c768-2f35-01cf-9ac8
+    catalogueRevision: '10'
+    catalogueName: Chaos
+    selections:
+      selection:
+      - id: mfk5ry5iru9oafu8b6b
+        name: Lord of Chaos
+        entryId: e48d-fa90-46c8-0189
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+            id: 337b-9f3a-7db4-6e41
+            name: Lord of Chaos
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '7'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '5'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '5'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '3'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '8'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '5'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '9'
+        selections:
+          selection:
+          - id: mfk5ry5t365kth11tjp
+            name: Chaos Armour*
+            entryId: b478-0a27-9d0e-d29f::9b37-1817-ce12-f693
+            number: '1'
+            type: upgrade
+            from: entry
+            rules:
+              rule:
+                id: 0a38-114c-5bc8-d1ea
+                name: Chaos Armour
+                hidden: 'false'
+                page: '24'
+                description:
+                  __content__: |-
+                    All-enclosing suits of Chaos armour are the living gifts of the Dark Gods upon their Champions. They become part of the wearer's body and can never be removed once put on.
+                    Chaos armour gives a 4+ armour save. It can be combined with other equipment as normal. Sorcerers can wear this armour and cast spells.
+          - id: mfk5ry5tka92m0n4xtc
+            name: General
+            entryId: 7716-94a1-8e83-50bf::1b7c-2c90-6d96-28c9
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+              - name: Casting Dice
+                typeId: fcec-2340-6368-a2ba
+                value: '2'
+              - name: Dispel Dice
+                typeId: 6001-b2bf-4529-c07d
+                value: '2'
+            categories:
+              category:
+              - id: a37e-7207-de6d-acb0
+                name: General
+                entryId: a37e-7207-de6d-acb0
+                primary: 'false'
+              - id: a878-7899-6700-e5fb
+                name: Mortal General
+                entryId: a878-7899-6700-e5fb
+                primary: 'false'
+          - id: mfk5ry5t23vvbqp23l4
+            name: Hand Weapon
+            entryId: c138-fbdb-4ca3-1c50::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk5ry5k00mbhvh3f2z7p
+            name: Halberds
+            entryId: b8d4-35ee-9146-fd77::b3f3-a133-2869-0be8
+            entryGroupId: e9a5-0cc7-3cd3-fcfa
+            number: '1'
+            type: upgrade
+            from: group
+            group: Additional Weapons
+            profiles:
+              profile:
+                id: 3596-7d17-9ca2-fb92
+                name: Halberd
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User +1
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: Requires 2 Hands
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '6'
+          - id: mfk5ry5s5h51ajstuhn
+            name: Mark of Chaos Undivided
+            entryId: c9db-2e15-e1d9-3d39::c7ff-31af-939e-0fbd
+            entryGroupId: 5ac6-e8e9-4ec9-14ba
+            number: '1'
+            type: upgrade
+            from: group
+            group: Lord Of Chaos Mark
+            rules:
+              rule:
+                id: 7ef7-2eee-3cab-4001
+                name: Mark of Chaos Undivided
+                hidden: 'false'
+                page: '60'
+                description:
+                  __content__: The character, unit or chariot may re-roll failed Psychology
+                    tests.
+            categories:
+              category:
+                id: 6fdb-6843-6499-2a04
+                name: Chaos Undivided
+                entryId: 6fdb-6843-6499-2a04
+                primary: 'false'
+        costs:
+          cost:
+            name: pts
+            typeId: ecfa-8486-4f6c-c249
+            value: '210'
+        categories:
+          category:
+          - id: d024-d25b-a9b4-73b6
+            entryId: d024-d25b-a9b4-73b6
+            name: Lord
+            primary: 'true'
+          - id: a878-7899-6700-e5fb
+            name: Mortal General
+            entryId: a878-7899-6700-e5fb
+            primary: 'false'
+          - id: 7a1c-d611-c2dc-def1
+            name: Characters
+            entryId: 7a1c-d611-c2dc-def1
+            primary: 'false'
+          - id: '086d-94c6-a2ad-a973'
+            name: Makemegeneral
+            entryId: '086d-94c6-a2ad-a973'
+            primary: 'false'
+          - id: 7250-12fd-d509-0dfb
+            name: Khorne General
+            entryId: 7250-12fd-d509-0dfb
+            primary: 'false'
+          - id: 4648-b919-37ed-cf92
+            name: Tzeentch General
+            entryId: 4648-b919-37ed-cf92
+            primary: 'false'
+      - id: mfk5va0wc96s1dri4h
+        name: Sorcerer of Chaos
+        entryId: e4fa-8cfb-828f-4013
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+            id: c035-4eec-56ad-366b
+            name: Sorcerer
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '5'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '4'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '4'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '2'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '5'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+          - id: mfk5va1hw9rb2plwz5
+            name: Chaos Armour*
+            entryId: 33b2-01c3-c387-7fd6::9b37-1817-ce12-f693
+            number: '1'
+            type: upgrade
+            from: entry
+            rules:
+              rule:
+                id: 0a38-114c-5bc8-d1ea
+                name: Chaos Armour
+                hidden: 'false'
+                page: '24'
+                description:
+                  __content__: |-
+                    All-enclosing suits of Chaos armour are the living gifts of the Dark Gods upon their Champions. They become part of the wearer's body and can never be removed once put on.
+                    Chaos armour gives a 4+ armour save. It can be combined with other equipment as normal. Sorcerers can wear this armour and cast spells.
+          - id: mfk5va1g21st1bb55dv
+            name: Hand Weapon
+            entryId: a8b0-f050-f496-6405::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk5va1ekkyzx1ltkz9
+            name: Mark of Chaos Undivided
+            entryId: 5ae5-6fb2-d042-a097::c7ff-31af-939e-0fbd
+            entryGroupId: bd48-fb44-2de9-5939
+            number: '1'
+            type: upgrade
+            from: group
+            group: Hero Of Chaos Mark
+            rules:
+              rule:
+                id: 7ef7-2eee-3cab-4001
+                name: Mark of Chaos Undivided
+                hidden: 'false'
+                page: '60'
+                description:
+                  __content__: The character, unit or chariot may re-roll failed Psychology
+                    tests.
+            categories:
+              category:
+                id: 6fdb-6843-6499-2a04
+                name: Chaos Undivided
+                entryId: 6fdb-6843-6499-2a04
+                primary: 'false'
+          - id: mfk5va1df57rkmd47ew
+            name: Warrior Familiar
+            entryId: 2285-1839-27ec-02cd::6d8f-a4fc-7a24-772f::fb35-69a4-4d1a-da37::161b-a919-d722-82ea
+            entryGroupId: 2285-1839-27ec-02cd::6d8f-a4fc-7a24-772f::c40c-1cfc-d679-bb28
+            number: '1'
+            type: upgrade
+            from: group
+            group: Magic Items selection::Arcane Items::Hordes Arcane Items
+            rules:
+              rule:
+                id: e26e-2b81-ce5c-a2a6
+                name: Warrior Familiar
+                hidden: 'false'
+                description:
+                  __content__: At the beginning of the Close Combat phase, before
+                    blows are struck, the Familiar inflicts one Strength 5 hit on
+                    a single model chosen by the Sorcerer from amongst those in base
+                    contact. Wounds Inflicted do count cowards combat resolution.
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '30'
+          - id: mfk5va12m3zbitkcm6
+            name: Talisman of Protection
+            entryId: 3d4f-b07f-bf6f-9405::c53e-623e-a5a9-59b9::cacc-ccd9-63b6-d4d1::c7cc-76a3-c413-ddb8
+            entryGroupId: 3d4f-b07f-bf6f-9405::c53e-623e-a5a9-59b9::0b8c-7adf-ebda-2164
+            number: '1'
+            type: upgrade
+            from: group
+            group: Magic Items selection::Talismans::Talismans Beasts
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '15'
+          - id: mfk5va1gkic7d63d7fq
+            name: Level 1
+            entryId: 635e-6193-e402-df4c
+            entryGroupId: 7c2b-6b87-55bf-35e1
+            number: '1'
+            type: upgrade
+            from: group
+            group: Magic Level
+            costs:
+              cost:
+              - name: Casting Dice
+                typeId: fcec-2340-6368-a2ba
+                value: '1'
+              - name: Dispel Dice
+                typeId: 6001-b2bf-4529-c07d
+                value: '1'
+        costs:
+          cost:
+            name: pts
+            typeId: ecfa-8486-4f6c-c249
+            value: '85'
+        categories:
+          category:
+          - id: 7a1c-d611-c2dc-def1
+            name: Characters
+            entryId: 7a1c-d611-c2dc-def1
+            primary: 'false'
+          - id: c16b-f319-2c62-2c12
+            entryId: c16b-f319-2c62-2c12
+            name: Heroes
+            primary: 'true'
+      - id: mfk5s4bu26ivfpa6s6
+        name: Chariot of Chaos
+        entryId: 021c-b604-5538-ea7b
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+          - id: 350f-e021-ee35-afd3
+            name: Chaos Chariot
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: "-"
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: "-"
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: "-"
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '5'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '5'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '4'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: "-"
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: "-"
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: "-"
+          - id: ebe4-0fca-9c0f-2b7d
+            name: Chariot Chaos Steed
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '8'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: "-"
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '4'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: "-"
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: "-"
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: "-"
+          - id: 3063-d549-0ef6-74c3
+            name: Warrior C
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: "-"
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '5'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: "-"
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '4'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: "-"
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: "-"
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '5'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+          - id: mfk5s4bv7c8t3izaqpx
+            name: Two Chaos Steed
+            entryId: a01f-487a-c249-b2ba
+            number: '1'
+            type: upgrade
+            from: entry
+            selections:
+              selection:
+                id: mfk5s4bxflnn63qlnym
+                name: Barding
+                entryId: 96de-7734-6340-de24::3211-d836-02f1-01d0
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 25e4-8f3a-a1a8-a7b6
+                    name: Barding
+                    hidden: 'false'
+                    typeId: f681-9937-db53-f1d8
+                    typeName: Armour
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Saving Throw Modifier
+                        typeId: b600-e1ed-0765-27c1
+                        __content__: "+1"
+                      - name: Special rules
+                        typeId: 42c3-68ab-cfa5-203e
+          - id: mfk5s4bv5ch1lr4tls9
+            name: Two Chaos Warrior Crew
+            entryId: 06bc-7372-1cb9-85d0
+            number: '1'
+            type: upgrade
+            from: entry
+            selections:
+              selection:
+                id: mfk5s4bxo97soavte4
+                name: Halberds
+                entryId: 521f-2497-112b-07a7::b3f3-a133-2869-0be8
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 3596-7d17-9ca2-fb92
+                    name: Halberd
+                    hidden: 'false'
+                    typeId: 7889-42d9-70a0-3ea9
+                    typeName: Weapon
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Range
+                        typeId: 3107-4d1e-9a51-6564
+                        __content__: CC only
+                      - name: Strength
+                        typeId: 6fe4-1ebb-cb04-1378
+                        __content__: As User +1
+                      - name: Special Rules
+                        typeId: a21a-cdc0-4b13-b236
+                        __content__: Requires 2 Hands
+          - id: mfk5s4bwclybd03ywlr
+            name: Mark of Chaos Undivided
+            entryId: 5641-1f68-41d2-4e76::8bd1-5768-b386-09b0::c7ff-31af-939e-0fbd
+            entryGroupId: 5641-1f68-41d2-4e76::0d33-ddc7-ffe6-df8b
+            number: '1'
+            type: upgrade
+            from: group
+            group: Chariot of Chaos
+            rules:
+              rule:
+                id: 7ef7-2eee-3cab-4001
+                name: Mark of Chaos Undivided
+                hidden: 'false'
+                page: '60'
+                description:
+                  __content__: The character, unit or chariot may re-roll failed Psychology
+                    tests.
+            categories:
+              category:
+                id: 6fdb-6843-6499-2a04
+                name: Chaos Undivided
+                entryId: 6fdb-6843-6499-2a04
+                primary: 'false'
+        costs:
+          cost:
+            name: pts
+            typeId: ecfa-8486-4f6c-c249
+            value: '120'
+        categories:
+          category:
+            id: 64bf-efb4-9978-26df
+            entryId: 64bf-efb4-9978-26df
+            name: Core
+            primary: 'true'
+      - id: mfk5s59mra7e6nft2g
+        name: Marauders Of Chaos
+        entryId: f001-9e3c-2102-8b7d
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+            id: c5cb-47f2-78e3-78d9
+            name: Marauder
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '4'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '4'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '7'
+        selections:
+          selection:
+          - id: mfk5s59o88im6isq3tn
+            name: Chieftan
+            entryId: 6299-b088-957b-af2f
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: f04a-0250-eb10-8618
+                name: Chieftan
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '4'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '3'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '4'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '2'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '7'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '10'
+          - id: mfk5s59ptuozs25thi
+            name: Hand Weapon
+            entryId: e705-553a-374e-6ab7::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk5s59p0xi4hpo2f5d
+            name: Light Armour
+            entryId: 8ae1-c97f-d2a2-2aad::055f-8e4e-f170-35d2
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 752a-95b9-343a-8f75
+                name: Light Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 6+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '19'
+          - id: mfk5s59of8k30qhwzvp
+            name: Marauders of Chaos
+            entryId: ebf1-b5d4-b12f-37f1
+            number: '19'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '95'
+          - id: mfk5s59nbmenlah5nqe
+            name: Musician
+            entryId: abb4-d7a9-8d23-9f99
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '5'
+          - id: mfk5s59o7eu3g4qrzeu
+            name: Flail
+            entryId: 8ba0-a581-d319-4f36::2eb9-be12-caec-57e8
+            entryGroupId: a153-9996-6274-2f04
+            number: '1'
+            type: upgrade
+            from: group
+            group: Weapons Selection
+            profiles:
+              profile:
+                id: 10f8-e196-d180-044c
+                name: Flail
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: cc
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As user
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: "+2 Str on first turn of combat. Requires 2 hands"
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '19'
+        categories:
+          category:
+            id: 64bf-efb4-9978-26df
+            entryId: 64bf-efb4-9978-26df
+            name: Core
+            primary: 'true'
+      - id: mfk5s3hho5a2xxm2dtl
+        name: Warriors of Chaos
+        entryId: e637-be84-b4ee-d47c
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+            id: d091-568c-de35-80af
+            name: Warrior
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '5'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '4'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '4'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '5'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+          - id: mfk5s3hk7caacu11f3f
+            name: Champion
+            entryId: 9ad7-b328-3e80-395a
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5c35-9b46-a00c-d420
+                name: Champion
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '5'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '3'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '4'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '4'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '5'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '2'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '8'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '12'
+          - id: mfk5s3hk2azdt88ql9v
+            name: Chosen
+            entryId: 365d-3b3c-4094-b18a
+            number: '1'
+            type: upgrade
+            from: entry
+            selections:
+              selection:
+              - id: mfk5tc7rtv34xms9wh
+                name: "+1 Attack"
+                entryId: 18fa-f808-6deb-ccaf
+                number: '1'
+                type: upgrade
+                from: entry
+              - id: mfk5tc7retniksudg26
+                name: Chaos Armour*
+                entryId: 13ed-7210-558f-d7c6::9b37-1817-ce12-f693
+                number: '1'
+                type: upgrade
+                from: entry
+                rules:
+                  rule:
+                    id: 0a38-114c-5bc8-d1ea
+                    name: Chaos Armour
+                    hidden: 'false'
+                    page: '24'
+                    description:
+                      __content__: |-
+                        All-enclosing suits of Chaos armour are the living gifts of the Dark Gods upon their Champions. They become part of the wearer's body and can never be removed once put on.
+                        Chaos armour gives a 4+ armour save. It can be combined with other equipment as normal. Sorcerers can wear this armour and cast spells.
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '60'
+            categories:
+              category:
+                id: 45de-113d-9cae-681f
+                name: Chosen
+                entryId: 45de-113d-9cae-681f
+                primary: 'false'
+          - id: mfk5s3hlegus5ciujxu
+            name: Hand Weapon
+            entryId: 8cd9-0af5-d4d6-f767::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk5s3hmceias8b8cnf
+            name: Heavy Armour
+            entryId: f2ec-826c-b7ce-3d6d::dde4-0ba8-7b3c-57b7
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 3dd5-f228-98a7-453a
+                name: Heavy Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 5+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+          - id: mfk5s3hj0dj3f4n8ky0f
+            name: Musician
+            entryId: 9333-a6b7-d56b-86ce
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '6'
+          - id: mfk5s3hjo7hekotujba
+            name: Standard Bearer
+            entryId: 043a-9bae-f7d5-63d9
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '12'
+          - id: mfk5s3hkerm2abgenl5
+            name: Warriors of Chaos
+            entryId: db47-47d5-11c5-d7de
+            number: '10'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '140'
+          - id: mfk5s3hmat9xoykw459
+            name: Mark of Chaos Undivided
+            entryId: 824c-e689-526a-424a::85bd-d5ea-9ff2-48d6::c7ff-31af-939e-0fbd
+            entryGroupId: 824c-e689-526a-424a::6493-36be-1169-e364
+            number: '1'
+            type: upgrade
+            from: group
+            group: Regiment of Chaos
+            rules:
+              rule:
+                id: 7ef7-2eee-3cab-4001
+                name: Mark of Chaos Undivided
+                hidden: 'false'
+                page: '60'
+                description:
+                  __content__: The character, unit or chariot may re-roll failed Psychology
+                    tests.
+            categories:
+              category:
+                id: 6fdb-6843-6499-2a04
+                name: Chaos Undivided
+                entryId: 6fdb-6843-6499-2a04
+                primary: 'false'
+          - id: mfk5s3hlfbqb5ygmjbo
+            name: Halberds
+            entryId: 8b2f-ee4e-e7c8-8860::b3f3-a133-2869-0be8
+            entryGroupId: a9d9-824f-dc4d-c8f3
+            number: '1'
+            type: upgrade
+            from: group
+            group: Weapons Selection
+            profiles:
+              profile:
+                id: 3596-7d17-9ca2-fb92
+                name: Halberd
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User +1
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: Requires 2 Hands
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '20'
+        categories:
+          category:
+            id: 64bf-efb4-9978-26df
+            entryId: 64bf-efb4-9978-26df
+            name: Core
+            primary: 'true'
+      - id: mfk5wlze2jm2ody82u6
+        name: Warriors of Chaos
+        entryId: e637-be84-b4ee-d47c
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+            id: d091-568c-de35-80af
+            name: Warrior
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '5'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '4'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '4'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '5'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+          - id: mfk5wlzj28puzzzzzhs
+            name: Hand Weapon
+            entryId: 8cd9-0af5-d4d6-f767::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk5wlzjh16aaq3diui
+            name: Heavy Armour
+            entryId: f2ec-826c-b7ce-3d6d::dde4-0ba8-7b3c-57b7
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 3dd5-f228-98a7-453a
+                name: Heavy Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 5+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+          - id: mfk5wlzg68u8adoeqqf
+            name: Musician
+            entryId: 9333-a6b7-d56b-86ce
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '6'
+          - id: mfk5wlziruqtbqbthk
+            name: Warriors of Chaos
+            entryId: db47-47d5-11c5-d7de
+            number: '10'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '140'
+          - id: mfk5wlzka6jar4btydu
+            name: Mark of Chaos Undivided
+            entryId: 824c-e689-526a-424a::85bd-d5ea-9ff2-48d6::c7ff-31af-939e-0fbd
+            entryGroupId: 824c-e689-526a-424a::6493-36be-1169-e364
+            number: '1'
+            type: upgrade
+            from: group
+            group: Regiment of Chaos
+            rules:
+              rule:
+                id: 7ef7-2eee-3cab-4001
+                name: Mark of Chaos Undivided
+                hidden: 'false'
+                page: '60'
+                description:
+                  __content__: The character, unit or chariot may re-roll failed Psychology
+                    tests.
+            categories:
+              category:
+                id: 6fdb-6843-6499-2a04
+                name: Chaos Undivided
+                entryId: 6fdb-6843-6499-2a04
+                primary: 'false'
+          - id: mfk5wlzi12vdps7b0m0k
+            name: Two Hand Weapons
+            entryId: 9c19-ba60-f2ee-e08f::36a8-7bbb-d204-0314
+            entryGroupId: a9d9-824f-dc4d-c8f3
+            number: '1'
+            type: upgrade
+            from: group
+            group: Weapons Selection
+            profiles:
+              profile:
+                id: 72aa-da68-2dae-4ab6
+                name: Additional Hand weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: "+1A"
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '30'
+        categories:
+          category:
+            id: 64bf-efb4-9978-26df
+            entryId: 64bf-efb4-9978-26df
+            name: Core
+            primary: 'true'
+      - id: mfk5s8ckgic60eqbsp7
+        name: Bloodletters
+        entryId: 7dc4-fb32-003b-c289
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+          - id: 8f48-5774-3994-18fe
+            name: Bloodletters Magical resistance(1)
+            hidden: 'false'
+            description:
+              __content__: Bloodletters generate 1 dice for spells directed at the
+                unit.
+          - id: ab04-c24e-f729-0987
+            name: Daemonic attacks
+            hidden: 'false'
+            page: '29'
+            description:
+              __content__: Being corporeal manifestations of Chaos, Daemons' attacks
+                are magical and can wound ethereal creatures. etc. This includes any
+                special or ranged attacks they may have.
+          - id: ab5d-dda1-bffc-a027
+            name: Frenzy
+            hidden: 'false'
+            page: '84'
+            description:
+              __content__: |-
+                Subject to frenzy. +1 Attack
+                Frenzied troops must pursue broken units.
+        profiles:
+          profile:
+            id: 71ff-ee64-3649-55d2
+            name: Bloodletter
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '5'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '0'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '5'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '4'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+          - id: mfk5s8cm4z1zv27fbat
+            name: Bloodhowler
+            entryId: c511-2540-1e0c-0949
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: a2de-a38e-d5e3-ca8a
+                name: Bloodhowler
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '5'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '0'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '5'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '5'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '2'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '8'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '14'
+          - id: mfk5s8cm12lyqc9ut5
+            name: Bloodletter
+            entryId: f260-1878-a029-72d3
+            number: '10'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '160'
+          - id: mfk5s8cnrmv0ouryn5
+            name: Hand Weapon
+            entryId: b34f-43d3-bb62-363d::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk5s8cn35vf7e0u1bk
+            name: Light Armour
+            entryId: c1a8-c1b7-857e-1d9e::055f-8e4e-f170-35d2
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 752a-95b9-343a-8f75
+                name: Light Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 6+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+          - id: mfk5s8cmbzqae1acaq
+            name: Musician
+            entryId: 3a2b-f755-ed26-2f76
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '7'
+          - id: mfk5s8cmfurf5zyp71e
+            name: Standard Bearer
+            entryId: 4cb0-6c1b-d87f-fc99
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '14'
+        categories:
+          category:
+          - id: 43cc-fc3f-35a7-8d03
+            entryId: 43cc-fc3f-35a7-8d03
+            name: Special
+            primary: 'true'
+          - id: 1e5a-e1dc-3591-46bc
+            name: Khorne
+            entryId: 1e5a-e1dc-3591-46bc
+            primary: 'false'
+      - id: mfk5x1at7jcvnpylqoa
+        name: Bloodletters
+        entryId: 7dc4-fb32-003b-c289
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+          - id: 8f48-5774-3994-18fe
+            name: Bloodletters Magical resistance(1)
+            hidden: 'false'
+            description:
+              __content__: Bloodletters generate 1 dice for spells directed at the
+                unit.
+          - id: ab04-c24e-f729-0987
+            name: Daemonic attacks
+            hidden: 'false'
+            page: '29'
+            description:
+              __content__: Being corporeal manifestations of Chaos, Daemons' attacks
+                are magical and can wound ethereal creatures. etc. This includes any
+                special or ranged attacks they may have.
+          - id: ab5d-dda1-bffc-a027
+            name: Frenzy
+            hidden: 'false'
+            page: '84'
+            description:
+              __content__: |-
+                Subject to frenzy. +1 Attack
+                Frenzied troops must pursue broken units.
+        profiles:
+          profile:
+            id: 71ff-ee64-3649-55d2
+            name: Bloodletter
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '5'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '0'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '5'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '4'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+          - id: mfk5x1awifj7zn3frg
+            name: Bloodhowler
+            entryId: c511-2540-1e0c-0949
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: a2de-a38e-d5e3-ca8a
+                name: Bloodhowler
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '5'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '0'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '5'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '5'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '2'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '8'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '14'
+          - id: mfk5x1awtkg8p6qxpo
+            name: Bloodletter
+            entryId: f260-1878-a029-72d3
+            number: '10'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '160'
+          - id: mfk5x1aw5idzxtm690s
+            name: Hand Weapon
+            entryId: b34f-43d3-bb62-363d::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk5x1aw0czql9l4z36e
+            name: Light Armour
+            entryId: c1a8-c1b7-857e-1d9e::055f-8e4e-f170-35d2
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 752a-95b9-343a-8f75
+                name: Light Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 6+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+          - id: mfk5x1av4dq16b6at1b
+            name: Musician
+            entryId: 3a2b-f755-ed26-2f76
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '7'
+          - id: mfk5x1aw39vffnvafjn
+            name: Standard Bearer
+            entryId: 4cb0-6c1b-d87f-fc99
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '14'
+        categories:
+          category:
+          - id: 43cc-fc3f-35a7-8d03
+            entryId: 43cc-fc3f-35a7-8d03
+            name: Special
+            primary: 'true'
+          - id: 1e5a-e1dc-3591-46bc
+            name: Khorne
+            entryId: 1e5a-e1dc-3591-46bc
+            primary: 'false'
+      - id: mfk5xv95cotjlv3554j
+        name: Horrors
+        entryId: c539-4c54-33b5-47c3
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+          - id: ab04-c24e-f729-0987
+            name: Daemonic attacks
+            hidden: 'false'
+            page: '29'
+            description:
+              __content__: Being corporeal manifestations of Chaos, Daemons' attacks
+                are magical and can wound ethereal creatures. etc. This includes any
+                special or ranged attacks they may have.
+          - id: 8b4e-29f4-5205-5baf
+            name: Spellcasters
+            hidden: 'false'
+            description:
+              __content__: "Horrors can unleash the magical energies of their creator
+                as blasts of power. These count as bound spells. as described on page
+                153 of the Warhammer rulebook. MI of the power is generated by the
+                Horrors themselves and no Magic dice are used. The casting value of
+                the spell is equal to half the Horrors' current Unit Strength (rounding
+                down, to a minimum of 1). The Horrors may cast one of the following
+                spells at the start of their Magic phase:\n1. Fire of Tzeentch: \n2.Coruscation
+                of Energy: \n3.Uncontrollable Mutation:"
+        profiles:
+          profile:
+            id: 260b-485b-80b5-7cc4
+            name: Horror
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '2'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '0'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+            id: mfk5xv976zl8ujx75gp
+            name: Horrors
+            entryId: ac43-5816-8843-c323
+            number: '10'
+            type: model
+            from: entry
+            rules:
+              rule:
+                id: 8b4e-29f4-5205-5baf
+                name: Spellcasters
+                hidden: 'false'
+                description:
+                  __content__: "Horrors can unleash the magical energies of their
+                    creator as blasts of power. These count as bound spells. as described
+                    on page 153 of the Warhammer rulebook. MI of the power is generated
+                    by the Horrors themselves and no Magic dice are used. The casting
+                    value of the spell is equal to half the Horrors' current Unit
+                    Strength (rounding down, to a minimum of 1). The Horrors may cast
+                    one of the following spells at the start of their Magic phase:\n1.
+                    Fire of Tzeentch: \n2.Coruscation of Energy: \n3.Uncontrollable
+                    Mutation:"
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '150'
+        categories:
+          category:
+          - id: 43cc-fc3f-35a7-8d03
+            entryId: 43cc-fc3f-35a7-8d03
+            name: Special
+            primary: 'true'
+          - id: 9f21-dc73-dcc0-cb19
+            name: Tzeentch
+            entryId: 9f21-dc73-dcc0-cb19
+            primary: 'false'
+      - id: mfk5xbm1vh8vsi3uieo
+        name: Screamers of Tzeentch
+        entryId: 96c1-5655-edfe-4cb8
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+          - id: ab04-c24e-f729-0987
+            name: Daemonic attacks
+            hidden: 'false'
+            page: '29'
+            description:
+              __content__: Being corporeal manifestations of Chaos, Daemons' attacks
+                are magical and can wound ethereal creatures. etc. This includes any
+                special or ranged attacks they may have.
+          - id: 600b-7f24-9b90-6bcb
+            name: Flying Unit
+            hidden: 'false'
+            description:
+              __content__: A flying unit are skirmishers
+          - id: ab99-d79b-0b02-1df5
+            name: Slashing Attack
+            hidden: 'false'
+            description:
+              __content__: In any Chaos turn where the Chaos player hasn't declared
+                a charge with them, Screamers can attack an enemy unit which is not
+                inside a wood or a building by moving over it during the Remaining
+                Moves pan of their Movement phase. This inflicts an automatic Strength
+                3 hit per Screamer and the enemy cannot fight back — these hits count
+                as missile hits and may force a Panic test. A Screamers unit may only
+                use this special attack against one enemy unit per turn, even if they
+                fly over more than one unit in that Movement phase.
+        profiles:
+          profile:
+            id: d361-81b3-6817-4de0
+            name: Screamers of Tzeentch
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '1'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '0'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '4'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '4'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '2'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '4'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '2'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+            id: mfk5xbm2vtssddis1aq
+            name: Screamers of Tzeentch
+            entryId: ab2a-3ab5-5eac-2f3e
+            number: '3'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '99'
+        categories:
+          category:
+          - id: 9f21-dc73-dcc0-cb19
+            name: Tzeentch
+            entryId: 9f21-dc73-dcc0-cb19
+            primary: 'false'
+          - id: 43cc-fc3f-35a7-8d03
+            entryId: 43cc-fc3f-35a7-8d03
+            name: Special
+            primary: 'true'
+      - id: mfk5xkfbua4q7spf3o
+        name: Warhounds of Chaos
+        entryId: e941-8cf0-bd4b-4624
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+            id: 171a-a558-c27b-9cc9
+            name: Beastmen Ambush
+            hidden: 'false'
+            page: '18'
+            description:
+              __content__: |-
+                If the General of the army has the Ambush special rule he carries a Brayhorn, which he may sound during the battle to summon Beastmen and Warhounds that lie in wait. It for whatever reason, the General no longer counts as a Beasts General, then he loses his Ambush special rule.
+                Units with Ambush can use this ability in any scenario that allows Scouts to use their special deployment. Up to half of your ambushing units and characters (rounding down), may be set up in ambush. For example, an army with three Beastherds, two characters with Ambush and two Warhounds units can put any three of these units and/or characters into ambush. Make a note of which units are in ambush at the start of the battle, before deployment starts. If characters are waiting in ambush, they may join another unit and arrive with them - make a note of which unit they are with before the battle begins.
+                Ambushing units are not deployed at the start of the battle. However, the General must be deployed normally Models do not count as in play while waiting in ambush (for example. for the purposes of generating Power or Dispel dim). If, for some reason,the General is removed from play before sounding his brayhorn, then any units sent to wait in ambush count as destroyed when determining Victory points.
+                Starting from the second Chaos turn, during any Chaos Movement phase, after charges have been declared, the General may sound the brayhom and launch the ambush. For each unit waiting in ambush, mark a point on the table edge you wish them to move on from. After this, make a Leadership test for each unit. If the test is passed, every model in the unit moves on from the marked point, in the same way as if they had pursued an enemy off the table in the previous turn. If the Leadership test is failed, they turn up at a random point on the table edge. Roll a Scatter dice in the middle of the table and follow the arrow (even on a roll of a 1111) to determine the point on the table edge where the unit enters.
+        profiles:
+          profile:
+            id: 22f5-f64d-ed46-53cb
+            name: Warhound
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '7'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '0'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '5'
+        selections:
+          selection:
+          - id: mfk5xkfdp7s532wrzz
+            name: Fangs and claws
+            entryId: 374e-d13c-567b-b39e
+            number: '1'
+            type: upgrade
+            from: entry
+          - id: mfk5xkfc641kzmc9a6a
+            name: Warhound
+            entryId: 4843-4c38-b8bd-7a79
+            number: '5'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '30'
+        categories:
+          category:
+            id: 43cc-fc3f-35a7-8d03
+            entryId: 43cc-fc3f-35a7-8d03
+            name: Special
+            primary: 'true'
+      - id: mfk5xlipe2kfmd76wkr
+        name: Warhounds of Chaos
+        entryId: e941-8cf0-bd4b-4624
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+            id: 171a-a558-c27b-9cc9
+            name: Beastmen Ambush
+            hidden: 'false'
+            page: '18'
+            description:
+              __content__: |-
+                If the General of the army has the Ambush special rule he carries a Brayhorn, which he may sound during the battle to summon Beastmen and Warhounds that lie in wait. It for whatever reason, the General no longer counts as a Beasts General, then he loses his Ambush special rule.
+                Units with Ambush can use this ability in any scenario that allows Scouts to use their special deployment. Up to half of your ambushing units and characters (rounding down), may be set up in ambush. For example, an army with three Beastherds, two characters with Ambush and two Warhounds units can put any three of these units and/or characters into ambush. Make a note of which units are in ambush at the start of the battle, before deployment starts. If characters are waiting in ambush, they may join another unit and arrive with them - make a note of which unit they are with before the battle begins.
+                Ambushing units are not deployed at the start of the battle. However, the General must be deployed normally Models do not count as in play while waiting in ambush (for example. for the purposes of generating Power or Dispel dim). If, for some reason,the General is removed from play before sounding his brayhorn, then any units sent to wait in ambush count as destroyed when determining Victory points.
+                Starting from the second Chaos turn, during any Chaos Movement phase, after charges have been declared, the General may sound the brayhom and launch the ambush. For each unit waiting in ambush, mark a point on the table edge you wish them to move on from. After this, make a Leadership test for each unit. If the test is passed, every model in the unit moves on from the marked point, in the same way as if they had pursued an enemy off the table in the previous turn. If the Leadership test is failed, they turn up at a random point on the table edge. Roll a Scatter dice in the middle of the table and follow the arrow (even on a roll of a 1111) to determine the point on the table edge where the unit enters.
+        profiles:
+          profile:
+            id: 22f5-f64d-ed46-53cb
+            name: Warhound
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '7'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '0'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '5'
+        selections:
+          selection:
+          - id: mfk5xliqh2dg4akbar5
+            name: Fangs and claws
+            entryId: 374e-d13c-567b-b39e
+            number: '1'
+            type: upgrade
+            from: entry
+          - id: mfk5xliqwe3s08fcgvf
+            name: Warhound
+            entryId: 4843-4c38-b8bd-7a79
+            number: '5'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '30'
+        categories:
+          category:
+            id: 43cc-fc3f-35a7-8d03
+            entryId: 43cc-fc3f-35a7-8d03
+            name: Special
+            primary: 'true'
+      - id: mfk5scf3iz3p93z27s
+        name: Spawn of Chaos
+        entryId: 6161-c30d-690f-f55d
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+          - id: ce83-e5c9-7647-4198
+            name: Special Movement
+            hidden: 'false'
+            page: '29'
+            description:
+              __content__: "Spawn of Chaos are moved in the Compulsory Movement part
+                of the Chaos player's \nMovement phase, moving 2D6\" each turn. The
+                player has no control over the distance moved, but must nominate in
+                which direction the Spawn will move before rolling the dice (this
+                must be in a straight line).\nIf the Spawn's movement is sufficient
+                to take it into an enemy unit then it counts as charging, following
+                all of the normal rules. The target may make a charge response as
+                normal, counting the Movement value rolled as the Spawn's maximum
+                charge distance (for the purposes of fleeing, standing and shooting.
+                etc)."
+          - id: 705f-1427-258d-d57c
+            name: Special Attacks
+            hidden: 'false'
+            page: '29'
+            description:
+              __content__: Chaos Spawn have a random number of Attacks. This is rolled
+                at the start of every Close Combat phase. Roll to hit and wound as
+                normal.
+          - id: 8ae3-9724-980f-7308
+            name: Unbreakable
+            hidden: 'false'
+            description:
+              __content__: "Some creatures are utterly fearless and will never give
+                \nup a battle, no matter how hopeless the situation \nmight be. This
+                could be because of the troops'\nextreme bravery, or because the creatures
+                fighting are not truly alive.\nThese troops never break in close combat,
+                and they are also immune to panic, terror and fear or any other Psychology
+                rules. If defeated in close combat (even by fear-causing creatures
+                that outnumber them) unbreakable troops continue to fight on regardless
+                of results. They may never, however. declare that they are fleeing
+                as a charge reaction, as they will literally die fighting under any
+                circumstances."
+          - id: f3a8-3c9f-4fcb-5092
+            name: Unit Strength 3
+            hidden: 'false'
+            description:
+              __content__: Unit Strength of 3.
+          - id: 1524-2372-4aa0-6881
+            name: Fear
+            hidden: 'false'
+            page: '81'
+            description:
+              __content__: Unit causes Fear
+        profiles:
+          profile:
+            id: e383-4acd-1500-c2b6
+            name: Spawn of Chaos
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: 2D6
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '0'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '4'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '5'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '3'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '2'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: D6+1
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '10'
+        selections:
+          selection:
+          - id: mfk5scf4lr2ex6kecfm
+            name: Spawn of Chaos bases
+            entryId: 9264-94b3-c419-34ce
+            number: '1'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '60'
+          - id: mfk5scf5hya4a4vxqgo
+            name: Bloodbeast of Khorne
+            entryId: 0557-cb8b-e967-8ca1
+            entryGroupId: 39b4-bed4-f359-4864
+            number: '1'
+            type: upgrade
+            from: group
+            group: Chaos Affinity
+            rules:
+              rule:
+                id: 252e-8422-6be2-b510
+                name: Bloodbeasts of Khorne
+                hidden: 'false'
+                page: '29'
+                description:
+                  __content__: Spawn of the Blood God have +1 Strength (making them
+                    Strength 5).
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '15'
+        categories:
+          category:
+            id: e94b-6a54-8779-cd60
+            entryId: e94b-6a54-8779-cd60
+            name: Rare
+            primary: 'true'
+      - id: mfk5sdm13lrszapa3j4
+        name: Gorebull
+        entryId: 56d9-6270-1aa9-1b43
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+          - id: c304-46f4-28f2-e7f7
+            name: Gorebull
+            hidden: 'false'
+            description:
+              __content__: Gorebull is a minotaur hero character. Stats and design
+                by Tom Carley.  The Gorebull has a 40mm base and a US of 3.
+          - id: b942-f72e-84c3-7dcf
+            name: Bloodgreed
+            hidden: 'false'
+            description:
+              __content__: Minotaurs are known for their craving of flesh and even
+                in the heat of battle will stop to devour the fallen rather than continue
+                the fight. Minotaurs never 'Overun' even if normally forced to do
+                by pyscology or some other  effect.  However Minotaurs pursue on 3D6
+                instead of the normal 2D6.
+          - id: 1524-2372-4aa0-6881
+            name: Fear
+            hidden: 'false'
+            page: '81'
+            description:
+              __content__: Unit causes Fear
+        profiles:
+          profile:
+            id: 6248-653a-e770-116c
+            name: Gorebull
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '6'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '5'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '5'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '4'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '4'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '4'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '4'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+          - id: mfk5sdmibertxiubqae
+            name: Hand Weapon
+            entryId: 4a69-4d9b-529b-8947::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk5sdm3nd0srgsr9qc
+            name: Unit Strength 3
+            entryId: 4edf-5234-3500-91fb
+            number: '1'
+            type: upgrade
+            from: entry
+          - id: mfk5sdm31ogi0t56xrv
+            name: Great Weapon
+            entryId: 9594-c149-e882-d73b::1eb7-3f36-8cf7-e0ba
+            entryGroupId: ba54-0f1b-8e98-4d4e
+            number: '1'
+            type: upgrade
+            from: group
+            group: Additional Weapons
+            profiles:
+              profile:
+                id: 97d4-ed3b-5f76-5a23
+                name: Great Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As user +2
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: |-
+                      Requires two hands
+                      Always Strikes Last
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '6'
+          - id: mfk5sdm417wiz31b5hv
+            name: Heavy Armour
+            entryId: fe5b-0bea-0150-7123::dde4-0ba8-7b3c-57b7
+            entryGroupId: 8218-1145-0507-4b6b
+            number: '1'
+            type: upgrade
+            from: group
+            group: Armour
+            profiles:
+              profile:
+                id: 3dd5-f228-98a7-453a
+                name: Heavy Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 5+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '4'
+          - id: mfk5sdmdr91gqff6p8
+            name: The Fur of Sharggu
+            entryId: b189-b8c8-4b33-fc4c::b52a-df3d-5a14-1dec::f9ff-2800-dec7-3b1e::c3dc-d4cf-01e1-2583
+            entryGroupId: b189-b8c8-4b33-fc4c::b52a-df3d-5a14-1dec::31d8-668f-ac49-5a4b
+            number: '1'
+            type: upgrade
+            from: group
+            group: Magic items::Magic Armour::Magic Armour Beastmen
+            rules:
+              rule:
+                id: e38e-2f58-921e-9fa7
+                name: The Fur of Sharggu
+                hidden: 'false'
+                page: '63'
+                description:
+                  __content__: |-
+                    Beasts of Chaos characters only
+                    Adds +2 to the bearer's Armour save against missile fire (including magic missiles), up to a maximum Armour save of 1+.
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '15'
+          - id: mfk5sdmgd6nr04h6yu
+            name: Crown of Horns
+            entryId: c0a4-f7b4-c65b-53bf::c53e-623e-a5a9-59b9::7aa2-4ae7-d18e-91ae::d207-157a-fbb2-2270
+            entryGroupId: c0a4-f7b4-c65b-53bf::c53e-623e-a5a9-59b9::0b8c-7adf-ebda-2164
+            number: '1'
+            type: upgrade
+            from: group
+            group: Magic items::Talismans::Talismans Beasts
+            rules:
+              rule:
+                id: cf5b-1618-1772-3d30
+                name: Crown of Horns
+                hidden: 'false'
+                page: '63'
+                description:
+                  __content__: |-
+                    Beasts of Chaos characters only
+                    The bearer benefits from a 5+ Ward save and confers +1 to any attempts to rally to a unit he has joined in addition to other modifiers.
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '30'
+          - id: mfk5sdm5gufyu3u34y4
+            name: Mark of Chaos Undivided
+            entryId: c7f5-94ee-c535-edc1
+            entryGroupId: ee3a-f8d7-e000-f58a
+            number: '1'
+            type: upgrade
+            from: group
+            group: Marks of Chaos
+            rules:
+              rule:
+                id: 7ef7-2eee-3cab-4001
+                name: Mark of Chaos Undivided
+                hidden: 'false'
+                page: '60'
+                description:
+                  __content__: The character, unit or chariot may re-roll failed Psychology
+                    tests.
+            categories:
+              category:
+                id: 6fdb-6843-6499-2a04
+                name: Chaos Undivided
+                entryId: 6fdb-6843-6499-2a04
+                primary: 'false'
+        costs:
+          cost:
+            name: pts
+            typeId: ecfa-8486-4f6c-c249
+            value: '130'
+        categories:
+          category:
+          - id: c16b-f319-2c62-2c12
+            name: Heroes
+            entryId: c16b-f319-2c62-2c12
+            primary: 'false'
+          - id: 7a1c-d611-c2dc-def1
+            name: Characters
+            entryId: 7a1c-d611-c2dc-def1
+            primary: 'false'
+          - id: 0644-bfcd-32c2-21dc
+            entryId: 0644-bfcd-32c2-21dc
+            name: Special Characters
+            primary: 'true'
+          - id: '086d-94c6-a2ad-a973'
+            name: Makemegeneral
+            entryId: '086d-94c6-a2ad-a973'
+            primary: 'false'
+          - id: 7250-12fd-d509-0dfb
+            name: Khorne General
+            entryId: 7250-12fd-d509-0dfb
+            primary: 'false'
+          - id: 4648-b919-37ed-cf92
+            name: Tzeentch General
+            entryId: 4648-b919-37ed-cf92
+            primary: 'false'
+    categories:
+      category:
+      - name: Lord
+        id: mfk5e1jmxl9cuga7upg
+        primary: 'false'
+        entryId: d024-d25b-a9b4-73b6
+      - name: Heroes
+        id: mfk5e1jm53bwqyshoqf
+        primary: 'false'
+        entryId: c16b-f319-2c62-2c12
+      - name: Core
+        id: mfk5e1jm7vlpgnmiu09
+        primary: 'false'
+        entryId: 64bf-efb4-9978-26df
+      - name: Special
+        id: mfk5e1jmf7xm7u3b37
+        primary: 'false'
+        entryId: 43cc-fc3f-35a7-8d03
+      - name: Rare
+        id: mfk5e1jn37utoqjokjo
+        primary: 'false'
+        entryId: e94b-6a54-8779-cd60
+      - name: Characters
+        id: mfk5e1jnflzbgcy5rsk
+        primary: 'false'
+        entryId: 7a1c-d611-c2dc-def1
+      - name: Special Characters
+        id: mfk5e1jn5it8b1nujdb
+        primary: 'false'
+        entryId: 0644-bfcd-32c2-21dc

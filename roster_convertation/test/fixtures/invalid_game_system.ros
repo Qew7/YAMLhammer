@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<roster id="invalid_roster_id" name="invalid_roster" battleScribeVersion="2.03" generatedBy="https://newrecruit.eu" gameSystemId="invalid_id" gameSystemName="Warhammer 40000" gameSystemRevision="9" xmlns="http://www.battlescribe.net/schema/rosterSchema">
+  <!-- Simplified content for testing invalid game system -->
+</roster>

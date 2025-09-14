@@ -1,0 +1,2742 @@
+---
+id: mfk6rvdxc6y5d9dwi07
+name: empire
+battleScribeVersion: '2.03'
+generatedBy: https://newrecruit.eu
+gameSystemId: 6d8e-38d9-3c69-febf
+gameSystemName: Warhammer Fantasy Battle 6th edition
+gameSystemRevision: '9'
+xmlns: http://www.battlescribe.net/schema/rosterSchema
+costs:
+  cost:
+  - name: pts
+    typeId: ecfa-8486-4f6c-c249
+    value: '1998'
+  - name: Dispel Dice
+    typeId: 6001-b2bf-4529-c07d
+    value: '3'
+  - name: Casting Dice
+    typeId: fcec-2340-6368-a2ba
+    value: '2'
+costLimits:
+  costLimit:
+  - name: pts
+    typeId: ecfa-8486-4f6c-c249
+    value: '2000'
+  - name: Casting Dice
+    typeId: fcec-2340-6368-a2ba
+    value: '3'
+  - name: Dispel Dice
+    typeId: 6001-b2bf-4529-c07d
+    value: '3'
+forces:
+  force:
+    id: mfk6rvdyrqxrymxhtg
+    name: Standard
+    entryId: 7d9d-6c8d-4ea0-b7ad
+    catalogueId: 5c3d-7f54-5a40-6940
+    catalogueRevision: '12'
+    catalogueName: Empire
+    selections:
+      selection:
+      - id: mfk6s3ohobneazcjlu
+        name: Elector Count
+        entryId: f58c-9606-507a-0542
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+            id: 91c3-fd82-42a5-ce2d
+            name: Elector Count
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '5'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '5'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '4'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '4'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '3'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '5'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '3'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '9'
+        selections:
+          selection:
+          - id: mfk6s3olbdy7ufa5q4r
+            name: General
+            entryId: bf2b-f4c7-0a9e-3b2d::1b7c-2c90-6d96-28c9
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+              - name: Casting Dice
+                typeId: fcec-2340-6368-a2ba
+                value: '2'
+              - name: Dispel Dice
+                typeId: 6001-b2bf-4529-c07d
+                value: '2'
+            categories:
+              category:
+                id: a37e-7207-de6d-acb0
+                name: General
+                entryId: a37e-7207-de6d-acb0
+                primary: 'false'
+          - id: mfk6s3olo39vzokvlg8
+            name: Hand Weapon
+            entryId: a6cf-c60e-13e2-ccdf::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk6s3olsued1fvovdg
+            name: Full Plate Armour
+            entryId: 108b-2224-0a21-e4ad::199f-b4b9-aaca-490f
+            entryGroupId: a840-2367-550a-08e8
+            number: '1'
+            type: upgrade
+            from: group
+            group: Armour
+            rules:
+              rule:
+                id: 3572-9507-a093-61f6
+                name: Full Plate Armour
+                hidden: 'false'
+                page: '19'
+                description:
+                  __content__: |-
+                    Such all enclosing suits of armour, as worn by the Templars, were crafted by Dwarven smiths and are kept in great honour in the armouries of the Emperor and the Knightly Orders. These suits of armour are very rare, but undoubtedly offer the best protection available to the warriors of Mankind.
+                    Rules: Full plate armour gives a 4+ armour save.
+            profiles:
+              profile:
+                id: 13cf-6068-9021-8660
+                name: Full Plate Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 4+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '12'
+          - id: mfk6s3olwr7ddvq9xf
+            name: Shield
+            entryId: a814-619b-b860-0eab::50e2-1873-a856-03e7
+            entryGroupId: a840-2367-550a-08e8
+            number: '1'
+            type: upgrade
+            from: group
+            group: Armour
+            profiles:
+              profile:
+                id: 3d79-7984-991a-8b67
+                name: Shield
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: "-1 SV, -2SV with HW"
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '3'
+          - id: mfk6s3olgxg52p2y7ep
+            name: Griffon
+            entryId: b027-89cd-97ee-6e33::0c82-fabb-3b47-4bf0
+            entryGroupId: e612-46fa-50db-7048
+            number: '1'
+            type: upgrade
+            from: group
+            group: Mounts
+            rules:
+              rule:
+              - id: 96f0-c50f-e59e-85fa
+                name: Terror
+                hidden: 'false'
+                page: '81'
+                description:
+                  __content__: Unit causes Terror
+              - id: e930-0b71-2fef-3937
+                name: Fly
+                hidden: 'false'
+                description:
+                  __content__: Unit can fly
+              - id: 4463-1b38-aa4d-e03c
+                name: Large Target
+                hidden: 'false'
+                description:
+                  __content__: Add +1 to hit for shooting
+            profiles:
+              profile:
+                id: 2db4-ad91-a6d6-4639
+                name: Griffon
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '6'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '5'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '0'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '5'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '5'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '4'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '5'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '4'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '7'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '200'
+          - id: mfk6s3ok2brypuar4vn
+            name: Empire handgun
+            entryId: 5928-6e18-d34f-44ce::5360-4088-4cb8-8081
+            entryGroupId: 90a9-b714-5fa3-125f
+            number: '1'
+            type: upgrade
+            from: group
+            group: Ranged Weapons
+            rules:
+              rule:
+                id: ddf5-fb2b-f33b-cff7
+                name: First Volley
+                hidden: 'false'
+                page: '19'
+                description:
+                  __content__: Being extremely temperamental pieces of technology,
+                    Empire handguns are more effective the first time they are fired.
+                    To represent this, the first time Empire handguns are fired they
+                    have an extra 1d6" maximum range (make one roll for each unit
+                    firing, before measuring the range to the intended target). Their
+                    short range is not affected and remains 12", regardless of their
+                    maximum range in the first volley.
+            profiles:
+              profile:
+                id: d70a-f315-2090-df08
+                name: Empire handgun
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: 24"
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: '4'
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: Move•or•fire; armour piercing, First volley
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '15'
+          - id: mfk6s3ojprawt4bop9
+            name: Great Weapon
+            entryId: 4c22-5a60-06d7-c9e4::1eb7-3f36-8cf7-e0ba
+            entryGroupId: d7b5-6f57-f3fc-a0c4
+            number: '1'
+            type: upgrade
+            from: group
+            group: Weapons
+            profiles:
+              profile:
+                id: 97d4-ed3b-5f76-5a23
+                name: Great Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As user +2
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: |-
+                      Requires two hands
+                      Always Strikes Last
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '6'
+        costs:
+          cost:
+            name: pts
+            typeId: ecfa-8486-4f6c-c249
+            value: '80'
+        categories:
+          category:
+          - id: d024-d25b-a9b4-73b6
+            entryId: d024-d25b-a9b4-73b6
+            name: Lord
+            primary: 'true'
+          - id: 7a1c-d611-c2dc-def1
+            name: Characters
+            entryId: 7a1c-d611-c2dc-def1
+            primary: 'false'
+      - id: mfk6s6lv62ua05ernud
+        name: Captain
+        entryId: 6686-1f55-dee3-1bcf
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+            id: 72c7-c857-79a2-8e87
+            name: Captain
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '5'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '5'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '4'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '4'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '2'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '5'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '3'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+          - id: mfk6s6m0onc39tdrbmf
+            name: Hand Weapon
+            entryId: ddd2-1612-0112-4cf0::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk6s6lzx8h5tyupke
+            name: Heavy Armour
+            entryId: 11e4-3619-83bc-6d11::dde4-0ba8-7b3c-57b7
+            entryGroupId: a636-8e32-771b-198b
+            number: '1'
+            type: upgrade
+            from: group
+            group: Armour
+            profiles:
+              profile:
+                id: 3dd5-f228-98a7-453a
+                name: Heavy Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 5+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '4'
+          - id: mfk6s6m0pdx13edqvlc
+            name: Empire Warhorse
+            entryId: f817-432b-7c1a-a8ca::a1e3-7f97-5fc6-abaa
+            entryGroupId: a57e-900f-105a-80d6
+            number: '1'
+            type: upgrade
+            from: group
+            group: Mounts
+            profiles:
+              profile:
+                id: 6d52-59d7-9b29-042b
+                name: Warhorse
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '8'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '3'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '0'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '3'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '1'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '5'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '10'
+          - id: mfk6s6lxhi1syok2w4w
+            name: Great Weapon
+            entryId: 6f87-161e-9096-d6f3::1eb7-3f36-8cf7-e0ba
+            entryGroupId: bd5a-39ff-8a66-d289
+            number: '1'
+            type: upgrade
+            from: group
+            group: Weapons
+            profiles:
+              profile:
+                id: 97d4-ed3b-5f76-5a23
+                name: Great Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As user +2
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: |-
+                      Requires two hands
+                      Always Strikes Last
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '4'
+        costs:
+          cost:
+            name: pts
+            typeId: ecfa-8486-4f6c-c249
+            value: '50'
+        categories:
+          category:
+          - id: 7a1c-d611-c2dc-def1
+            name: Characters
+            entryId: 7a1c-d611-c2dc-def1
+            primary: 'false'
+          - id: c16b-f319-2c62-2c12
+            entryId: c16b-f319-2c62-2c12
+            name: Heroes
+            primary: 'true'
+      - id: mfk6s7yz5wxmk0fhdnc
+        name: Warrior Priest
+        entryId: 5f78-90db-8c6a-0470
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+          - id: 4071-d264-9d21-d627
+            name: Prayers of Sigmar
+            hidden: 'false'
+            page: '16'
+            description:
+              __content__: |-
+                Warrior Priests are granted exceptional powers by their divine patron. Not as powerful as the spells of the Battle Wizards, these Prayers are still very valuable on the battlefield.
+                Once per Empire Magic phase, a Warrior Priest is allowed to use ONE prayer chosen from the Prayers of Sigmar list. Prayers are cast exactly like Bound spells from magic items, with a Power Level of 3. They can be cast on the Priest himself or on any one character or unit champion within 12" of the Priest. Prayers never affect a model's steed, and cannot be cast on Knights of the White Wolf or their Grand Master. Note that a Warrior Priest is never considered to be a Wizard.
+          - id: 7339-ca63-2165-43f0
+            name: Righteous Fury
+            hidden: 'false'
+            page: '16'
+            description:
+              __content__: |-
+                Warrior Priests and the unit they are with bate all models in any of the following armies: all Chaos (Chaos Warriors, Beastmen, Daemons and Chaos Dwarfs), all Undead (Kltemri and Vampire Counts). all Skaven.
+                Note that this power does not affect other characters (they are more difficult to influence than the average soldier) and units Immune to Psychology are not affected by this power as well. Also note that Warrior Priests will never join units of warriors who are not devout to Sigmar, so they cannot join units of Knights of the White Wolf
+          - id: 10a3-1ca9-2174-db3a
+            name: Blessing of Sigmar
+            hidden: 'false'
+            page: '16'
+            description:
+              __content__: Warrior Priests are blessed by Sigmar and can invoke the
+                god's protection against the sorcerous powers of the enemy. As long
+                as a Warrior Priest is on the battlefield, he adds one dice to the
+                Empire player's Dispel dice pool during the enemy's Magic phase.
+        profiles:
+          profile:
+            id: 27b1-cece-95cb-5c75
+            name: Warrior Priest
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '4'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '4'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '4'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '4'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '2'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '4'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '2'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+          - id: mfk6s7z0fmw5okiduzw
+            name: Warhammer (Hand Weapon)
+            entryId: f8a8-a0c4-6837-792d
+            number: '1'
+            type: upgrade
+            from: entry
+          - id: mfk6s7z1xqk9yppgxnq
+            name: Light Armour
+            entryId: e399-8fa7-b16c-0cff::055f-8e4e-f170-35d2
+            entryGroupId: 972a-14bd-2934-e6e9
+            number: '1'
+            type: upgrade
+            from: group
+            group: Armour
+            profiles:
+              profile:
+                id: 752a-95b9-343a-8f75
+                name: Light Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 6+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '2'
+          - id: mfk6s7z1g58plcr33t9
+            name: Empire Warhorse
+            entryId: 9f73-8ed0-1a84-556b::a1e3-7f97-5fc6-abaa
+            entryGroupId: e422-0830-7ea7-d884
+            number: '1'
+            type: upgrade
+            from: group
+            group: Mounts
+            profiles:
+              profile:
+                id: 6d52-59d7-9b29-042b
+                name: Warhorse
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '8'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '3'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '0'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '3'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '1'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '5'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '10'
+          - id: mfk6s7z0o7x9ckz88pn
+            name: 2nd Warhammer
+            entryId: a04a-3160-37e6-06fc
+            entryGroupId: d691-324b-c582-37f5
+            number: '1'
+            type: upgrade
+            from: group
+            group: Weapons
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '4'
+        costs:
+          cost:
+          - name: pts
+            typeId: ecfa-8486-4f6c-c249
+            value: '95'
+          - name: Dispel Dice
+            typeId: 6001-b2bf-4529-c07d
+            value: '1'
+        categories:
+          category:
+          - id: 7a1c-d611-c2dc-def1
+            name: Characters
+            entryId: 7a1c-d611-c2dc-def1
+            primary: 'false'
+          - id: c16b-f319-2c62-2c12
+            entryId: c16b-f319-2c62-2c12
+            name: Heroes
+            primary: 'true'
+      - id: mfk6saez52k564rn51v
+        name: Archers
+        entryId: de5e-a11d-80c4-7ceb
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+            id: 1945-ac89-9cc4-3537
+            name: Skirmishers
+            hidden: 'false'
+            description:
+              __content__: Unit are skirmishers
+        profiles:
+          profile:
+            id: b777-4b66-0f67-d717
+            name: Archer
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '7'
+        selections:
+          selection:
+          - id: mfk6saf0amy3giacgl8
+            name: Archer
+            entryId: 639d-da46-0bc0-72a5
+            number: '10'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '80'
+          - id: mfk6saf0yvtsw6sj3nk
+            name: Bow
+            entryId: 3151-14bb-a059-7121::9efb-2b02-f245-62f5
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: ec76-323e-c09d-eae4
+                name: Bow
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: 24"
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: '3'
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk6saf01ocoianez41
+            name: Hand Weapon
+            entryId: 8b6d-41d1-2227-5818::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk6saf0mec4ta7aes
+            name: Marksmen
+            entryId: 9931-8229-390e-0960
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: c9ba-c115-c7b6-91cd
+                name: Marksmen
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '3'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '4'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '3'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '1'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '7'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '5'
+        categories:
+          category:
+            id: 64bf-efb4-9978-26df
+            entryId: 64bf-efb4-9978-26df
+            name: Core
+            primary: 'true'
+      - id: mfk6sbv1ex5mv7d71x5
+        name: Free Company
+        entryId: 70a8-8502-8782-e725
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+            id: b777-4b66-0f67-d717
+            name: Fighter
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '7'
+        selections:
+          selection:
+          - id: mfk6sbv17m0odmntim
+            name: Fighter
+            entryId: 9e84-31d4-577f-d85d
+            number: '20'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '100'
+          - id: mfk6sbv2app2fa25et
+            name: Light Armour
+            entryId: 3644-44e8-7ae6-c1ea::055f-8e4e-f170-35d2
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 752a-95b9-343a-8f75
+                name: Light Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 6+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '20'
+          - id: mfk6sbv293tpqr5ukt
+            name: Musician
+            entryId: 0f24-f227-3d42-60c3
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '5'
+          - id: mfk6sbv2uduhnyssk0c
+            name: Sergeant
+            entryId: acd2-86b8-853b-97f2
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 67e6-c078-b852-ecdc
+                name: Sergeant
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '3'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '3'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '3'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '2'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '7'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '10'
+          - id: mfk6sbv29k80ub3jew9
+            name: Standard Bearer
+            entryId: f736-ce61-cf6a-f699
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '10'
+          - id: mfk6sbv22pv5ebunta9
+            name: Two Hand Weapons
+            entryId: '08e2-6382-3a33-df56::36a8-7bbb-d204-0314'
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 72aa-da68-2dae-4ab6
+                name: Additional Hand weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: "+1A"
+        categories:
+          category:
+            id: 64bf-efb4-9978-26df
+            entryId: 64bf-efb4-9978-26df
+            name: Core
+            primary: 'true'
+      - id: mfk6vry8d3jl31c055
+        name: Free Company
+        entryId: 70a8-8502-8782-e725
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+            id: b777-4b66-0f67-d717
+            name: Fighter
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '7'
+        selections:
+          selection:
+          - id: mfk6vry9kas7al9nfgb
+            name: Fighter
+            entryId: 9e84-31d4-577f-d85d
+            number: '20'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '100'
+          - id: mfk6vryaw9ap9jyu6g7
+            name: Light Armour
+            entryId: 3644-44e8-7ae6-c1ea::055f-8e4e-f170-35d2
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 752a-95b9-343a-8f75
+                name: Light Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 6+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '20'
+          - id: mfk6vryaliq6c9qqcf
+            name: Musician
+            entryId: 0f24-f227-3d42-60c3
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '5'
+          - id: mfk6vryadxtbq1887r5
+            name: Sergeant
+            entryId: acd2-86b8-853b-97f2
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 67e6-c078-b852-ecdc
+                name: Sergeant
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '3'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '3'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '3'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '2'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '7'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '10'
+          - id: mfk6vryaewgxnifaorg
+            name: Standard Bearer
+            entryId: f736-ce61-cf6a-f699
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '10'
+          - id: mfk6vryaa46pccqmzsr
+            name: Two Hand Weapons
+            entryId: '08e2-6382-3a33-df56::36a8-7bbb-d204-0314'
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 72aa-da68-2dae-4ab6
+                name: Additional Hand weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: "+1A"
+        categories:
+          category:
+            id: 64bf-efb4-9978-26df
+            entryId: 64bf-efb4-9978-26df
+            name: Core
+            primary: 'true'
+      - id: mfk6scfjf7ccqn6qzg6
+        name: Halberdiers
+        entryId: 569f-7be3-1aa2-004f
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+            id: b777-4b66-0f67-d717
+            name: Halberdier
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '7'
+        selections:
+          selection:
+          - id: mfk6scfkix2dqlv1typ
+            name: Halberdiers
+            entryId: 744d-a00d-b16c-3713
+            number: '20'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '120'
+          - id: mfk6scflb7z758j530w
+            name: Halberds
+            entryId: ddc3-c66b-ac3b-b97b::b3f3-a133-2869-0be8
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 3596-7d17-9ca2-fb92
+                name: Halberd
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User +1
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: Requires 2 Hands
+          - id: mfk6scflcew91vrt86
+            name: Hand Weapon
+            entryId: 1e3d-8d21-49e0-224e::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk6scfl6istuuzfd3o
+            name: Light Armour
+            entryId: '09eb-c22e-73f5-08b3::055f-8e4e-f170-35d2'
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 752a-95b9-343a-8f75
+                name: Light Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 6+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+          - id: mfk6scfl3u6l8nqvwt3
+            name: Musician
+            entryId: 488a-faae-0167-b3a0
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '5'
+          - id: mfk6scfl2dst5u02ag4
+            name: Sergeant
+            entryId: a53b-b67d-372b-7ee9
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 67e6-c078-b852-ecdc
+                name: Sergeant
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '3'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '3'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '3'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '2'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '7'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '10'
+          - id: mfk6scfmzlqz2ado07a
+            name: Shield
+            entryId: c536-46ef-c606-862f::50e2-1873-a856-03e7
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 3d79-7984-991a-8b67
+                name: Shield
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: "-1 SV, -2SV with HW"
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '20'
+          - id: mfk6scflo5tn8h460xb
+            name: Standard Bearer
+            entryId: fa7f-f7d6-cf87-1799
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '10'
+          - id: mfk6ulj6591l2n14vxt
+            name: Free Company
+            entryId: a2ab-5c27-fac0-4332::494b-a9d1-615d-b081::a08f-5c84-323b-82c0
+            entryGroupId: a2ab-5c27-fac0-4332::392f-5b21-9e42-6988
+            number: '1'
+            type: unit
+            from: group
+            group: Detachments
+            profiles:
+              profile:
+                id: b777-4b66-0f67-d717
+                name: Fighter
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '3'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '3'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '3'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '1'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '7'
+            selections:
+              selection:
+              - id: mfk6ulj7l6d9zvy5v3q
+                name: Fighter
+                entryId: a2ab-5c27-fac0-4332::494b-a9d1-615d-b081::76be-f756-90cc-e085
+                number: '5'
+                type: model
+                from: entry
+                costs:
+                  cost:
+                    name: pts
+                    typeId: ecfa-8486-4f6c-c249
+                    value: '25'
+              - id: mfk6ulj7dronzwyk59g
+                name: Two Hand Weapons
+                entryId: a2ab-5c27-fac0-4332::494b-a9d1-615d-b081::9a08-2c73-935f-7106::36a8-7bbb-d204-0314
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 72aa-da68-2dae-4ab6
+                    name: Additional Hand weapon
+                    hidden: 'false'
+                    typeId: 7889-42d9-70a0-3ea9
+                    typeName: Weapon
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Range
+                        typeId: 3107-4d1e-9a51-6564
+                      - name: Strength
+                        typeId: 6fe4-1ebb-cb04-1378
+                      - name: Special Rules
+                        typeId: a21a-cdc0-4b13-b236
+                        __content__: "+1A"
+            categories:
+              category:
+                id: b0b1-5266-2bcd-f592
+                name: Detachment
+                entryId: b0b1-5266-2bcd-f592
+                primary: 'false'
+          - id: mfk6uqg91yedk6kd5n3
+            name: Spearmen Detachment
+            entryId: a2ab-5c27-fac0-4332::d2e4-3978-a975-5813::6a47-b6c6-185d-bf59
+            entryGroupId: a2ab-5c27-fac0-4332::392f-5b21-9e42-6988
+            number: '1'
+            type: unit
+            from: group
+            group: Detachments
+            profiles:
+              profile:
+                id: b777-4b66-0f67-d717
+                name: Spearmen
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '3'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '3'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '3'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '1'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '7'
+            selections:
+              selection:
+              - id: mfk6uqgaex3kv1ggrhm
+                name: Hand Weapon
+                entryId: a2ab-5c27-fac0-4332::d2e4-3978-a975-5813::9b85-1674-f6b5-e66c::abdb-bbd0-41b2-5dff
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 5556-38ea-b278-4a8f
+                    name: Hand Weapon
+                    hidden: 'false'
+                    typeId: 7889-42d9-70a0-3ea9
+                    typeName: Weapon
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Range
+                        typeId: 3107-4d1e-9a51-6564
+                        __content__: CC only
+                      - name: Strength
+                        typeId: 6fe4-1ebb-cb04-1378
+                        __content__: As User
+                      - name: Special Rules
+                        typeId: a21a-cdc0-4b13-b236
+              - id: mfk6uqga0k3lpvus9aeq
+                name: Light Armour
+                entryId: a2ab-5c27-fac0-4332::d2e4-3978-a975-5813::cb41-13b1-1e29-0fdb::055f-8e4e-f170-35d2
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 752a-95b9-343a-8f75
+                    name: Light Armour
+                    hidden: 'false'
+                    typeId: f681-9937-db53-f1d8
+                    typeName: Armour
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Saving Throw Modifier
+                        typeId: b600-e1ed-0765-27c1
+                        __content__: 6+
+                      - name: Special rules
+                        typeId: 42c3-68ab-cfa5-203e
+              - id: mfk6uqgaew5lnsrn5n
+                name: Spear Infantry
+                entryId: a2ab-5c27-fac0-4332::d2e4-3978-a975-5813::374e-0098-48fa-a935::104f-5817-4bda-9382
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 222b-1e29-9d24-09d7
+                    name: Spears (Infantry)
+                    hidden: 'false'
+                    typeId: 7889-42d9-70a0-3ea9
+                    typeName: Weapon
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Range
+                        typeId: 3107-4d1e-9a51-6564
+                        __content__: "-"
+                      - name: Strength
+                        typeId: 6fe4-1ebb-cb04-1378
+                        __content__: As user
+                      - name: Special Rules
+                        typeId: a21a-cdc0-4b13-b236
+                        __content__: May fight in two ranks
+              - id: mfk6uqgapb8b9idju
+                name: Spearmen
+                entryId: a2ab-5c27-fac0-4332::d2e4-3978-a975-5813::8a0a-7be0-ee05-4668
+                number: '5'
+                type: model
+                from: entry
+                costs:
+                  cost:
+                    name: pts
+                    typeId: ecfa-8486-4f6c-c249
+                    value: '30'
+            categories:
+              category:
+                id: b0b1-5266-2bcd-f592
+                name: Detachment
+                entryId: b0b1-5266-2bcd-f592
+                primary: 'false'
+        categories:
+          category:
+            id: 64bf-efb4-9978-26df
+            entryId: 64bf-efb4-9978-26df
+            name: Core
+            primary: 'true'
+      - id: mfk6sj9c1ugi5iwmftz
+        name: Great Cannon
+        entryId: d3f0-a597-6023-0c70
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+          - id: f9f4-4ab2-8b24-8433
+            name: Canon
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: "-"
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: "-"
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: "-"
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: "-"
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '7'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '3'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: "-"
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: "-"
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: "-"
+          - id: b777-4b66-0f67-d717
+            name: Crew
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '7'
+        selections:
+          selection:
+            id: mfk6sj9dcrxlxgu39s
+            name: 3 Crew
+            entryId: 367b-d51f-1eed-8654
+            number: '1'
+            type: upgrade
+            from: entry
+            selections:
+              selection:
+                id: mfk6sj9ey537uicpr1
+                name: Hand Weapon
+                entryId: 4d97-1798-432e-97bb::abdb-bbd0-41b2-5dff
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 5556-38ea-b278-4a8f
+                    name: Hand Weapon
+                    hidden: 'false'
+                    typeId: 7889-42d9-70a0-3ea9
+                    typeName: Weapon
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Range
+                        typeId: 3107-4d1e-9a51-6564
+                        __content__: CC only
+                      - name: Strength
+                        typeId: 6fe4-1ebb-cb04-1378
+                        __content__: As User
+                      - name: Special Rules
+                        typeId: a21a-cdc0-4b13-b236
+        costs:
+          cost:
+            name: pts
+            typeId: ecfa-8486-4f6c-c249
+            value: '100'
+        categories:
+          category:
+            id: 43cc-fc3f-35a7-8d03
+            entryId: 43cc-fc3f-35a7-8d03
+            name: Special
+            primary: 'true'
+      - id: mfk6sh4v7bde3qaudvl
+        name: Greatswords
+        entryId: c976-7d43-b55c-3e12
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+            id: 410a-0d06-9044-665e
+            name: Stubborn
+            hidden: 'false'
+            description:
+              __content__: Leadership breaktest are unmodified.
+        profiles:
+          profile:
+            id: 15ce-32a2-92e2-1279
+            name: Greatsword
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '4'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '8'
+        selections:
+          selection:
+          - id: mfk6sh4x6bikq6w2qyc
+            name: Counts Champion
+            entryId: a081-4dc9-7108-c723
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 73cc-0129-e7fe-ea53
+                name: Counts Champion
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '4'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '3'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '3'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '2'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '8'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '12'
+          - id: mfk6sh4x3gvtjwpwngs
+            name: Full Plate Armour
+            entryId: e140-cb30-cea3-5e76::199f-b4b9-aaca-490f
+            number: '1'
+            type: upgrade
+            from: entry
+            rules:
+              rule:
+                id: 3572-9507-a093-61f6
+                name: Full Plate Armour
+                hidden: 'false'
+                page: '19'
+                description:
+                  __content__: |-
+                    Such all enclosing suits of armour, as worn by the Templars, were crafted by Dwarven smiths and are kept in great honour in the armouries of the Emperor and the Knightly Orders. These suits of armour are very rare, but undoubtedly offer the best protection available to the warriors of Mankind.
+                    Rules: Full plate armour gives a 4+ armour save.
+            profiles:
+              profile:
+                id: 13cf-6068-9021-8660
+                name: Full Plate Armour
+                hidden: 'false'
+                typeId: f681-9937-db53-f1d8
+                typeName: Armour
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Saving Throw Modifier
+                    typeId: b600-e1ed-0765-27c1
+                    __content__: 4+
+                  - name: Special rules
+                    typeId: 42c3-68ab-cfa5-203e
+          - id: mfk6sh4xvp0cjx9v7
+            name: Great Weapon
+            entryId: 47dd-aecb-23d7-9713::1eb7-3f36-8cf7-e0ba
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+              - id: 97d4-ed3b-5f76-5a23
+                name: Great Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As user +2
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: |-
+                      Requires two hands
+                      Always Strikes Last
+              - id: 97d4-ed3b-5f76-5a23
+                name: Great Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As user +2
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: |-
+                      Requires two hands
+                      Always Strikes Last
+          - id: mfk6sh4w54muhusmgwk
+            name: Greatsword
+            entryId: a65e-3c1c-4bb6-7ccc
+            number: '19'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '228'
+          - id: mfk6sh4yzj5sepl2wik
+            name: Hand Weapon
+            entryId: c6ac-6b6b-8c2d-0308::abdb-bbd0-41b2-5dff
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 5556-38ea-b278-4a8f
+                name: Hand Weapon
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: CC only
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As User
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+          - id: mfk6sh4wq68uq3f8tvd
+            name: Musician
+            entryId: fee6-0733-3b19-7c7a
+            number: '1'
+            type: upgrade
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '6'
+          - id: mfk6uyms0jwuv46s6s1
+            name: Swordsmen Detachment
+            entryId: 6aad-4e92-356c-e468::2741-e74d-baf9-8403::81eb-90ce-eaa0-190e
+            entryGroupId: 6aad-4e92-356c-e468::392f-5b21-9e42-6988
+            number: '1'
+            type: unit
+            from: group
+            group: Detachments
+            profiles:
+              profile:
+                id: '0538-8251-33ec-3140'
+                name: Swordsmen
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '4'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '3'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '4'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '1'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '7'
+            selections:
+              selection:
+              - id: mfk6uymtk90ovxtmp0e
+                name: Hand Weapon
+                entryId: 6aad-4e92-356c-e468::2741-e74d-baf9-8403::a2be-ffce-1eb3-2218::abdb-bbd0-41b2-5dff
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 5556-38ea-b278-4a8f
+                    name: Hand Weapon
+                    hidden: 'false'
+                    typeId: 7889-42d9-70a0-3ea9
+                    typeName: Weapon
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Range
+                        typeId: 3107-4d1e-9a51-6564
+                        __content__: CC only
+                      - name: Strength
+                        typeId: 6fe4-1ebb-cb04-1378
+                        __content__: As User
+                      - name: Special Rules
+                        typeId: a21a-cdc0-4b13-b236
+              - id: mfk6uymts7dtb1qwxq
+                name: Light Armour
+                entryId: 6aad-4e92-356c-e468::2741-e74d-baf9-8403::b220-efec-dcee-cd5e::055f-8e4e-f170-35d2
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 752a-95b9-343a-8f75
+                    name: Light Armour
+                    hidden: 'false'
+                    typeId: f681-9937-db53-f1d8
+                    typeName: Armour
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Saving Throw Modifier
+                        typeId: b600-e1ed-0765-27c1
+                        __content__: 6+
+                      - name: Special rules
+                        typeId: 42c3-68ab-cfa5-203e
+              - id: mfk6uymtn287zdfjuko
+                name: Shield
+                entryId: 6aad-4e92-356c-e468::2741-e74d-baf9-8403::2ae5-b9f0-e618-fe97::50e2-1873-a856-03e7
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 3d79-7984-991a-8b67
+                    name: Shield
+                    hidden: 'false'
+                    typeId: f681-9937-db53-f1d8
+                    typeName: Armour
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Saving Throw Modifier
+                        typeId: b600-e1ed-0765-27c1
+                        __content__: "-1 SV, -2SV with HW"
+                      - name: Special rules
+                        typeId: 42c3-68ab-cfa5-203e
+              - id: mfk6uymtii64regnvhc
+                name: Swordsmen
+                entryId: 6aad-4e92-356c-e468::2741-e74d-baf9-8403::53d5-3f03-9860-e3d8
+                number: '5'
+                type: model
+                from: entry
+                costs:
+                  cost:
+                    name: pts
+                    typeId: ecfa-8486-4f6c-c249
+                    value: '35'
+            categories:
+              category:
+                id: b0b1-5266-2bcd-f592
+                name: Detachment
+                entryId: b0b1-5266-2bcd-f592
+                primary: 'false'
+          - id: mfk6uy2btj41uj8mrj
+            name: Swordsmen Detachment
+            entryId: 6aad-4e92-356c-e468::2741-e74d-baf9-8403::81eb-90ce-eaa0-190e
+            entryGroupId: 6aad-4e92-356c-e468::392f-5b21-9e42-6988
+            number: '1'
+            type: unit
+            from: group
+            group: Detachments
+            profiles:
+              profile:
+                id: '0538-8251-33ec-3140'
+                name: Swordsmen
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '4'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '3'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '3'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '4'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '1'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '7'
+            selections:
+              selection:
+              - id: mfk6uy2dy8s7fe5p5f
+                name: Hand Weapon
+                entryId: 6aad-4e92-356c-e468::2741-e74d-baf9-8403::a2be-ffce-1eb3-2218::abdb-bbd0-41b2-5dff
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 5556-38ea-b278-4a8f
+                    name: Hand Weapon
+                    hidden: 'false'
+                    typeId: 7889-42d9-70a0-3ea9
+                    typeName: Weapon
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Range
+                        typeId: 3107-4d1e-9a51-6564
+                        __content__: CC only
+                      - name: Strength
+                        typeId: 6fe4-1ebb-cb04-1378
+                        __content__: As User
+                      - name: Special Rules
+                        typeId: a21a-cdc0-4b13-b236
+              - id: mfk6uy2dpkurkisj0r7
+                name: Light Armour
+                entryId: 6aad-4e92-356c-e468::2741-e74d-baf9-8403::b220-efec-dcee-cd5e::055f-8e4e-f170-35d2
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 752a-95b9-343a-8f75
+                    name: Light Armour
+                    hidden: 'false'
+                    typeId: f681-9937-db53-f1d8
+                    typeName: Armour
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Saving Throw Modifier
+                        typeId: b600-e1ed-0765-27c1
+                        __content__: 6+
+                      - name: Special rules
+                        typeId: 42c3-68ab-cfa5-203e
+              - id: mfk6uy2dtjmruxw4t2n
+                name: Shield
+                entryId: 6aad-4e92-356c-e468::2741-e74d-baf9-8403::2ae5-b9f0-e618-fe97::50e2-1873-a856-03e7
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 3d79-7984-991a-8b67
+                    name: Shield
+                    hidden: 'false'
+                    typeId: f681-9937-db53-f1d8
+                    typeName: Armour
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Saving Throw Modifier
+                        typeId: b600-e1ed-0765-27c1
+                        __content__: "-1 SV, -2SV with HW"
+                      - name: Special rules
+                        typeId: 42c3-68ab-cfa5-203e
+              - id: mfk6uy2dq3ssc46x6j
+                name: Swordsmen
+                entryId: 6aad-4e92-356c-e468::2741-e74d-baf9-8403::53d5-3f03-9860-e3d8
+                number: '5'
+                type: model
+                from: entry
+                costs:
+                  cost:
+                    name: pts
+                    typeId: ecfa-8486-4f6c-c249
+                    value: '35'
+            categories:
+              category:
+                id: b0b1-5266-2bcd-f592
+                name: Detachment
+                entryId: b0b1-5266-2bcd-f592
+                primary: 'false'
+        categories:
+          category:
+            id: 43cc-fc3f-35a7-8d03
+            entryId: 43cc-fc3f-35a7-8d03
+            name: Special
+            primary: 'true'
+      - id: mfk6ss5pxfnqjhhbc6
+        name: Dog of War
+        entryId: b88d-bde1-fa73-778b
+        number: '1'
+        type: unit
+        from: entry
+        categories:
+          category:
+            id: e94b-6a54-8779-cd60
+            entryId: e94b-6a54-8779-cd60
+            name: Rare
+            primary: 'true'
+      - id: mfk6slbboswm6bxrhv
+        name: Flagellants
+        entryId: 2e84-5c9d-84bf-4895
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+            id: f6e0-1944-db1b-ce9f
+            name: Crazed!
+            hidden: 'false'
+            page: '17'
+            description:
+              __content__: |-
+                Because they are so demented. Flagellants arc immune to Psychology. never take Break tests and automatically pass any and all Leadership tests they are required to take.
+                Flagellants cannot flee as a charge reaction and will always pursue a broken enemy.
+                Flagellants may never be joined by any characters.
+        profiles:
+          profile:
+            id: 565c-43f8-089f-19fb
+            name: Flagellants
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '2'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '2'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '4'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '2'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '10'
+        selections:
+          selection:
+          - id: mfk6slbdc9y8l3nk6y
+            name: Flagellants
+            entryId: 0a4e-f14e-003d-176e
+            number: '5'
+            type: model
+            from: entry
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '55'
+          - id: mfk6slbdczn4s0pvh1e
+            name: Flail
+            entryId: 7a49-76c8-1146-80fd::2eb9-be12-caec-57e8
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 10f8-e196-d180-044c
+                name: Flail
+                hidden: 'false'
+                typeId: 7889-42d9-70a0-3ea9
+                typeName: Weapon
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Range
+                    typeId: 3107-4d1e-9a51-6564
+                    __content__: cc
+                  - name: Strength
+                    typeId: 6fe4-1ebb-cb04-1378
+                    __content__: As user
+                  - name: Special Rules
+                    typeId: a21a-cdc0-4b13-b236
+                    __content__: "+2 Str on first turn of combat. Requires 2 hands"
+          - id: mfk6slbdrosfvtkiogd
+            name: Prophet of Doom
+            entryId: db96-52f6-330b-9c5a
+            number: '1'
+            type: upgrade
+            from: entry
+            profiles:
+              profile:
+                id: 3d38-7e0b-4b56-2b10
+                name: Prophet of Doom
+                hidden: 'false'
+                typeId: a54a-7f00-29bf-12b1
+                typeName: Profile
+                from: entry
+                characteristics:
+                  characteristic:
+                  - name: Mv
+                    typeId: 0e92-d038-82bf-fb41
+                    __content__: '4'
+                  - name: WS
+                    typeId: f95b-da01-0578-3bdc
+                    __content__: '2'
+                  - name: BS
+                    typeId: 4a8b-0c8e-3daf-7901
+                    __content__: '2'
+                  - name: S
+                    typeId: b690-4bc0-bb73-267b
+                    __content__: '3'
+                  - name: T
+                    typeId: 8712-f56f-5b22-a720
+                    __content__: '4'
+                  - name: W
+                    typeId: 253a-9b00-4fde-8ac2
+                    __content__: '1'
+                  - name: I
+                    typeId: dfff-363e-f72a-5a59
+                    __content__: '3'
+                  - name: A
+                    typeId: 6b9f-c8fe-8998-27e3
+                    __content__: '3'
+                  - name: Ld
+                    typeId: 2d45-18fe-9eb3-b113
+                    __content__: '10'
+            costs:
+              cost:
+                name: pts
+                typeId: ecfa-8486-4f6c-c249
+                value: '12'
+        categories:
+          category:
+            id: e94b-6a54-8779-cd60
+            entryId: e94b-6a54-8779-cd60
+            name: Rare
+            primary: 'true'
+      - id: mfk6vb1mmkxhfqfbs
+        name: Hellblaster Volley Gun
+        entryId: f989-ca7c-b4e6-5d98
+        number: '1'
+        type: unit
+        from: entry
+        profiles:
+          profile:
+          - id: f9f4-4ab2-8b24-8433
+            name: Hellblaster Volley Gun
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: "-"
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: "-"
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: "-"
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: "-"
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '7'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '3'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: "-"
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: "-"
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: "-"
+          - id: b777-4b66-0f67-d717
+            name: Crew
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+                __content__: '4'
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '3'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '3'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '3'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: '3'
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: '1'
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '3'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '1'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '7'
+        selections:
+          selection:
+            id: mfk6vb1ncpyirdsbbdj
+            name: 3 Crew
+            entryId: 27ff-2e45-a80f-ee3e
+            number: '1'
+            type: upgrade
+            from: entry
+            selections:
+              selection:
+                id: mfk6vb1ockuiptf8xzc
+                name: Hand Weapon
+                entryId: 7684-c1fa-e142-98af::abdb-bbd0-41b2-5dff
+                number: '1'
+                type: upgrade
+                from: entry
+                profiles:
+                  profile:
+                    id: 5556-38ea-b278-4a8f
+                    name: Hand Weapon
+                    hidden: 'false'
+                    typeId: 7889-42d9-70a0-3ea9
+                    typeName: Weapon
+                    from: entry
+                    characteristics:
+                      characteristic:
+                      - name: Range
+                        typeId: 3107-4d1e-9a51-6564
+                        __content__: CC only
+                      - name: Strength
+                        typeId: 6fe4-1ebb-cb04-1378
+                        __content__: As User
+                      - name: Special Rules
+                        typeId: a21a-cdc0-4b13-b236
+        costs:
+          cost:
+            name: pts
+            typeId: ecfa-8486-4f6c-c249
+            value: '125'
+        categories:
+          category:
+            id: e94b-6a54-8779-cd60
+            entryId: e94b-6a54-8779-cd60
+            name: Rare
+            primary: 'true'
+      - id: mfk6spiwvziyfvnyu3
+        name: Steam Tank
+        entryId: 8d26-ff5b-57a1-bd47
+        number: '1'
+        type: unit
+        from: entry
+        rules:
+          rule:
+          - id: f243-12e3-bb98-f2e1
+            name: Unit Strength 10
+            hidden: 'false'
+            description:
+              __content__: US 10
+          - id: 8ae3-9724-980f-7308
+            name: Unbreakable
+            hidden: 'false'
+            description:
+              __content__: "Some creatures are utterly fearless and will never give
+                \nup a battle, no matter how hopeless the situation \nmight be. This
+                could be because of the troops'\nextreme bravery, or because the creatures
+                fighting are not truly alive.\nThese troops never break in close combat,
+                and they are also immune to panic, terror and fear or any other Psychology
+                rules. If defeated in close combat (even by fear-causing creatures
+                that outnumber them) unbreakable troops continue to fight on regardless
+                of results. They may never, however. declare that they are fleeing
+                as a charge reaction, as they will literally die fighting under any
+                circumstances."
+          - id: 4463-1b38-aa4d-e03c
+            name: Large Target
+            hidden: 'false'
+            description:
+              __content__: Add +1 to hit for shooting
+          - id: 96f0-c50f-e59e-85fa
+            name: Terror
+            hidden: 'false'
+            page: '81'
+            description:
+              __content__: Unit causes Terror
+        profiles:
+          profile:
+            id: 8c1d-6a9f-e971-ec3a
+            name: Steam Tank
+            hidden: 'false'
+            typeId: a54a-7f00-29bf-12b1
+            typeName: Profile
+            from: entry
+            characteristics:
+              characteristic:
+              - name: Mv
+                typeId: 0e92-d038-82bf-fb41
+              - name: WS
+                typeId: f95b-da01-0578-3bdc
+                __content__: '1'
+              - name: BS
+                typeId: 4a8b-0c8e-3daf-7901
+                __content__: '4'
+              - name: S
+                typeId: b690-4bc0-bb73-267b
+                __content__: '6'
+              - name: T
+                typeId: 8712-f56f-5b22-a720
+                __content__: "-"
+              - name: W
+                typeId: 253a-9b00-4fde-8ac2
+                __content__: "-"
+              - name: I
+                typeId: dfff-363e-f72a-5a59
+                __content__: '0'
+              - name: A
+                typeId: 6b9f-c8fe-8998-27e3
+                __content__: '0'
+              - name: Ld
+                typeId: 2d45-18fe-9eb3-b113
+                __content__: '10'
+        selections:
+          selection:
+          - id: mfk6spixye96dl0thc
+            name: Cannon in the hull
+            entryId: 8359-4fb7-d558-270c
+            number: '1'
+            type: upgrade
+            from: entry
+          - id: mfk6spixfxgs113rfp5
+            name: Steam gun in turret
+            entryId: 4961-a250-64a0-816d
+            number: '1'
+            type: upgrade
+            from: entry
+          - id: mfk6spixn4cs7ksp1s
+            name: Tank commanders repeater pistol
+            entryId: afbd-f19b-885e-84ff
+            number: '1'
+            type: upgrade
+            from: entry
+        costs:
+          cost:
+            name: pts
+            typeId: ecfa-8486-4f6c-c249
+            value: '300'
+        categories:
+          category:
+            id: e94b-6a54-8779-cd60
+            entryId: e94b-6a54-8779-cd60
+            name: Rare
+            primary: 'true'
+    categories:
+      category:
+      - name: Lord
+        id: mfk6rvg7b7kt8gbcyo
+        primary: 'false'
+        entryId: d024-d25b-a9b4-73b6
+      - name: Heroes
+        id: mfk6rvg7rqa85irjqh9
+        primary: 'false'
+        entryId: c16b-f319-2c62-2c12
+      - name: Core
+        id: mfk6rvg79sqwk156czf
+        primary: 'false'
+        entryId: 64bf-efb4-9978-26df
+      - name: Special
+        id: mfk6rvg7145iumqbtl5b
+        primary: 'false'
+        entryId: 43cc-fc3f-35a7-8d03
+      - name: Rare
+        id: mfk6rvg8lgm2c42ra8
+        primary: 'false'
+        entryId: e94b-6a54-8779-cd60
+      - name: Characters
+        id: mfk6rvg8k6pwjnp5jvf
+        primary: 'false'
+        entryId: 7a1c-d611-c2dc-def1
+      - name: Special Characters
+        id: mfk6rvg9l6mg4r73nng
+        primary: 'false'
+        entryId: 0644-bfcd-32c2-21dc

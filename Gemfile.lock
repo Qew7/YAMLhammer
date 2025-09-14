@@ -1,0 +1,18 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.25.5)
+    rexml (3.4.4)
+    rubyzip (3.1.0)
+
+PLATFORMS
+  arm64-darwin-23
+  ruby
+
+DEPENDENCIES
+  minitest
+  rexml
+  rubyzip
+
+BUNDLED WITH
+   2.7.1
