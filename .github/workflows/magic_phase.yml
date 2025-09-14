@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
-      next_battlefield_artifact_name: magic-phase-battlefield-state
+      next_battlefield_artifact_name: battlefield-state
       temp_battlefield_file: ${{ inputs.temp_battlefield_file }}
       battlefield_dir: ${{ inputs.battlefield_dir }}
     steps:
