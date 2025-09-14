@@ -42,6 +42,9 @@ jobs:
 
       - name: Run Magic Phase
         run: |
+          echo "Current working directory: $(pwd)"
+          echo "Files after artifact download:"
+          ls -R
           echo "Temp battlefield file: ${{ inputs.temp_battlefield_file }}"
           ruby phases/magic_phase.rb ${{ inputs.temp_battlefield_file }}
 
