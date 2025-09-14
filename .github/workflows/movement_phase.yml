@@ -56,6 +56,7 @@ jobs:
           path: ${{ inputs.battlefield_dir }}
 
       - name: Set up Ruby
+        if: ${{ ! inputs.skip_execution }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.5'
