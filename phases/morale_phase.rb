@@ -12,7 +12,6 @@ class MoralePhase
     puts "  Executing Morale Phase"
     puts "      Morale is checked."
 
-    set_next_phase # Call the new method from PhaseManager
 
     save_battlefield
   end

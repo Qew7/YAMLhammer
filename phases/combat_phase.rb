@@ -12,7 +12,6 @@ class CombatPhase
     puts "  Executing Combat Phase"
     puts "      Units engage in close quarters."
 
-    set_next_phase # Call the new method from PhaseManager
 
     save_battlefield
   end

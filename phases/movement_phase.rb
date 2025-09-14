@@ -12,8 +12,6 @@ class MovementPhase
     puts "  Executing Movement Phase"
     puts "      Units are moved."
 
-    set_next_phase # Call the new method from PhaseManager
-
     save_battlefield
   end
 end

@@ -10,9 +10,16 @@ on:
       battlefield_dir:
         required: true
         type: string
-      previous_phase_output_name:
+      current_phase_name:
         required: true
         type: string
+      all_phases_list:
+        required: true
+        type: string
+      skip_execution:
+        required: false
+        type: boolean
+        default: false
     outputs:
       next_phase_output:
         value: ${{ jobs.combat_phase_job.outputs.next_phase_output }}
@@ -46,20 +53,24 @@ jobs:
         with:
           ruby-version: '3.4.5'
 
-      - name: Run Combat Phase
+      - name: Execute Combat Phase
+        if: ${{ ! inputs.skip_execution }}
         run: ruby phases/combat_phase.rb ${{ inputs.temp_battlefield_file }}
 
       - name: Determine next phase
         id: determine_next_phase
         run: |
-          BATTLEFIELD_FILE="${{ inputs.temp_battlefield_file }}"
-          ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE" # Simplified path as artifact now keeps directory structure
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
+          ALL_PHASES_JSON='${{ inputs.all_phases_list }}'
+          CURRENT_PHASE_NAME='${{ inputs.current_phase_name }}'
+
+          # Use jq to parse the JSON array and find the next phase
+          NEXT_PHASE=$(echo "$ALL_PHASES_JSON" | jq -r '.[]' | awk -v current="$CURRENT_PHASE_NAME" '$1 == current {f=1; next} f==1 {print; f=0}' | head -n 1)
+
           echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
 
       - name: Upload battlefield artifact
         uses: actions/upload-artifact@v4
         with:
           name: combat-phase-battlefield-state
-          path: ${{ inputs.battlefield_dir }} # Upload the entire directory
+          path: ${{ inputs.temp_battlefield_file }}
           retention-days: 1

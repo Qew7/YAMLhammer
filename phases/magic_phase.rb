@@ -12,7 +12,6 @@ class MagicPhase
     puts "  Executing Magic Phase"
     puts "      Magic is cast and dispelled."
 
-    set_next_phase # Call the new method from PhaseManager
 
     save_battlefield
   end

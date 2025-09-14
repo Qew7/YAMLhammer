@@ -73,8 +73,11 @@ jobs:
       battlefield_artifact_name: ${{ needs.setup-battle.outputs.initial_battlefield_artifact_name }}
       temp_battlefield_file: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
       battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
+      current_phase_name: 'Movement Phase'
+      all_phases_list: ${{ needs.setup-battle.outputs.all_phases }}
+      skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Movement Phase') }}
     secrets: inherit
-    if: needs.setup-battle.outputs.initial_phase_name == 'Movement Phase'
+    if: success() && (needs.setup-battle.outputs.initial_phase_name == 'Movement Phase' || contains(fromJson(needs.setup-battle.outputs.all_phases), needs.setup-battle.outputs.initial_phase_name))
 
   magic-phase:
     uses: ./.github/workflows/magic_phase.yml
@@ -83,9 +86,11 @@ jobs:
       battlefield_artifact_name: ${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}
       temp_battlefield_file: ${{ needs.movement-phase.outputs.temp_battlefield_file }}
       battlefield_dir: ${{ needs.movement-phase.outputs.battlefield_dir }}
-      previous_phase_output_name: ${{ needs.movement-phase.outputs.next_phase_output }}
+      current_phase_name: 'Magic Phase'
+      all_phases_list: ${{ needs.setup-battle.outputs.all_phases }}
+      skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Magic Phase') }}
     secrets: inherit
-    if: needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
+    if: success() && needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
 
   shooting-phase:
     uses: ./.github/workflows/shooting_phase.yml
@@ -94,9 +99,11 @@ jobs:
       battlefield_artifact_name: ${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}
       temp_battlefield_file: ${{ needs.magic-phase.outputs.temp_battlefield_file }}
       battlefield_dir: ${{ needs.magic-phase.outputs.battlefield_dir }}
-      previous_phase_output_name: ${{ needs.magic-phase.outputs.next_phase_output }}
+      current_phase_name: 'Shooting Phase'
+      all_phases_list: ${{ needs.setup-battle.outputs.all_phases }}
+      skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Shooting Phase') }}
     secrets: inherit
-    if: needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
+    if: success() && needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
 
   combat-phase:
     uses: ./.github/workflows/combat_phase.yml
@@ -105,9 +112,11 @@ jobs:
       battlefield_artifact_name: ${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}
       temp_battlefield_file: ${{ needs.shooting-phase.outputs.temp_battlefield_file }}
       battlefield_dir: ${{ needs.shooting-phase.outputs.battlefield_dir }}
-      previous_phase_output_name: ${{ needs.shooting-phase.outputs.next_phase_output }}
+      current_phase_name: 'Combat Phase'
+      all_phases_list: ${{ needs.setup-battle.outputs.all_phases }}
+      skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Combat Phase') }}
     secrets: inherit
-    if: needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
+    if: success() && needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
 
   morale-phase:
     uses: ./.github/workflows/morale_phase.yml
@@ -116,9 +125,11 @@ jobs:
       battlefield_artifact_name: ${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}
       temp_battlefield_file: ${{ needs.combat-phase.outputs.temp_battlefield_file }}
       battlefield_dir: ${{ needs.combat-phase.outputs.battlefield_dir }}
-      previous_phase_output_name: ${{ needs.combat-phase.outputs.next_phase_output }}
+      current_phase_name: 'Morale Phase'
+      all_phases_list: ${{ needs.setup-battle.outputs.all_phases }}
+      skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Morale Phase') }}
     secrets: inherit
-    if: needs.combat-phase.outputs.next_phase_output == 'Morale Phase'
+    if: success() && needs.combat-phase.outputs.next_phase_output == 'Morale Phase'
 
   finish-turn-and-commit:
     runs-on: ubuntu-latest

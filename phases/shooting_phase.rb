@@ -12,7 +12,6 @@ class ShootingPhase
     puts "  Executing Shooting Phase"
     puts "      Shots are fired."
 
-    set_next_phase # Call the new method from PhaseManager
 
     save_battlefield
   end
