@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: initial-battlefield-state # Use a consistent name for the artifact
-          path: ${{ steps.set_vars.outputs.battlefield_dir }} # Upload the specific temporary file
+          path: ${{ steps.set_vars.outputs.temp_battlefield_file }} # Upload the specific temporary file
           retention-days: 1 # Keep artifacts for a short period
 
   movement-phase:
@@ -81,7 +81,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ needs.setup-battle.outputs.initial_battlefield_artifact_name }}
-          path: .
+          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
 
       - name: Debug - List files after download
         run: |
@@ -109,7 +109,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: movement-phase-battlefield-state
-          path: battlefields/ # Upload the entire directory
+          path: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
           retention-days: 1
 
   magic-phase:
@@ -127,7 +127,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}
-          path: .
+          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -167,7 +167,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}
-          path: .
+          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -207,7 +207,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}
-          path: .
+          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -247,7 +247,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}
-          path: .
+          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -289,7 +289,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ needs.morale-phase.outputs.next_battlefield_artifact_name }}
-          path: .
+          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
