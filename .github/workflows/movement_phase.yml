@@ -29,6 +29,8 @@ on:
         value: ${{ jobs.movement_phase_job.outputs.temp_battlefield_file }}
       battlefield_dir:
         value: ${{ jobs.movement_phase_job.outputs.battlefield_dir }}
+      all_phases_list:
+        value: ${{ jobs.movement_phase_job.outputs.all_phases_list }}
 
 jobs:
   movement_phase_job:
