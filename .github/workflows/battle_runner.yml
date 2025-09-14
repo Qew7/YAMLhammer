@@ -19,7 +19,7 @@ jobs:
       all_phases: ${{ steps.get_phases.outputs.all_phases }}
       initial_phase_name: ${{ steps.set_vars.outputs.current_phase }} # Output the initial phase from battlefield.yml
       battlefield_dir: ${{ steps.set_vars.outputs.battlefield_dir }}
-      initial_battlefield_artifact_name: battlefield-state
+      initial_battlefield_artifact_name: battlefield-state-setup # <--- ИЗМЕНЕНО: Уникальное имя для начального артефакта
       temp_battlefield_file: ${{ steps.set_vars.outputs.temp_battlefield_file }} # New output for temp file
 
     steps:
@@ -62,7 +62,7 @@ jobs:
       - name: Upload initial temporary battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: battlefield-state # Use a consistent name for the artifact
+          name: battlefield-state-setup # <--- ИЗМЕНЕНО: Уникальное имя для начального артефакта
           path: ${{ steps.set_vars.outputs.temp_battlefield_file }} # Upload the specific temporary file
           retention-days: 1 # Keep artifacts for a short period
 
@@ -75,50 +75,65 @@ jobs:
       battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
     secrets: inherit
     if: needs.setup-battle.outputs.initial_phase_name == 'Movement Phase'
+    outputs: # <--- ДОБАВЛЕНО: для обработки пропущенных фаз
+      next_phase_output: ${{ jobs.movement-phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: ${{ fromJSON(format('{{\"if\": \"job.status == ''skipped''\", \"then\": \"{0}\", \"else\": \"{1}\"}}', needs.setup-battle.outputs.initial_battlefield_artifact_name, jobs.movement-phase.outputs.next_battlefield_artifact_name)) }}
 
   magic-phase:
     uses: ./.github/workflows/magic_phase.yml
     needs: movement-phase
     with:
       battlefield_artifact_name: ${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}
-      temp_battlefield_file: ${{ needs.movement-phase.outputs.temp_battlefield_file }}
-      battlefield_dir: ${{ needs.movement-phase.outputs.battlefield_dir }}
+      temp_battlefield_file: ${{ needs.movement-phase.outputs.temp_battlefield_file }} # <--- ИЗМЕНЕНО
+      battlefield_dir: ${{ needs.movement-phase.outputs.battlefield_dir }} # <--- ИЗМЕНЕНО
       previous_phase_output_name: ${{ needs.movement-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
+    outputs: # <--- ДОБАВЛЕНО
+      next_phase_output: ${{ jobs.magic-phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: ${{ fromJSON(format('{{\"if\": \"job.status == ''skipped''\", \"then\": \"{0}\", \"else\": \"{1}\"}}', needs.movement-phase.outputs.next_battlefield_artifact_name, jobs.magic-phase.outputs.next_battlefield_artifact_name)) }}
 
   shooting-phase:
     uses: ./.github/workflows/shooting_phase.yml
     needs: magic-phase
     with:
       battlefield_artifact_name: ${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}
-      temp_battlefield_file: ${{ needs.magic-phase.outputs.temp_battlefield_file }}
-      battlefield_dir: ${{ needs.magic-phase.outputs.battlefield_dir }}
+      temp_battlefield_file: ${{ needs.magic-phase.outputs.temp_battlefield_file }} # <--- ИЗМЕНЕНО
+      battlefield_dir: ${{ needs.magic-phase.outputs.battlefield_dir }} # <--- ИЗМЕНЕНО
       previous_phase_output_name: ${{ needs.magic-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
+    outputs: # <--- ДОБАВЛЕНО
+      next_phase_output: ${{ jobs.shooting-phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: ${{ fromJSON(format('{{\"if\": \"job.status == ''skipped''\", \"then\": \"{0}\", \"else\": \"{1}\"}}', needs.magic-phase.outputs.next_battlefield_artifact_name, jobs.shooting-phase.outputs.next_battlefield_artifact_name)) }}
 
   combat-phase:
     uses: ./.github/workflows/combat_phase.yml
     needs: shooting-phase
     with:
       battlefield_artifact_name: ${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}
-      temp_battlefield_file: ${{ needs.shooting-phase.outputs.temp_battlefield_file }}
-      battlefield_dir: ${{ needs.shooting-phase.outputs.battlefield_dir }}
+      temp_battlefield_file: ${{ needs.shooting-phase.outputs.temp_battlefield_file }} # <--- ИЗМЕНЕНО
+      battlefield_dir: ${{ needs.shooting-phase.outputs.battlefield_dir }} # <--- ИЗМЕНЕНО
       previous_phase_output_name: ${{ needs.shooting-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
+    outputs: # <--- ДОБАВЛЕНО
+      next_phase_output: ${{ jobs.combat-phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: ${{ fromJSON(format('{{\"if\": \"job.status == ''skipped''\", \"then\": \"{0}\", \"else\": \"{1}\"}}', needs.shooting-phase.outputs.next_battlefield_artifact_name, jobs.combat-phase.outputs.next_battlefield_artifact_name)) }}
 
   morale-phase:
     uses: ./.github/workflows/morale_phase.yml
     needs: combat-phase
     with:
       battlefield_artifact_name: ${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}
-      temp_battlefield_file: ${{ needs.combat-phase.outputs.temp_battlefield_file }}
-      battlefield_dir: ${{ needs.combat-phase.outputs.battlefield_dir }}
+      temp_battlefield_file: ${{ needs.combat-phase.outputs.temp_battlefield_file }} # <--- ИЗМЕНЕНО
+      battlefield_dir: ${{ needs.combat-phase.outputs.battlefield_dir }} # <--- ИЗМЕНЕНО
       previous_phase_output_name: ${{ needs.combat-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.combat-phase.outputs.next_phase_output == 'Morale Phase'
+    outputs: # <--- ДОБАВЛЕНО
+      next_phase_output: ${{ jobs.morale-phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: ${{ fromJSON(format('{{\"if\": \"job.status == ''skipped''\", \"then\": \"{0}\", \"else\": \"{1}\"}}', needs.combat-phase.outputs.next_battlefield_artifact_name, jobs.morale-phase.outputs.next_battlefield_artifact_name)) }}
 
   finish-turn-and-commit:
     runs-on: ubuntu-latest
@@ -140,7 +155,7 @@ jobs:
       - name: Download final battlefield artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ needs.morale-phase.outputs.next_battlefield_artifact_name }}
+          name: ${{ needs.morale-phase.outputs.next_battlefield_artifact_name }} # <--- ИЗМЕНЕНО: теперь берем последнее актуальное имя артефакта
           path: ${{ needs.morale-phase.outputs.battlefield_dir }}
 
       - name: Set up Ruby
@@ -159,7 +174,7 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.battlefield_file }}"
-          TEMP_BATTLEFIELD_FILE="${{ needs.morale-phase.outputs.temp_battlefield_file }}"
+          TEMP_BATTLEFIELD_FILE="${{ needs.morale-phase.outputs.temp_battlefield_file }}" # <--- ИЗМЕНЕНО
           ACTUAL_TEMP_BATTLEFIELD_FILE="$TEMP_BATTLEFIELD_FILE"
           cp "$ACTUAL_TEMP_BATTLEFIELD_FILE" "$BATTLEFIELD_FILE"
           CURRENT_PLAYER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['player']")
