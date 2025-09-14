@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: initial-battlefield-state # Use a consistent name for the artifact
-          path: battlefields/ # Upload the entire directory
+          path: ${{ steps.set_vars.outputs.temp_battlefield_file }} # Upload the specific temporary file
           retention-days: 1 # Keep artifacts for a short period
 
   movement-phase:
