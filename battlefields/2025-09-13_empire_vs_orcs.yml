@@ -8,9 +8,9 @@ players:
 - name: Grimgor Ironhide
   army: Orcs & Goblins
 current_turn:
-  player: Grimgor Ironhide
-  phase: Movement Phase
-  round_number: 1
+  player: Karl Franz
+  phase: Game Over
+  round_number: 6
 terrain:
 - name: Forest of Gloom
   type: forest
@@ -76,7 +76,7 @@ armies:
       engaged_with:
   Orcs & Goblins:
   - name: Orc Boyz
-    models_count: 25
+    models_count: 20
     position:
     - 80
     - 80
@@ -121,3 +121,4 @@ armies:
       wounds_taken: 0
       casualties: 3
       engaged_with:
+winner: Draw (Max Rounds)
