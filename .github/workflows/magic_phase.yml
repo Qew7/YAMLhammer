@@ -42,7 +42,7 @@ jobs:
 
       - name: Run Magic Phase
         run: |
-          cat ${{ inputs.temp_battlefield_file }}
+          echo "Temp battlefield file: ${{ inputs.temp_battlefield_file }}"
           ruby phases/magic_phase.rb ${{ inputs.temp_battlefield_file }}
 
       - name: Determine next phase
