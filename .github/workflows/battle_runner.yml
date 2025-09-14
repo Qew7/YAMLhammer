@@ -81,8 +81,8 @@ jobs:
     needs: movement-phase
     with:
       battlefield_artifact_name: ${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}
-      temp_battlefield_file: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
-      battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
+      temp_battlefield_file: ${{ needs.movement-phase.outputs.temp_battlefield_file }}
+      battlefield_dir: ${{ needs.movement-phase.outputs.battlefield_dir }}
       previous_phase_output_name: ${{ needs.movement-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
@@ -92,8 +92,8 @@ jobs:
     needs: magic-phase
     with:
       battlefield_artifact_name: ${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}
-      temp_battlefield_file: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
-      battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
+      temp_battlefield_file: ${{ needs.magic-phase.outputs.temp_battlefield_file }}
+      battlefield_dir: ${{ needs.magic-phase.outputs.battlefield_dir }}
       previous_phase_output_name: ${{ needs.magic-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
@@ -103,8 +103,8 @@ jobs:
     needs: shooting-phase
     with:
       battlefield_artifact_name: ${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}
-      temp_battlefield_file: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
-      battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
+      temp_battlefield_file: ${{ needs.shooting-phase.outputs.temp_battlefield_file }}
+      battlefield_dir: ${{ needs.shooting-phase.outputs.battlefield_dir }}
       previous_phase_output_name: ${{ needs.shooting-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
@@ -114,8 +114,8 @@ jobs:
     needs: combat-phase
     with:
       battlefield_artifact_name: ${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}
-      temp_battlefield_file: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
-      battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
+      temp_battlefield_file: ${{ needs.combat-phase.outputs.temp_battlefield_file }}
+      battlefield_dir: ${{ needs.combat-phase.outputs.battlefield_dir }}
       previous_phase_output_name: ${{ needs.combat-phase.outputs.next_phase_output }}
     secrets: inherit
     if: needs.combat-phase.outputs.next_phase_output == 'Morale Phase'
@@ -137,7 +137,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ needs.morale-phase.outputs.next_battlefield_artifact_name }}
-          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
+          path: ${{ needs.morale-phase.outputs.battlefield_dir }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -148,16 +148,16 @@ jobs:
         run: gem install Psych
 
       - name: Update turn data and save battlefield
-        run: ruby main.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }} ${{ needs.setup-battle.outputs.rules_file }}
+        run: ruby main.rb ${{ needs.morale-phase.outputs.temp_battlefield_file }} ${{ needs.setup-battle.outputs.rules_file }}
 
       - name: Commit changes to battlefield file
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.battlefield_file }}"
-          TEMP_BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          ACTUAL_TEMP_BATTLEFIELD_FILE="$TEMP_BATTLEFIELD_FILE" # Simplified path as artifact now keeps directory structure
-          cp "$ACTUAL_TEMP_BATTLEFIELD_FILE" "$BATTLEFIELD_FILE" # Copy temp back to original
+          TEMP_BATTLEFIELD_FILE="${{ needs.morale-phase.outputs.temp_battlefield_file }}"
+          ACTUAL_TEMP_BATTLEFIELD_FILE="$TEMP_BATTLEFIELD_FILE"
+          cp "$ACTUAL_TEMP_BATTLEFIELD_FILE" "$BATTLEFIELD_FILE"
           CURRENT_PLAYER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['player']")
           TURN_NUMBER=$(ruby -ryaml -e "puts YAML.load_file('$BATTLEFIELD_FILE')['current_turn']['turn_number']")
           git add ${{ needs.setup-battle.outputs.battlefield_file }}

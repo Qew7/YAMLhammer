@@ -18,6 +18,10 @@ on:
         value: ${{ jobs.magic_phase_job.outputs.next_phase_output }}
       next_battlefield_artifact_name:
         value: ${{ jobs.magic_phase_job.outputs.next_battlefield_artifact_name }}
+      temp_battlefield_file:
+        value: ${{ jobs.magic_phase_job.outputs.temp_battlefield_file }}
+      battlefield_dir:
+        value: ${{ jobs.magic_phase_job.outputs.battlefield_dir }}
 
 jobs:
   magic_phase_job:
@@ -25,6 +29,8 @@ jobs:
     outputs:
       next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
       next_battlefield_artifact_name: magic-phase-battlefield-state
+      temp_battlefield_file: ${{ inputs.temp_battlefield_file }}
+      battlefield_dir: ${{ inputs.battlefield_dir }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
