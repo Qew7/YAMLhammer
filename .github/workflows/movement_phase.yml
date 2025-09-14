@@ -69,16 +69,22 @@ jobs:
           ALL_PHASES_JSON='${{ inputs.all_phases_list }}'
           CURRENT_PHASE_NAME='${{ inputs.current_phase_name }}'
 
+          echo "Debug: ALL_PHASES_JSON = $ALL_PHASES_JSON"
+          echo "Debug: CURRENT_PHASE_NAME = $CURRENT_PHASE_NAME"
+
           # Use jq to find the index of the current phase and get the next phase name
           CURRENT_INDEX=$(echo "$ALL_PHASES_JSON" | jq --arg current "$CURRENT_PHASE_NAME" 'map(.) | index($current)')
+          echo "Debug: CURRENT_INDEX = $CURRENT_INDEX"
 
           NEXT_PHASE=""
           # Check if the current phase was found and if there's a next phase
           if [ "$CURRENT_INDEX" -ne "null" ] && [ "$((CURRENT_INDEX + 1))" -lt "$(echo "$ALL_PHASES_JSON" | jq 'length')" ]; then
             NEXT_PHASE_INDEX=$((CURRENT_INDEX + 1))
             NEXT_PHASE=$(echo "$ALL_PHASES_JSON" | jq -r ".[${NEXT_PHASE_INDEX}]")
+            echo "Debug: NEXT_PHASE_INDEX = $NEXT_PHASE_INDEX"
           fi
 
+          echo "Debug: Calculated NEXT_PHASE = $NEXT_PHASE"
           echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
 
       - name: Upload battlefield artifact
