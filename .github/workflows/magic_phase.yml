@@ -47,6 +47,7 @@ jobs:
       all_phases_list: ${{ inputs.all_phases_list }}
     steps:
       - name: Checkout repository
+        if: ${{ ! inputs.skip_execution }}
         uses: actions/checkout@v3
 
       - name: Download battlefield artifact
@@ -56,6 +57,7 @@ jobs:
           path: ${{ inputs.battlefield_dir }}
 
       - name: Set up Ruby
+        if: ${{ ! inputs.skip_execution }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.5'

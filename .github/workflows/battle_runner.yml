@@ -64,7 +64,7 @@ jobs:
         id: get_skip_phases
         run: |
           # Define which phases to skip - modify this list as needed
-          SKIP_PHASES='["Movement Phase", "Morale Phase"]'
+          SKIP_PHASES='["Movement Phase", "Magic Phase"]'
           echo "SKIP_PHASES: $SKIP_PHASES"
           echo "phases_to_skip=$SKIP_PHASES" >> $GITHUB_OUTPUT
 
