@@ -20,10 +20,6 @@ on:
         required: false
         type: boolean
         default: false
-      phases_to_skip:
-        required: false
-        type: string
-        default: '[]'
     outputs:
       next_phase_output:
         value: ${{ jobs.shooting_phase_job.outputs.next_phase_output }}
@@ -64,7 +60,9 @@ jobs:
 
       - name: Execute Shooting Phase
         if: ${{ ! inputs.skip_execution }}
-        run: ruby phases/shooting_phase.rb ${{ inputs.temp_battlefield_file }}
+        run: |
+          echo ${{ ! inputs.skip_execution }}
+          ruby phases/shooting_phase.rb ${{ inputs.temp_battlefield_file }}
 
       - name: Determine next phase
         id: determine_next_phase
