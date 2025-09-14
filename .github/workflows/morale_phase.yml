@@ -38,6 +38,7 @@ jobs:
       next_battlefield_artifact_name: morale-phase-battlefield-state
       temp_battlefield_file: ${{ inputs.temp_battlefield_file }}
       battlefield_dir: ${{ inputs.battlefield_dir }}
+      all_phases_list: ${{ inputs.all_phases_list }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
