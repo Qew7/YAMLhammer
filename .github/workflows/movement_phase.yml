@@ -75,12 +75,12 @@ jobs:
           echo "Debug: ALL_PHASES_LENGTH = $(echo "$ALL_PHASES_JSON" | jq 'length')"
 
           # Use jq to find the index of the current phase and get the next phase name
-          CURRENT_INDEX=$(echo "$ALL_PHASES_JSON" | jq --arg current "$CURRENT_PHASE_NAME" 'map(.) | index($current)')
+          CURRENT_INDEX=$(echo "$ALL_PHASES_JSON" | jq -r --arg current "$CURRENT_PHASE_NAME" 'map(.) | index($current) // -1')
           echo "Debug: CURRENT_INDEX = $CURRENT_INDEX"
 
           NEXT_PHASE=""
           # Check if the current phase was found and if there's a next phase
-          if [ "$CURRENT_INDEX" -ne "null" ] && [ "$((CURRENT_INDEX + 1))" -lt "$(echo "$ALL_PHASES_JSON" | jq 'length')" ]; then
+          if [ "$CURRENT_INDEX" -ne "-1" ] && [ "$((CURRENT_INDEX + 1))" -lt "$(echo "$ALL_PHASES_JSON" | jq 'length')" ]; then
             NEXT_PHASE_INDEX=$((CURRENT_INDEX + 1))
             NEXT_PHASE=$(echo "$ALL_PHASES_JSON" | jq -r ".[${NEXT_PHASE_INDEX}]")
             echo "Debug: NEXT_PHASE_INDEX = $NEXT_PHASE_INDEX"
