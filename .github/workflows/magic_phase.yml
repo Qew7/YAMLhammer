@@ -45,6 +45,7 @@ jobs:
           echo "Current working directory: $(pwd)"
           echo "Files after artifact download:"
           ls -R
+          echo "Battlefield directory: ${{ inputs.battlefield_dir }}"
           echo "Temp battlefield file: ${{ inputs.temp_battlefield_file }}"
           ruby phases/magic_phase.rb ${{ inputs.temp_battlefield_file }}
 
