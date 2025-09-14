@@ -31,7 +31,7 @@ terrain:
 armies:
   The Empire:
   - name: Empire State Troops
-    models_count: 20
+    models_count: 22
     position:
     - 5
     - 5
