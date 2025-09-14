@@ -20,6 +20,10 @@ on:
         required: false
         type: boolean
         default: false
+      phases_to_skip:
+        required: false
+        type: string
+        default: '[]'
     outputs:
       next_phase_output:
         value: ${{ jobs.shooting_phase_job.outputs.next_phase_output }}

@@ -21,6 +21,7 @@ jobs:
       battlefield_dir: ${{ steps.set_vars.outputs.battlefield_dir }}
       initial_battlefield_artifact_name: initial-battlefield-state
       temp_battlefield_file: ${{ steps.set_vars.outputs.temp_battlefield_file }} # New output for temp file
+      phases_to_skip: ${{ steps.get_skip_phases.outputs.phases_to_skip }}
 
     steps:
       - name: Checkout repository
@@ -59,6 +60,14 @@ jobs:
           echo "ALL_PHASES: $ALL_PHASES"
           echo "all_phases=$(echo "$ALL_PHASES" | tr -d '\n')" >> $GITHUB_OUTPUT
 
+      - name: Define phases to skip
+        id: get_skip_phases
+        run: |
+          # Define which phases to skip - modify this list as needed
+          SKIP_PHASES='["Movement Phase", "Morale Phase"]'
+          echo "SKIP_PHASES: $SKIP_PHASES"
+          echo "phases_to_skip=$SKIP_PHASES" >> $GITHUB_OUTPUT
+
       - name: Upload initial temporary battlefield artifact
         uses: actions/upload-artifact@v4
         with:
@@ -88,6 +97,7 @@ jobs:
       battlefield_dir: ${{ needs.movement-phase.outputs.battlefield_dir }}
       current_phase_name: 'Magic Phase'
       all_phases_list: ${{ needs.movement-phase.outputs.all_phases_list }}
+      phases_to_skip: ${{ needs.setup-battle.outputs.phases_to_skip }}
       skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Magic Phase') }}
     secrets: inherit
     if: success() && needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
@@ -101,6 +111,7 @@ jobs:
       battlefield_dir: ${{ needs.magic-phase.outputs.battlefield_dir }}
       current_phase_name: 'Shooting Phase'
       all_phases_list: ${{ needs.magic-phase.outputs.all_phases_list }}
+      phases_to_skip: ${{ needs.setup-battle.outputs.phases_to_skip }}
       skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Shooting Phase') }}
     secrets: inherit
     if: success() && needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
@@ -114,6 +125,7 @@ jobs:
       battlefield_dir: ${{ needs.shooting-phase.outputs.battlefield_dir }}
       current_phase_name: 'Combat Phase'
       all_phases_list: ${{ needs.shooting-phase.outputs.all_phases_list }}
+      phases_to_skip: ${{ needs.setup-battle.outputs.phases_to_skip }}
       skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Combat Phase') }}
     secrets: inherit
     if: success() && needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
@@ -127,6 +139,7 @@ jobs:
       battlefield_dir: ${{ needs.combat-phase.outputs.battlefield_dir }}
       current_phase_name: 'Morale Phase'
       all_phases_list: ${{ needs.combat-phase.outputs.all_phases_list }}
+      phases_to_skip: ${{ needs.setup-battle.outputs.phases_to_skip }}
       skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Morale Phase') }}
     secrets: inherit
     if: success() && needs.combat-phase.outputs.next_phase_output == 'Morale Phase'
