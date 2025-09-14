@@ -1,6 +1,9 @@
 on:
   workflow_call:
     inputs:
+      phases_to_skip:
+        required: false
+        type: boolean
       battlefield_artifact_name:
         required: true
         type: string
@@ -61,7 +64,7 @@ jobs:
       - name: Execute Shooting Phase
         if: ${{ ! inputs.skip_execution }}
         run: |
-          echo ${{ ! inputs.skip_execution }}
+          echo ${{ needs.setup-battle.outputs.phases_to_skip }}
           ruby phases/shooting_phase.rb ${{ inputs.temp_battlefield_file }}
 
       - name: Determine next phase

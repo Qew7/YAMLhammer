@@ -110,6 +110,7 @@ jobs:
       battlefield_dir: ${{ needs.magic-phase.outputs.battlefield_dir }}
       current_phase_name: 'Shooting Phase'
       all_phases_list: ${{ needs.magic-phase.outputs.all_phases_list }}
+      phases_to_skip: ${{ needs.setup-battle.outputs.phases_to_skip }}
       skip_execution: ${{ contains(needs.setup-battle.outputs.phases_to_skip, 'Shooting Phase') }}
     secrets: inherit
     if: success() && needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
