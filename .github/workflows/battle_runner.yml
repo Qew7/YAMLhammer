@@ -90,7 +90,9 @@ jobs:
 
   magic-phase:
     uses: ./.github/workflows/magic_phase.yml
-    needs: movement-phase
+    needs: 
+      - movement-phase
+      - setup-battle
     with:
       battlefield_artifact_name: ${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}
       temp_battlefield_file: ${{ needs.movement-phase.outputs.temp_battlefield_file }}
@@ -103,7 +105,9 @@ jobs:
 
   shooting-phase:
     uses: ./.github/workflows/shooting_phase.yml
-    needs: magic-phase
+    needs:
+      - magic-phase
+      - setup-battle
     with:
       battlefield_artifact_name: ${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}
       temp_battlefield_file: ${{ needs.magic-phase.outputs.temp_battlefield_file }}
@@ -117,7 +121,9 @@ jobs:
 
   combat-phase:
     uses: ./.github/workflows/combat_phase.yml
-    needs: shooting-phase
+    needs:
+      - shooting-phase
+      - setup-battle
     with:
       battlefield_artifact_name: ${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}
       temp_battlefield_file: ${{ needs.shooting-phase.outputs.temp_battlefield_file }}
@@ -130,7 +136,9 @@ jobs:
 
   morale-phase:
     uses: ./.github/workflows/morale_phase.yml
-    needs: combat-phase
+    needs:
+      - combat-phase
+      - setup-battle
     with:
       battlefield_artifact_name: ${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}
       temp_battlefield_file: ${{ needs.combat-phase.outputs.temp_battlefield_file }}
