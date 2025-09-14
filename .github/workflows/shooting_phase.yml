@@ -3,7 +3,7 @@ on:
     inputs:
       phases_to_skip:
         required: false
-        type: boolean
+        type: string
       battlefield_artifact_name:
         required: true
         type: string
