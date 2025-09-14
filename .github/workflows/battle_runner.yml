@@ -129,6 +129,8 @@ jobs:
       - shooting-phase
       - combat-phase
       - morale-phase
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
