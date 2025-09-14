@@ -8,7 +8,7 @@ players:
 - name: Grimgor Ironhide
   army: Orcs & Goblins
 current_turn:
-  player: Karl Franz
+  player: Grimgor Ironhide
   phase: Movement Phase
   round_number: 5
 terrain:
