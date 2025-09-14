@@ -134,6 +134,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.WORKFLOW_TOKEN }}
 
       - name: Download final battlefield artifact
         uses: actions/download-artifact@v4
@@ -166,4 +168,4 @@ jobs:
           git commit -m "Automated Battle Turn: Turn ${TURN_NUMBER} - ${CURRENT_PLAYER}" || echo "No changes to commit"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
