@@ -19,7 +19,7 @@ jobs:
       all_phases: ${{ steps.get_phases.outputs.all_phases }}
       initial_phase_name: ${{ steps.set_vars.outputs.current_phase }} # Output the initial phase from battlefield.yml
       battlefield_dir: ${{ steps.set_vars.outputs.battlefield_dir }}
-      initial_battlefield_artifact_name: initial-battlefield-state
+      initial_battlefield_artifact_name: battlefield-state
       temp_battlefield_file: ${{ steps.set_vars.outputs.temp_battlefield_file }} # New output for temp file
 
     steps:
@@ -62,7 +62,7 @@ jobs:
       - name: Upload initial temporary battlefield artifact
         uses: actions/upload-artifact@v4
         with:
-          name: initial-battlefield-state # Use a consistent name for the artifact
+          name: battlefield-state # Use a consistent name for the artifact
           path: ${{ steps.set_vars.outputs.temp_battlefield_file }} # Upload the specific temporary file
           retention-days: 1 # Keep artifacts for a short period
 
