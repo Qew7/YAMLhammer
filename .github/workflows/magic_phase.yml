@@ -46,6 +46,7 @@ jobs:
       - name: Determine next phase
         id: determine_next_phase
         run: |
+          cat ${{ inputs.temp_battlefield_file }}
           BATTLEFIELD_FILE="${{ inputs.temp_battlefield_file }}"
           ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE" # Simplified path as artifact now keeps directory structure
           NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
