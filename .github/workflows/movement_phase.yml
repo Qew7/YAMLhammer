@@ -47,6 +47,7 @@ jobs:
       all_phases_list: ${{ inputs.all_phases_list }}
     steps:
       - name: Checkout repository
+        if: ${{ ! inputs.skip_execution }}
         uses: actions/checkout@v3
 
       - name: Download battlefield artifact
