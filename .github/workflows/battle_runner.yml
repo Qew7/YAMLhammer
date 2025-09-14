@@ -67,210 +67,73 @@ jobs:
           retention-days: 1 # Keep artifacts for a short period
 
   movement-phase:
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/reusable_phases/movement_phase.yml
     needs: setup-battle
+    with:
+      battlefield_artifact_name: ${{ needs.setup-battle.outputs.initial_battlefield_artifact_name }}
+      temp_battlefield_file: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
+      battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
+    secrets: inherit
     if: needs.setup-battle.outputs.initial_phase_name == 'Movement Phase'
     outputs:
-      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
-      next_battlefield_artifact_name: movement-phase-battlefield-state
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Download battlefield artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ needs.setup-battle.outputs.initial_battlefield_artifact_name }}
-          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
-
-      - name: Debug - List files after download
-        run: |
-          echo "Current working directory: $(pwd)"
-          echo "Files after artifact download:"
-          ls -R
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.4.5'
-
-      - name: Run Movement Phase
-        run: ruby phases/movement_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }}
-
-      - name: Determine next phase
-        id: determine_next_phase
-        run: |
-          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE" # Simplified path as artifact now keeps directory structure
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
-          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
-
-      - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: movement-phase-battlefield-state
-          path: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
-          retention-days: 1
+      next_phase_output: ${{ jobs.movement_phase_job.outputs.next_phase_output }}
+      next_battlefield_artifact_name: ${{ jobs.movement_phase_job.outputs.next_battlefield_artifact_name }}
 
   magic-phase:
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/reusable_phases/magic_phase.yml
     needs: movement-phase
+    with:
+      battlefield_artifact_name: ${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}
+      temp_battlefield_file: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
+      battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
+      previous_phase_output_name: ${{ needs.movement-phase.outputs.next_phase_output }}
+    secrets: inherit
     if: needs.movement-phase.outputs.next_phase_output == 'Magic Phase'
     outputs:
-      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
-      next_battlefield_artifact_name: magic-phase-battlefield-state
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Download battlefield artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ needs.movement-phase.outputs.next_battlefield_artifact_name }}
-          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.4.5'
-
-      - name: Run Magic Phase
-        run: ruby phases/magic_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }}
-
-      - name: Determine next phase
-        id: determine_next_phase
-        run: |
-          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE" # Simplified path as artifact now keeps directory structure
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
-          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
-
-      - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: magic-phase-battlefield-state
-          path: battlefields/ # Upload the entire directory
-          retention-days: 1
+      next_phase_output: ${{ jobs.magic_phase_job.outputs.next_phase_output }}
+      next_battlefield_artifact_name: ${{ jobs.magic_phase_job.outputs.next_battlefield_artifact_name }}
 
   shooting-phase:
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/reusable_phases/shooting_phase.yml
     needs: magic-phase
+    with:
+      battlefield_artifact_name: ${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}
+      temp_battlefield_file: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
+      battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
+      previous_phase_output_name: ${{ needs.magic-phase.outputs.next_phase_output }}
+    secrets: inherit
     if: needs.magic-phase.outputs.next_phase_output == 'Shooting Phase'
     outputs:
-      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
-      next_battlefield_artifact_name: shooting-phase-battlefield-state
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Download battlefield artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ needs.magic-phase.outputs.next_battlefield_artifact_name }}
-          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.4.5'
-
-      - name: Run Shooting Phase
-        run: ruby phases/shooting_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }}
-
-      - name: Determine next phase
-        id: determine_next_phase
-        run: |
-          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE" # Simplified path as artifact now keeps directory structure
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
-          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
-
-      - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: shooting-phase-battlefield-state
-          path: battlefields/ # Upload the entire directory
-          retention-days: 1
+      next_phase_output: ${{ jobs.shooting_phase_job.outputs.next_phase_output }}
+      next_battlefield_artifact_name: ${{ jobs.shooting_phase_job.outputs.next_battlefield_artifact_name }}
 
   combat-phase:
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/reusable_phases/combat_phase.yml
     needs: shooting-phase
+    with:
+      battlefield_artifact_name: ${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}
+      temp_battlefield_file: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
+      battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
+      previous_phase_output_name: ${{ needs.shooting-phase.outputs.next_phase_output }}
+    secrets: inherit
     if: needs.shooting-phase.outputs.next_phase_output == 'Combat Phase'
     outputs:
-      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
-      next_battlefield_artifact_name: combat-phase-battlefield-state
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Download battlefield artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ needs.shooting-phase.outputs.next_battlefield_artifact_name }}
-          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.4.5'
-
-      - name: Run Combat Phase
-        run: ruby phases/combat_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }}
-
-      - name: Determine next phase
-        id: determine_next_phase
-        run: |
-          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE" # Simplified path as artifact now keeps directory structure
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
-          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
-
-      - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: combat-phase-battlefield-state
-          path: battlefields/ # Upload the entire directory
-          retention-days: 1
+      next_phase_output: ${{ jobs.combat_phase_job.outputs.next_phase_output }}
+      next_battlefield_artifact_name: ${{ jobs.combat_phase_job.outputs.next_battlefield_artifact_name }}
 
   morale-phase:
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/reusable_phases/morale_phase.yml
     needs: combat-phase
+    with:
+      battlefield_artifact_name: ${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}
+      temp_battlefield_file: ${{ needs.setup-battle.outputs.temp_battlefield_file }}
+      battlefield_dir: ${{ needs.setup-battle.outputs.battlefield_dir }}
+      previous_phase_output_name: ${{ needs.combat-phase.outputs.next_phase_output }}
+    secrets: inherit
     if: needs.combat-phase.outputs.next_phase_output == 'Morale Phase'
     outputs:
-      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
-      next_battlefield_artifact_name: morale-phase-battlefield-state
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Download battlefield artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ needs.combat-phase.outputs.next_battlefield_artifact_name }}
-          path: ${{ needs.setup-battle.outputs.battlefield_dir }} # Изменено: используем динамическую директорию
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.4.5'
-
-      - name: Run Morale Phase
-        run: ruby phases/morale_phase.rb ${{ needs.setup-battle.outputs.temp_battlefield_file }}
-
-      - name: Determine next phase
-        id: determine_next_phase
-        run: |
-          BATTLEFIELD_FILE="${{ needs.setup-battle.outputs.temp_battlefield_file }}"
-          ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE" # Simplified path as artifact now keeps directory structure
-          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
-          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
-
-      - name: Upload battlefield artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: morale-phase-battlefield-state
-          path: battlefields/ # Upload the entire directory
-          retention-days: 1
+      next_phase_output: ${{ jobs.morale_phase_job.outputs.next_phase_output }}
+      next_battlefield_artifact_name: ${{ jobs.morale_phase_job.outputs.next_battlefield_artifact_name }}
 
   finish-turn-and-commit:
     runs-on: ubuntu-latest

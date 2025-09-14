@@ -1,0 +1,59 @@
+on:
+  workflow_call:
+    inputs:
+      battlefield_artifact_name:
+        required: true
+        type: string
+      temp_battlefield_file:
+        required: true
+        type: string
+      battlefield_dir:
+        required: true
+        type: string
+      previous_phase_output_name:
+        required: true
+        type: string
+    outputs:
+      next_phase_output:
+        value: ${{ jobs.magic_phase_job.outputs.next_phase_output }}
+      next_battlefield_artifact_name:
+        value: ${{ jobs.magic_phase_job.outputs.next_battlefield_artifact_name }}
+
+jobs:
+  magic_phase_job:
+    runs-on: ubuntu-latest
+    outputs:
+      next_phase_output: ${{ steps.determine_next_phase.outputs.next_phase_output }}
+      next_battlefield_artifact_name: magic-phase-battlefield-state
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download battlefield artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.battlefield_artifact_name }}
+          path: ${{ inputs.battlefield_dir }}
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.5'
+
+      - name: Run Magic Phase
+        run: ruby phases/magic_phase.rb ${{ inputs.temp_battlefield_file }}
+
+      - name: Determine next phase
+        id: determine_next_phase
+        run: |
+          BATTLEFIELD_FILE="${{ inputs.temp_battlefield_file }}"
+          ACTUAL_BATTLEFIELD_FILE="$BATTLEFIELD_FILE" # Simplified path as artifact now keeps directory structure
+          NEXT_PHASE=$(ruby -ryaml -e "puts YAML.load_file('$ACTUAL_BATTLEFIELD_FILE')['current_turn']['phase']")
+          echo "next_phase_output=$NEXT_PHASE" >> $GITHUB_OUTPUT
+
+      - name: Upload battlefield artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: magic-phase-battlefield-state
+          path: ${{ inputs.battlefield_dir }} # Upload the entire directory
+          retention-days: 1
